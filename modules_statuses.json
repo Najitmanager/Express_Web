@@ -1,0 +1,15 @@
+{
+    "Users": true,
+    "Acl": true,
+    "Blog": false,
+    "Localization": true,
+    "Menu": false,
+    "Widget": false,
+    "Pages": false,
+    "Cargo": true,
+    "Payments": true,
+    "Currency": true,
+    "DriverAppAddon": false,
+    "CustomerAppAddon": false,
+    "Warehouse": true
+}
