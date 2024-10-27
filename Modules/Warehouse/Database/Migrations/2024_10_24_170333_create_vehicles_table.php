@@ -26,7 +26,7 @@ class CreateVehiclesTable extends Migration
             $table->foreignId('port_id')->nullable()->constrained('ports')->onDelete('cascade');
             $table->foreignId('branch_id')->nullable()->constrained('branches')->onDelete('cascade');
             $table->date('expected_arrival_date')->nullable();
-            $table->string('lot');
+            $table->string('lot')->nullable();
             $table->timestamps();
         });
     }

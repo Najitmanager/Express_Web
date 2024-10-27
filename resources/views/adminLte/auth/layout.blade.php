@@ -19,13 +19,13 @@
         <meta property="og:type" content="article" />
         <meta property="og:title" content="{{ config('app.name') }}" />
 
-        @php 
+        @php
             $model = App\Models\Settings::where('group', 'general')->where('name','system_logo')->first();
         @endphp
         <link rel="shortcut icon" href="{{ $model->getFirstMediaUrl('system_logo') ? $model->getFirstMediaUrl('system_logo') : asset('assets/lte/media/logos/favicon.png') }}" />
 
         <!-- Google Font: Source Sans Pro -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 		<!-- fontawesome-free -->
         <link rel="stylesheet" href="{{ asset('assets/lte') }}/plugins/fontawesome/css/all.min.css">
         <!-- icheck-bootstrap -->
@@ -38,7 +38,7 @@
             <link rel="stylesheet" href="{{ asset('assets/lte') }}/css/ltr.css">
         @endif
 
-        
+
         @yield('styles')
     </head>
     <body class="hold-transition login-page">
@@ -53,10 +53,12 @@
 		<!-- AdminLTE App -->
         <script src="{{ asset('assets/lte') }}/js/adminlte.js"></script>
 
+
         {{-- Show message alert from session flash --}}
-		@include('adminLte.helpers.message-alert')
-        
+        @include('adminLte.helpers.message-alert')
+
         @yield('scripts')
+
 
     </body>
 </html>

@@ -25,7 +25,7 @@
             <form id="kt_account_profile_details_form" class="form" action="{{ fr_route('customers.store') }}" method="post" enctype="multipart/form-data">
                 <!--begin::Card body-->
                 <div class="card-body border-top p-9">
-                    @include('warehouse::adminLte.pages.customers.form', ['typeForm' => 'create'])
+                    @include('warehouse::adminLte.pages.vehicles.form', ['typeForm' => 'create'])
                 </div>
                 <!--end::Card body-->
                 <!--begin::Actions-->

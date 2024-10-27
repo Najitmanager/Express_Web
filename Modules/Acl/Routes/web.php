@@ -11,14 +11,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-if (\Illuminate\Support\Facades\Schema::hasTable('translations') && check_module('localization')) {
+
     Route::group(
         [
             'prefix' => LaravelLocalization::setLocale(),
             'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
         ], function(){
-            
-        Route::middleware('auth')->prefix(env('PREFIX_ADMIN', 'admin'))->group(function() {
+
+        Route::middleware(['auth', 'warehouseSwitch'])->prefix(env('PREFIX_ADMIN', 'admin'))->group(function() {
 
             Route::prefix('acl')->group(function() {
 
@@ -29,15 +29,3 @@ if (\Illuminate\Support\Facades\Schema::hasTable('translations') && check_module
 
         });
     });
-}else{
-    Route::middleware('auth')->prefix(env('PREFIX_ADMIN', 'admin'))->group(function() {
-
-        Route::prefix('acl')->group(function() {
-
-            Route::resource('/roles', 'AclController')->parameters(['roles' => 'id']);
-            Route::delete('/roles-multi-destroy', 'AclController@multiRoleDestroy')->name('roles.multi-destroy');
-            // ....
-        });
-
-    });
-}

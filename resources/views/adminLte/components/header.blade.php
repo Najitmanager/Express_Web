@@ -107,7 +107,7 @@ $auth_dilver = 5;
                     <span class="mr-2">{{ app('hook')->get('warehouse')->name }}</span> <i class="fa-solid fa-chevron-down"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right p-0">
-                    @foreach (\Modules\Cargo\Entities\Branch::all() as $branch)
+                    @foreach (auth()->user()->branches as $branch)
                         <a href="{{ route('warehouse.general-settings.warehouseSwitch',$branch) }}" class="dropdown-item @if(app('hook')->get('warehouse')->id == $branch->id) active @endif">{{ $branch->name }}</a>
                     @endforeach
                 </div>

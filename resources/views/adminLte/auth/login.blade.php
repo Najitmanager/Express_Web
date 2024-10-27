@@ -265,47 +265,47 @@
   }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-    function autoFill(){
-        $('#email').val('admin@admin.com');
-        $('#password').val('123456');
-    }
+{{--<script type="text/javascript">--}}
+{{--    function autoFill(){--}}
+{{--        $('#email').val('admin@admin.com');--}}
+{{--        $('#password').val('123456');--}}
+{{--    }--}}
 
 
-    @if(env('DEMO_MODE') == 'On')
-      // Class Initialization
-      $(document).ready(function() {
-        autoFill();
+{{--    @if(env('DEMO_MODE') == 'On')--}}
+{{--      // Class Initialization--}}
+{{--      $(document).ready(function() {--}}
+{{--        autoFill();--}}
 
-        $('body').on('click','#login_admin', function(e){
-          $('#email').val('admin@admin.com');
-          $('#password').val('123456');
-          $('#signin_submit').trigger('click');
-        });
-        $('body').on('click','#login_employee', function(e){
-          $('#email').val('employee@cargo.com');
-          $('#password').val('123456');
-          $('#signin_submit').trigger('click');
-        });
-        $('body').on('click','#login_driver', function(e){
-          $('#email').val('driver@cargo.com');
-          $('#password').val('123456');
-          $('#signin_submit').trigger('click');
-        });
-        $('body').on('click','#login_branch', function(e){
-          $('#email').val('branch@cargo.com');
-          $('#password').val('123456');
-          $('#signin_submit').trigger('click');
-        });
-        $('body').on('click','#login_client', function(e){
-          $('#email').val('client@cargo.com');
-          $('#password').val('123456');
-          $('#signin_submit').trigger('click');
-        });
+{{--        $('body').on('click','#login_admin', function(e){--}}
+{{--          $('#email').val('admin@admin.com');--}}
+{{--          $('#password').val('123456');--}}
+{{--          $('#signin_submit').trigger('click');--}}
+{{--        });--}}
+{{--        $('body').on('click','#login_employee', function(e){--}}
+{{--          $('#email').val('employee@cargo.com');--}}
+{{--          $('#password').val('123456');--}}
+{{--          $('#signin_submit').trigger('click');--}}
+{{--        });--}}
+{{--        $('body').on('click','#login_driver', function(e){--}}
+{{--          $('#email').val('driver@cargo.com');--}}
+{{--          $('#password').val('123456');--}}
+{{--          $('#signin_submit').trigger('click');--}}
+{{--        });--}}
+{{--        $('body').on('click','#login_branch', function(e){--}}
+{{--          $('#email').val('branch@cargo.com');--}}
+{{--          $('#password').val('123456');--}}
+{{--          $('#signin_submit').trigger('click');--}}
+{{--        });--}}
+{{--        $('body').on('click','#login_client', function(e){--}}
+{{--          $('#email').val('client@cargo.com');--}}
+{{--          $('#password').val('123456');--}}
+{{--          $('#signin_submit').trigger('click');--}}
+{{--        });--}}
 
-      });
-    @endif
-</script>
+{{--      });--}}
+{{--    @endif--}}
+{{--</script>--}}
 @endsection
 
 

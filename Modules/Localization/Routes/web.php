@@ -21,7 +21,7 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){
 
-    Route::middleware('auth')->prefix(env('PREFIX_ADMIN', 'admin'))->group(function() {
+    Route::middleware(['auth', 'warehouseSwitch'])->prefix(env('PREFIX_ADMIN', 'admin'))->group(function() {
 
         Route::prefix('localization')->group(function() {
             // languages

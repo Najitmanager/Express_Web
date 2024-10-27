@@ -67,7 +67,7 @@ class CustomerController extends Controller
         $countries = Country::all();
 
         $adminTheme = env('ADMIN_THEME', 'adminLte');
-        return view('warehouse::'.$adminTheme.'.pages.customers.create')->with(['countries' => $countries ]);
+        return view('warehouse::'.$adminTheme.'.pages.vehicles.create')->with(['countries' => $countries ]);
 
     }
 

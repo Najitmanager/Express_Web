@@ -87,6 +87,8 @@ return [
     'edit_vehicle' => 'Edit Vehicle',
     'vehicle_list' => 'Vehicle list',
     'vehicle_information'=>'Vehicle Information',
+    'pull_vehicle_info'=>'Pull Vehicle Info',
+    'vin'=>'Vin',
 
     'table' => [
         'port' => 'Port',

@@ -17,8 +17,13 @@ class WarehouseSwitchMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        if (!auth()->user()->branches()->count()){
+            auth()->logout();
+            return redirect()->route('login')->with(['error_message_alert'=>'You do not have permission to access this page.']);
 
+        }
         if (is_null(session('warehouse'))){
+
             session(['warehouse'=>Branch::find(auth()->user()->id)]);
             $branch=session('warehouse');
         }else{

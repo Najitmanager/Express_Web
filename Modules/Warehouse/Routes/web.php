@@ -13,6 +13,37 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('test', function () {
+//    $postdata = http_build_query(
+//        array(
+//            'format' => 'json',
+//            'data' => '3GNDA13D76S000000'
+//        )
+//    );
+//    $opts = array('http' =>
+//        array(
+//            'header' => "Content-Type: application/x-www-form-urlencoded\r\n".
+//                "Content-Length: ".strlen($postdata)."\r\n".
+//                "User-Agent:MyAgent/1.0\r\n",
+//            'method' => 'POST',
+//            'content' => $postdata
+//        )
+//    );
+//    $apiURL = "https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVINValuesBatch/";
+//    $context = stream_context_create($opts);
+//    $fp = fopen($apiURL, 'rb', false, $context);
+//    if(!$fp)
+//    {
+//        echo "in first if";
+//    }
+//    $response = @stream_get_contents($fp);
+//    if($response == false)
+//    {
+//        echo "in second if";
+//    }
+//    $result = json_decode($response,true)['Results'][0];
+    decodeVin('3GNDA13D76S000000');
+});
 
     Route::group(
         [

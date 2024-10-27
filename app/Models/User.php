@@ -9,7 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Core\Traits\SpatieLogsActivity;
 use App\Helpers\HelperTraits\FileHelper;
+use Modules\Cargo\Entities\Branch;
 use Modules\Cargo\Entities\Client;
+use Modules\Warehouse\Entities\UserBranch;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\File;
 use Modules\Users\Events\UserDeletedEvent;
@@ -149,6 +151,11 @@ class User extends Authenticatable implements HasMedia
     public function clientInfo()
     {
         return $this->hasOne(Client::class,'user_id');
+    }
+    public function Branches()
+    {
+        return $this->belongsToMany(Branch::class,UserBranch::class,'user_id','branch_id');
+
     }
 
 }

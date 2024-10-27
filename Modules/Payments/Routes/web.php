@@ -9,24 +9,18 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/    
-if (\Illuminate\Support\Facades\Schema::hasTable('translations') && check_module('localization')) {
+*/
+use Illuminate\Support\Facades\Route;
+
     Route::group(
         [
             'prefix' => LaravelLocalization::setLocale(),
             'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
         ], function(){
-            
-        Route::middleware('auth')->prefix(env('PREFIX_ADMIN', 'admin'))->group(function() {
+
+        Route::middleware(['auth', 'warehouseSwitch'])->prefix(env('PREFIX_ADMIN', 'admin'))->group(function() {
             // Business Settings Routes
             Route::get('/settings/payments', 'PaymentsController@index')->name('payments.index');
             Route::put('/settings/payments', 'PaymentsController@store')->name('updatePayments.index');
         });
     });
-}else{
-    Route::middleware('auth')->prefix(env('PREFIX_ADMIN', 'admin'))->group(function() {
-        // Business Settings Routes
-        Route::get('/settings/payments', 'PaymentsController@index')->name('payments.index');
-        Route::put('/settings/payments', 'PaymentsController@store')->name('updatePayments.index');
-    });
-}

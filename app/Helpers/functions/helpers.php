@@ -4,6 +4,7 @@
  * Here Added global functions you want include in any place in system
  */
 
+use Modules\Warehouse\Entities\Make;
 use Symfony\Component\HttpFoundation\File\File as FileFoundation;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
@@ -1105,6 +1106,39 @@ if (!function_exists('base_country_code')) {
         return '+' . $number;
     }
 }
+use Illuminate\Support\Facades\Http;
+if (!function_exists('decodeVin')) {
+    function decodeVin($vin)
+    {
+        $apiURL = "https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVINValuesBatch/";
 
+        $returnData=[];
+        // Prepare the data for the POST request
+        $postData = [
+            'format' => 'json',
+            'data' => $vin
+        ];
 
+        // Make the POST request using Laravel's Http facade
+        $response = Http::asForm()->post($apiURL, $postData);
+
+        // Check if the response is successful
+        if ($response->successful()) {
+            $result = $response->json()['Results'][0];
+            // Dump and die to inspect the response fields
+                $make = $result['Make'] ?? null;
+                $returnData['make_id'] = optional(\Modules\Warehouse\Entities\Make::firstOrCreate($make))->id;
+                $model = $result['Model'] ?? null;
+                $returnData['model_id'] = optional(\Modules\Warehouse\Entities\Model::firstOrCreate($model))->id;
+                $returnData['year'] = $result['ModelYear'] ?? 1970;
+                $type = $result['VehicleType'] ?? 'unknown';
+                $returnData['type_id'] = optional(\Modules\Warehouse\Entities\Type::firstOrCreate($type))->id;
+                $returnData['vin'] = $result['VIN'] ?? null;
+                return $returnData;
+        } else {
+            // Handle the error
+            return response()->json(['error' => 'Failed to retrieve data from API'], 500);
+        }
+    }
+}
 

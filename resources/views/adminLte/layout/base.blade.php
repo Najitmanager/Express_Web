@@ -89,13 +89,13 @@
         <div class="wrapper">
 
             <!-- Preloader -->
-            @php
-                $model = App\Models\Settings::where('group', 'general')->where('name','loading_logo')->first();
-                $system_logo = App\Models\Settings::where('group', 'general')->where('name','system_logo')->first();
-            @endphp
-            <div class="preloader flex-column justify-content-center align-items-center">
-                <img class="animation__shake" src="{{ $model->getFirstMediaUrl('loading_logo') ? $model->getFirstMediaUrl('loading_logo') : ( $system_logo->getFirstMediaUrl('system_logo') ? $system_logo->getFirstMediaUrl('system_logo') : asset('assets/lte/cargo-logo-small-h38.svg') ) }}" alt="Logo" height="60" width="60">
-            </div>
+{{--            @php--}}
+{{--                $model = App\Models\Settings::where('group', 'general')->where('name','loading_logo')->first();--}}
+{{--                $system_logo = App\Models\Settings::where('group', 'general')->where('name','system_logo')->first();--}}
+{{--            @endphp--}}
+{{--            <div class="preloader flex-column justify-content-center align-items-center">--}}
+{{--                <img class="animation__shake" src="{{ $model->getFirstMediaUrl('loading_logo') ? $model->getFirstMediaUrl('loading_logo') : ( $system_logo->getFirstMediaUrl('system_logo') ? $system_logo->getFirstMediaUrl('system_logo') : asset('assets/lte/cargo-logo-small-h38.svg') ) }}" alt="Logo" height="60" width="60">--}}
+{{--            </div>--}}
 
             <!-- Navbar -->
             @include('adminLte.components.header')
