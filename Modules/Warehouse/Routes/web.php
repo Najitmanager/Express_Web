@@ -64,6 +64,10 @@ use Illuminate\Support\Facades\Route;
             Route::delete('price-destroy/{customer_id}/{id}','CustomerController@priceStore')->name('customers.price.destroy');
 
             // ============> General Settings <======================
-            Route::
+            Route::group(['prefix'=>'warehouse'],function (){
+                Route::group(['prefix'=>'general-settings'],function(){
+                    Route::get('warehouseSwitch/{id}', 'SettingController@warehouseSwitch')->name('warehouse.general-settings.warehouseSwitch');
+                });
+            });
         });
     });

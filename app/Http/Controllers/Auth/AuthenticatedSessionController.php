@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Modules\Cargo\Entities\Branch;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -61,6 +62,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        app('hook')->set('warehouse',Branch::first(),'object');
         return redirect()->intended(env('PREFIX_ADMIN', 'admin') . RouteServiceProvider::HOME);
     }
 

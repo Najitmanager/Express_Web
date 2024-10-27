@@ -103,11 +103,11 @@ $auth_dilver = 5;
         <!-- Branch Dropdown Menu -->
         <li class="nav-item dropdown">
                 <a class="nav-link form-control btn btn-primary text-white" data-toggle="dropdown" href="#">
-                    <span class="mr-2">New Jersey</span> <i class="fa-solid fa-chevron-down"></i>
+                    <span class="mr-2">{{ \Modules\Cargo\Entities\Branch::first()->name }}</span> <i class="fa-solid fa-chevron-down"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right p-0">
                     @foreach (\Modules\Cargo\Entities\Branch::all() as $branch)
-                        <a href="#" class="dropdown-item">{{ $branch->name }}</a>
+                        <a href="{{ route('warehouse.general-settings.warehouseSwitch',$branch) }}" class="dropdown-item">{{ $branch->name }}</a>
                     @endforeach
                 </div>
         </li>
