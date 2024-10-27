@@ -62,7 +62,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        app('hook')->set('warehouse',Branch::first(),'object');
+        app('hook')->set('warehouse',Branch::find(auth()->user()->id),'object');
         return redirect()->intended(env('PREFIX_ADMIN', 'admin') . RouteServiceProvider::HOME);
     }
 

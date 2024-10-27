@@ -11,6 +11,7 @@ class SettingController extends Controller
 {
     public function warehouseSwitch($id){
         $branch = Branch::findOrFail($id);
+        session(['warehouse'=>$branch]);
         app('hook')->set('warehouse', $branch, 'object');
         return redirect()->back()->with(['message_alert' => __('cargo::messages.created')]);
     }

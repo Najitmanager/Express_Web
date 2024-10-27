@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
         'theme' => \Qirolab\Theme\Middleware\ThemeMiddleware::class,
         'isAdmin' => \App\Http\Middleware\isAdmin::class,
         'user_role' => \App\Http\Middleware\UserRole::class,
+        'warehouseSwitch' => \App\Http\Middleware\WarehouseSwitchMiddleware::class,
 
 
         /**** OTHER MIDDLEWARE ****/

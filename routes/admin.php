@@ -19,7 +19,7 @@ Route::group(
                 require __DIR__.'/auth.php';
 
 
-                Route::middleware('auth')->namespace('Admin')->group(function () {
+                Route::middleware(['auth', 'warehouseSwitch'])->namespace('Admin')->group(function () {
                     Route::get('/dashboard', 'HomeController@index')->name('admin.dashboard');
                     Route::post('/dashboard', 'HomeController@store');
                     // Settings routes

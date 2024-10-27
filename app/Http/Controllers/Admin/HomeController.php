@@ -14,7 +14,7 @@ class HomeController extends Controller
     {
         breadcrumb([
             [
-                'name' => __('view.dashboard')
+                'name' => app('hook')->get('warehouse')->name.' '. __('view.dashboard')
             ]
             // 'path' => RouteServiceProvider::HOME,
         ]); // See App/Helpers/functions/helpers.php -> breadcrumb function

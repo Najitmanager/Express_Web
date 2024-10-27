@@ -1,7 +1,7 @@
 <x-base-layout>
 
     <x-slot name="pageTitle">
-        @lang('view.dashboard')
+         @lang('view.dashboard')
     </x-slot>
 
     <!-- Main content -->

@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
         ], function(){
 
 
-        Route::middleware('auth')->prefix(env('PREFIX_ADMIN', 'admin'))->group(function() {
+        Route::middleware(['auth', 'warehouseSwitch'])->prefix(env('PREFIX_ADMIN', 'admin'))->group(function() {
             // ports
             Route::resource('/ports', 'PortController')->parameters(['ports' => 'id'])->except(['show']);
             Route::delete('/ports-multi-destroy', 'PortController@multiDestroy')->name('ports.multi-destroy');
