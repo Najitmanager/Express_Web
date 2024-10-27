@@ -43,7 +43,7 @@
                     id="change-country"
                 >
                     <option></option>
-                    @foreach($countries as $country)
+                    @foreach(\Modules\Cargo\Entities\Country::all() as $country)
                         <option value="{{ $country->id }}"
                             {{ old('country_id') == $country->id ? 'selected' : '' }}
                         @if($typeForm == 'edit')

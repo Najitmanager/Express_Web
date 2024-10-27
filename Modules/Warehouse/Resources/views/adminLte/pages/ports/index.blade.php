@@ -34,7 +34,7 @@
 
                     <!--begin::Add New Port-->
 {{--                    @if(auth()->user()->can('create-packages') || $user_role == $admin )--}}
-                        <a href="{{ fr_route('ports.create') }}" class="btn btn-primary m-1">{{ __('warehouse::view.add_port') }}</a>
+                        <a href="#" class="btn btn-primary m-1" data-toggle="modal" data-target="#modal-overlay">{{ __('warehouse::view.add_port') }}</a>
 {{--                    @endif--}}
                     <!--end::Add user-->
                 </div>
@@ -69,6 +69,40 @@
     </div>
     <!--end::Card-->
 
+    <div class="modal fade" id="modal-overlay">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- <div class="overlay">
+                <i class="fas fa-2x fa-sync fa-spin"></i>
+            </div> -->
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-overlay-title">{{ __('warehouse::view.create_new_port') }}</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <!--begin::Form-->
+            <form id="form_body" action="{{ fr_route('ports.store') }}" method="post" enctype="multipart/form-data">
+            <div class="modal-body">
+                <!--begin::Card body-->
+                <div class="card-body border-top p-9">
+                    @include('warehouse::adminLte.pages.ports.form', ['typeForm' => 'create'])
+                </div>
+                <!--end::Card body-->
+           
+            </div>
+            <div class="modal-footer justify-content-navbar">
+              <button type="button" class="btn btn-default" data-dismiss="modal">@lang('view.discard')</button>
+              <button type="button" class="btn btn-primary" id="form_submit">@lang('view.create')</button>
+            </div>
+        </form>
+        <!--end::Form-->
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
 @endsection
 
 
@@ -108,6 +142,7 @@
                 }
             });
         }
+
         let url;
         $(document).ready(function() {
             $('#{{$table_id}} tbody').on('click', 'tr', function() {
