@@ -241,6 +241,11 @@ ul.pagination li {
 
 /* Start Side Menu  */
 
+.sidebar {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
 .os-content {
     padding: 0 !important;
 }

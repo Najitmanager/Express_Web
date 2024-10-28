@@ -78,14 +78,21 @@ class RolesDataTable extends DataTable
             ->minifiedAjax()
             ->stateSave(true)
             ->orderBy(1)
-            ->responsive()
-            ->autoWidth(false)
+            ->responsive(true)
+            ->autoWidth(true)
             ->parameters([
                 'scrollX' => true,
                 'dom' => 'Bfrtip',
+                'bDestroy' => true,
                 'language' => ['url' => "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/$lang.json"],
+                'dom' => '<"pagination-info-wrapper"<"info"i><"pagination"p>><"table-wrapper"t>',
+                'paging' => true,
+                'lengthChange' => true,
+                'pageLength' => 10,
+                'pagingType' => 'full_numbers',
                 'buttons' => [
                 ],
+                'colReorder' => true, // Enable column reorder
             ])
             ->addTableClass('align-middle table-row-dashed fs-6 gy-5');
     }

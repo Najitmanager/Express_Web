@@ -42,7 +42,7 @@
                     </a>
                 </li>
 
-                <li class="nav-header">@lang('view.warehouse')</li>
+                {{-- <li class="nav-header">@lang('view.warehouse')</li> --}}
 
 
 
