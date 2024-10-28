@@ -18,6 +18,7 @@ class CreateColorsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->timestamps();
+            $table->index('slug');
         });
     }
 

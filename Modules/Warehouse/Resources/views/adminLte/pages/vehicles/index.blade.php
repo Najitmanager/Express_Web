@@ -45,7 +45,7 @@
 
                     <!--begin::Add New Port-->
 {{--                    @if(auth()->user()->can('create-packages') || $user_role == $admin )--}}
-                        <a href="{{ fr_route('customers.create') }}" class="btn btn-primary m-1">{{ __('warehouse::view.add_customer') }}</a>
+                        <a href="#" class="btn btn-primary m-1" data-toggle="modal" data-target="#modal-overlay">{{ __('warehouse::view.add_vehicle') }}</a>
 {{--                    @endif--}}
                     <!--end::Add user-->
                 </div>
@@ -80,6 +80,40 @@
     </div>
     <!--end::Card-->
 
+    <div class="modal fade" id="modal-overlay">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                 <div id="preloader" class="overlay" style="display: none;">
+                    <i class="fas fa-2x fa-sync fa-spin"></i>
+                </div>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-overlay-title">{{ __('warehouse::view.create_new_vehicle') }}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--begin::Form-->
+                <form id="form_body" action="{{ fr_route('vehicles.store') }}" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <!--begin::Card body-->
+                        <div class="card-body border-top p-9">
+                            @include('warehouse::adminLte.pages.vehicles.form', ['typeForm' => 'create'])
+                        </div>
+                        <!--end::Card body-->
+
+                    </div>
+                    <div class="modal-footer justify-content-navbar">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('view.discard')</button>
+                        <button type="button" class="btn btn-primary" id="form_submit">@lang('view.create')</button>
+                    </div>
+                </form>
+                <!--end::Form-->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 @endsection
 
 
@@ -140,7 +174,113 @@
                     window.location = url;
                 }
             });
+
+            $('#make-select').on('change', function () {
+                const makeId = $(this).val();
+
+                if (makeId) {
+                    // Make AJAX request to get models based on selected make
+                    $.ajax({
+                        url: `/get-models/${makeId}`, // Adjust the endpoint as needed
+                        type: 'GET',
+                        success: function (data) {
+                            // Clear old data in the model-select dropdown
+                            $('#model-select').empty();
+
+                            // Append new options to model-select
+                            {{--$('#model-select').append('<option>{{ __('warehouse::view.table.choose_model') }}</option>');--}}
+                            data.models.forEach(function (model) {
+                                $('#model-select').append(
+                                    `<option value="${model.id}">${model.name}</option>`
+                                );
+                            });
+
+                            // Refresh Select2 to show updated options
+                            // $('#model-select').select2();
+                        },
+                        error: function () {
+                            console.error("Failed to fetch models.");
+                        }
+                    });
+                } else {
+                    // Clear model-select if no make is selected
+                    $('#model-select').empty().append('<option>{{ __('warehouse::view.table.choose_model') }}</option>').select2();
+                }
+            });
+            $('#pull_info').on('click',function (){
+                var vin = $('#vin_input').val();
+
+                if (vin === ''||vin === null || typeof vin === "undefined"){
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'VIN is required'
+                    })
+                }else {
+                    $.ajax({
+                        url: `/pull-vehicle-info/${vin}`, // Adjust the endpoint as needed
+                        type: 'GET',
+                        beforeSend: function () {
+                            // Show preloader before the request starts
+                            $('#preloader').show();
+                        },
+                        success: function (data) {
+                            if(data['value']===1){
+                                $('.vehicle_type').html(data['type_view'])
+                                $('.vehicle_info').html(data['vehicle_view'])
+                            }
+
+                        },
+                        error: function () {
+                            console.error("Failed to fetch models.");
+                        },
+                        complete: function () {
+                            // Hide preloader after the request completes
+                            $('#preloader').hide();
+                        }
+                    });
+                }
+
+            })
+            $('#form_submit').on('click', function (e) {
+                e.preventDefault(); // Prevent default form submission
+
+                let formData = new FormData($('#form_body')[0]); // Gather form data
+
+                $.ajax({
+                    url: $('#form_body').attr('action'), // Get form action URL
+                    type: 'POST',
+                    data: formData,
+                    processData: false, // Required for FormData
+                    contentType: false, // Required for FormData
+                    success: function (response) {
+                        // Handle success response
+                        if (response.success) {
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Vehicle created successfully!'
+                            })
+                            // You might close the modal here or update the page dynamically
+                            // $('#form_body')[0].reset(); // Reset the form after successful submission
+                            // $('.vehicle_type').reset(); // Reset the form after successful submission
+                            $('#modal-overlay').modal('hide'); // Hide the modal if necessary
+                            var tableId = '{{ $table_id }}';
+                            var table = $('#' + tableId);
+                            table.DataTable().ajax.reload()
+                        } else {
+                            alert('Failed to create vehicle. Please try again.');
+                        }
+                    },
+                    error: function (xhr) {
+                        // Handle error response
+                        alert('An error occurred. Please try again.');
+                        console.error(xhr.responseText); // Log error for debugging
+                    }
+                });
+            });
+
         });
 
+
     </script>
+
 @endsection

@@ -230,7 +230,7 @@
 
 {{--@can('view-pages')--}}
 <li class="nav-item   {{ areActiveRoutes(['vehicles.index', 'vehicles.create','vehicles.edit'], 'menu-is-opening menu-open active') }}">
-    <a href="{{ fr_route('truck_companies.index') }}"
+    <a href="{{ fr_route('vehicles.index') }}"
        class="nav-link {{ areActiveRoutes(['vehicles.index', 'vehicles.create','vehicles.edit']) }}">
         <i class="fa-solid fa-car fa-fw"></i>
         <p>{{ __('warehouse::view.vehicles') }}</p>

@@ -14,36 +14,12 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('test', function () {
-//    $postdata = http_build_query(
-//        array(
-//            'format' => 'json',
-//            'data' => '3GNDA13D76S000000'
-//        )
-//    );
-//    $opts = array('http' =>
-//        array(
-//            'header' => "Content-Type: application/x-www-form-urlencoded\r\n".
-//                "Content-Length: ".strlen($postdata)."\r\n".
-//                "User-Agent:MyAgent/1.0\r\n",
-//            'method' => 'POST',
-//            'content' => $postdata
-//        )
-//    );
-//    $apiURL = "https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVINValuesBatch/";
-//    $context = stream_context_create($opts);
-//    $fp = fopen($apiURL, 'rb', false, $context);
-//    if(!$fp)
-//    {
-//        echo "in first if";
-//    }
-//    $response = @stream_get_contents($fp);
-//    if($response == false)
-//    {
-//        echo "in second if";
-//    }
-//    $result = json_decode($response,true)['Results'][0];
-    decodeVin('3GNDA13D76S000000');
+
+
 });
+    // ================> Ajax Routes <======================
+    Route::get('/get-models/{id}', 'VehicleController@getModels')->name('vehicles.models');
+    Route::get('/pull-vehicle-info/{vin}', 'VehicleController@pullInfo')->name('vehicles.pullInfo');
 
     Route::group(
         [
@@ -93,6 +69,14 @@ Route::get('test', function () {
             Route::delete('media-customers/{customer_id}/destroy/{id}', 'CustomerController@destroyMedia')->name('customers.media.destroy');
             Route::post('price-store/{customer_id}','CustomerController@priceStore')->name('customers.price.store');
             Route::delete('price-destroy/{customer_id}/{id}','CustomerController@priceStore')->name('customers.price.destroy');
+
+            // vehicles
+            Route::resource('/vehicles', 'VehicleController')->parameters(['vehicles' => 'id'])->except(['show']);
+            Route::get('/vehicles-search', 'VehicleController@searchPages')->name('vehicles.search');
+            Route::get('/static-vehicles-search', 'VehicleController@searchStaticPages')->name('static_vehicles.search');
+            Route::post('/vehicles/upload_files/{id}', 'VehicleController@upload_files')->name('vehicles.upload_files');
+            Route::delete('media-vehicles/{vehicle_id}/destroy/{id}', 'VehicleController@destroyMedia')->name('vehicles.media.destroy');
+
 
             // ============> General Settings <======================
             Route::group(['prefix'=>'warehouse'],function (){

@@ -76,8 +76,7 @@ class ConsigneeController extends Controller
     {
         $data = $request->validated();
         Consignee::create($data);
-        return redirect()->route('consignees.index')->with(['message_alert' => __('cargo::messages.created')]);
-
+        return response()->json(['success'=>true]);
     }
 
     /**

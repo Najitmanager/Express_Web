@@ -78,8 +78,7 @@ class TruckCompanyController extends Controller
     {
         $data = $request->validated();
         TruckCompany::create($data);
-        return redirect()->route('truck_companies.index')->with(['message_alert' => __('cargo::messages.created')]);
-
+        return response()->json(['success'=>true]);
 
     }
 

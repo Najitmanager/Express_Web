@@ -18,20 +18,22 @@ class Vehicle extends Model
     {
         return \Modules\Warehouse\Database\factories\VehicleFactory::new();
     }
+    /* =================> Attributes <=====================*/
+
+    public function getNameAttribute()
+    {
+        return "{$this->year} {$this->model->make->name} {$this->model->name}";
+    }
 
     /* =============> Relations <========================= */
-    public function make()
-    {
-        return $this->belongsTo(Make::class);
-    }
     public function model(){
-        return $this->belongsTo(Model::class);
+        return $this->belongsTo(\Modules\Warehouse\Entities\Model::class);
     }
     public function type(){
         return $this->belongsTo(Type::class);
     }
-    public function customer(){
-        return $this->belongsTo(Client::class);
+    public function client(){
+        return $this->belongsTo(Client::class,'client_id');
     }
     public function port(){
         return $this->belongsTo(Port::class);

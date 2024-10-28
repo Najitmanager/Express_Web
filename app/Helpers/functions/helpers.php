@@ -1125,14 +1125,24 @@ if (!function_exists('decodeVin')) {
         // Check if the response is successful
         if ($response->successful()) {
             $result = $response->json()['Results'][0];
+
             // Dump and die to inspect the response fields
                 $make = $result['Make'] ?? null;
-                $returnData['make_id'] = optional(\Modules\Warehouse\Entities\Make::firstOrCreate($make))->id;
-                $model = $result['Model'] ?? null;
-                $returnData['model_id'] = optional(\Modules\Warehouse\Entities\Model::firstOrCreate($model))->id;
+                $returnData['make_id'] = optional(\Modules\Warehouse\Entities\Make::firstOrCreate(
+                    ['slug'=>Str::slug($make,'')],['name'=>$make]
+                ))->id;
+
+                if (!is_null($returnData['make_id'])) {
+                    $model = $result['Model'] ?? null;
+                    $returnData['model_id'] = optional(\Modules\Warehouse\Entities\Model::firstOrCreate(
+                        ['slug'=>Str::slug($model,'')],['name'=>$model,'make_id'=>$returnData['make_id']]
+                    ))->id;
+                }
                 $returnData['year'] = $result['ModelYear'] ?? 1970;
                 $type = $result['VehicleType'] ?? 'unknown';
-                $returnData['type_id'] = optional(\Modules\Warehouse\Entities\Type::firstOrCreate($type))->id;
+                $returnData['type_id'] = optional(\Modules\Warehouse\Entities\Type::firstOrCreate(
+                    ['slug'=>Str::slug($type,'')],['name'=>$type]
+                ))->id;
                 $returnData['vin'] = $result['VIN'] ?? null;
                 return $returnData;
         } else {
@@ -1142,3 +1152,70 @@ if (!function_exists('decodeVin')) {
     }
 }
 
+/***********************************************************************************/
+if (!function_exists('get_types')) {
+    /**
+     * get all admins (role = 1) as array [id => name]
+     * @return array
+     */
+    function get_types()
+    {
+        $types = \Modules\Warehouse\Entities\Type::all();
+        return $types;
+    }
+}
+if (!function_exists('get_makes')) {
+    /**
+     * get all admins (role = 1) as array [id => name]
+     * @return array
+     */
+    function get_makes()
+    {
+        $makes = \Modules\Warehouse\Entities\Make::all();
+        return $makes;
+    }
+}
+if (!function_exists('get_colors')) {
+    /**
+     * get all admins (role = 1) as array [id => name]
+     * @return array
+     */
+    function get_colors()
+    {
+        $colors = \Modules\Warehouse\Entities\Color::all();
+        return $colors;
+    }
+}
+if (!function_exists('get_models')) {
+    /**
+     * get all admins (role = 1) as array [id => name]
+     * @return array
+     */
+    function get_models($make_id)
+    {
+        $models = \Modules\Warehouse\Entities\Model::where('make_id', $make_id)->get();
+        return $models;
+    }
+}
+if (!function_exists('get_customers')) {
+    /**
+     * get all admins (role = 1) as array [id => name]
+     * @return array
+     */
+    function get_customers()
+    {
+        $clients = \Modules\Cargo\Entities\Client::all();
+        return $clients;
+    }
+}
+if (!function_exists('get_ports')) {
+    /**
+     * get all admins (role = 1) as array [id => name]
+     * @return array
+     */
+    function get_ports()
+    {
+        $ports = \Modules\Warehouse\Entities\Port::all();
+        return $ports;
+    }
+}

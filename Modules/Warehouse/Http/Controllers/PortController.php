@@ -76,8 +76,7 @@ class PortController extends Controller
 
         $data = $request->validated();
         Port::create($data);
-        return redirect()->route('ports.index')->with(['message_alert' => __('cargo::messages.created')]);
-    }
+        return response()->json(['success'=>true]);    }
 
     /**
      * Show the specified resource.

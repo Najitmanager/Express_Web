@@ -25,4 +25,9 @@ class Model extends Eloquent
             ]);
         });
     }
+
+    public function make()
+    {
+        return $this->belongsTo(Make::class);
+    }
 }
