@@ -261,6 +261,9 @@
                 }
 
             })
+
+            /* ============> Submit form <======================== */
+
             $('#form_submit').on('click', function (e) {
                 e.preventDefault(); // Prevent default form submission
 
@@ -283,6 +286,7 @@
                             // $('#form_body')[0].reset(); // Reset the form after successful submission
                             // $('.vehicle_type').reset(); // Reset the form after successful submission
                             $('#modal-overlay').modal('hide'); // Hide the modal if necessary
+
                             var tableId = '{{ $table_id }}';
                             var table = $('#' + tableId);
                             table.DataTable().ajax.reload()
