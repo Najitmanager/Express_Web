@@ -89,6 +89,12 @@ return [
     'vehicle_information'=>'Vehicle Information',
     'pull_vehicle_info'=>'Pull Vehicle Info',
     'vin'=>'Vin',
+    'color'=>'Color',
+    'customer company (Full Name)'=>'Customer Company (Full Name)',
+    'photos'=>'Photos',
+    'port'=>'Port',
+    'customer'=>'Customer',
+
 
     'table' => [
         'port' => 'Port',
@@ -103,8 +109,20 @@ return [
         'id' => 'ID',
         'active' => 'Active',
         'choose_country' => 'Choose Country',
+        'choose_type' => 'Choose Type',
+        'choose_make' => 'Choose Make',
+        'choose_model' => 'Choose Model',
+        'year' => 'Year',
+        'make' => 'Make',
+        'model' => 'Model',
+        'color' => 'Color',
+        'choose_color' => 'Choose Color',
+        'price' => 'Price',
+        'weight' => 'Weight(Kg)',
         'file_name'=>'File Name',
         'truck_company'=>'Truck Company',
-        'file'=>'File'
+        'file'=>'File',
+        'expected_arrival_date'=>'Expected Arrival Date',
+        'lot'=>'Lot'
     ],
 ];

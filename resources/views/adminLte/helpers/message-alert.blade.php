@@ -11,7 +11,7 @@
 @elseif(session()->has('error_message_alert'))
     <script>
 
-        `Toast`.fire({
+        Toast.fire({
             icon: 'error',
             title: '{{ session("error_message_alert") }}'
         })

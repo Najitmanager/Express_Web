@@ -33,4 +33,10 @@ class Make extends Model
         });
     }
 
+    /*==================> Relations <===========================*/
+    public function models()
+    {
+        return $this->hasMany(\Modules\Warehouse\Entities\Model::class);
+    }
+
 }

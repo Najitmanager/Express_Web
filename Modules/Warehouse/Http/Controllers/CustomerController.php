@@ -67,7 +67,7 @@ class CustomerController extends Controller
         $countries = Country::all();
 
         $adminTheme = env('ADMIN_THEME', 'adminLte');
-        return view('warehouse::'.$adminTheme.'.pages.vehicles.create')->with(['countries' => $countries ]);
+        return view('warehouse::'.$adminTheme.'.pages.customers.create')->with(['countries' => $countries ]);
 
     }
 
@@ -88,8 +88,7 @@ class CustomerController extends Controller
 
         $user->clientInfo()->create($data);
 
-        return redirect()->route('customers.index')->with(['message_alert' => __('cargo::messages.created')]);
-
+        return response()->json(['success'=>true]);
     }
 
     /**

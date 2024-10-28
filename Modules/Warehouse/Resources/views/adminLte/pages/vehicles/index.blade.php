@@ -63,10 +63,9 @@
                     <!--end::Filter-->
 
                     <!--begin::Add New Port-->
-                    {{--                    @if (auth()->user()->can('create-packages') || $user_role == $admin) --}}
-                    <a href="{{ fr_route('customers.create') }}"
-                        class="btn btn-primary m-1">{{ __('warehouse::view.add_customer') }}</a>
-                    {{--                    @endif --}}
+{{--                    @if(auth()->user()->can('create-packages') || $user_role == $admin )--}}
+                        <a href="{{ fr_route('customers.create') }}" class="btn btn-primary m-1">{{ __('warehouse::view.add_customer') }}</a>
+{{--                    @endif--}}
                     <!--end::Add user-->
                 </div>
                 <!--end::Toolbar-->
@@ -99,6 +98,7 @@
         <!--end::Card body-->
     </div>
     <!--end::Card-->
+
 @endsection
 
 
@@ -162,5 +162,7 @@
                 }
             });
         });
+
     </script>
+
 @endsection

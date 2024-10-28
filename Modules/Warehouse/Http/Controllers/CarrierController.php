@@ -75,8 +75,7 @@ class CarrierController extends Controller
     {
         $data = $request->validated();
         Carrier::create($data);
-        return redirect()->route('carriers.index')->with(['message_alert' => __('cargo::messages.created')]);
-
+        return response()->json(['success'=>true]);
     }
 
     /**
