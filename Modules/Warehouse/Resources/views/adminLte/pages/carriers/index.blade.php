@@ -1,13 +1,21 @@
 @extends('cargo::adminLte.layouts.master')
 
-@section('pageTitle')
-    {{ __('warehouse::view.carriers') }}
-@endsection
+
 
 @section('content')
-
     <!--begin::Card-->
-    <div class="card">
+    <div class="card table-card-wrapper">
+
+        {{-- start page title --}}
+        <div class="table-header card-header">
+
+            <div class="custom-title">
+                <i class="fas fa-ship fa-fw"></i>{{ __('warehouse::view.carriers') }}
+            </div>
+
+        </div>
+        {{-- end page title --}}
+
         <!--begin::Card header-->
         <div class="card-header border-0 pt-6">
             <!--begin::Card title-->
@@ -26,16 +34,22 @@
                 <!--begin::Toolbar-->
                 <div class="d-flex flex-wrap align-items-center" id="{{ $table_id }}_custom_filter">
                     {{-- data table length --}}
-                    @include('adminLte.components.modules.datatable.datatable_length', ['table_id' => $table_id])
+                    @include('adminLte.components.modules.datatable.datatable_length', [
+                        'table_id' => $table_id,
+                    ])
                     {{-- btn reload table --}}
                     @include('adminLte.components.modules.datatable.reload', ['table_id' => $table_id])
 
-                    @include('adminLte.components.modules.datatable.export', ['table_id' => $table_id, 'btn_exports' => $btn_exports])
+                    @include('adminLte.components.modules.datatable.export', [
+                        'table_id' => $table_id,
+                        'btn_exports' => $btn_exports,
+                    ])
 
                     <!--begin::Add New Port-->
-{{--                    @if(auth()->user()->can('create-packages') || $user_role == $admin )--}}
-                        <a href="{{ fr_route('carriers.create') }}" class="btn btn-primary m-1">{{ __('warehouse::view.add_carrier') }}</a>
-{{--                    @endif--}}
+                    {{--                    @if (auth()->user()->can('create-packages') || $user_role == $admin) --}}
+                    <a href="{{ fr_route('carriers.create') }}"
+                        class="btn btn-primary m-1">{{ __('warehouse::view.add_carrier') }}</a>
+                    {{--                    @endif --}}
                     <!--end::Add user-->
                 </div>
                 <!--end::Toolbar-->
@@ -43,10 +57,10 @@
                 <!--begin::Group actions-->
                 @include('adminLte.components.modules.datatable.columns.checkbox-actions', [
                     'table_id' => $table_id,
-//                    'permission' => 'delete-packages',
+                    //                    'permission' => 'delete-packages',
                     'url' => fr_route('carriers.multi-destroy'),
                     'callback' => 'reload-table',
-                    'model_name' => __('warehouse::view.selected_carriers')
+                    'model_name' => __('warehouse::view.selected_carriers'),
                 ])
                 <!--end::Group actions-->
 
@@ -68,13 +82,12 @@
         <!--end::Card body-->
     </div>
     <!--end::Card-->
-
 @endsection
 
 
 @section('toolbar-btn')
     <!--begin::Button-->
-{{--     <a href="{{ fr_route('users.create') }}" class="btn btn-sm btn-primary">Create <i class="ms-2 fas fa-plus"></i> </a>--}}
+    {{--     <a href="{{ fr_route('users.create') }}" class="btn btn-sm btn-primary">Create <i class="ms-2 fas fa-plus"></i> </a> --}}
     <!--end::Button-->
 @endsection
 
@@ -89,29 +102,31 @@
     <script src="{{ asset('assets/lte/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     {{ $dataTable->scripts() }}
     <script>
-        function update_carrier_active(el){
+        function update_carrier_active(el) {
             var id = $(el).data('row-id');
-            if(el.checked){
+            if (el.checked) {
                 var active = 1;
-            }
-            else{
+            } else {
                 var active = 0;
             }
 
-            $.post('{{ route('carriers.update_active') }}', {_token:'{{ csrf_token() }}', id:id, active:active}, function(data){
-                if(data == 1){
+            $.post('{{ route('carriers.update_active') }}', {
+                _token: '{{ csrf_token() }}',
+                id: id,
+                active: active
+            }, function(data) {
+                if (data == 1) {
                     Swal.fire("{{ __('currency::messages.saved') }}", "", "");
-                }
-                else{
+                } else {
                     Swal.fire("{{ __('currency::messages.something_wrong') }}", "", "");
                 }
             });
         }
         let url;
         $(document).ready(function() {
-            $('#{{$table_id}} tbody').on('click', 'tr', function() {
+            $('#{{ $table_id }} tbody').on('click', 'tr', function() {
                 // Remove color from all rows
-                $('#{{$table_id}} tbody tr').css('background-color', '').css('color', '');
+                $('#{{ $table_id }} tbody tr').css('background-color', '').css('color', '');
 
                 // Apply color only to the clicked row
                 var item = $(this);
@@ -124,7 +139,7 @@
                 }
             });
 
-            $('#{{$table_id}} tbody').on('dblclick', 'tr', function() {
+            $('#{{ $table_id }} tbody').on('dblclick', 'tr', function() {
                 if (url) {
                     window.location = url;
                 }

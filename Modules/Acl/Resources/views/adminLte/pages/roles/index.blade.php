@@ -7,7 +7,19 @@
     {{-- Content --}}
 
     <!--begin::Card-->
-    <div class="card">
+    <div class="card table-card-wrapper">
+
+        {{-- start page title --}}
+        <div class="table-header card-header">
+
+            <div class="custom-title">
+                <i class="fa-solid fa-user-lock"></i>{{ __('acl::view.role_list') }}
+            </div>
+
+        </div>
+        {{-- end page title --}}
+
+
         <!--begin::Card header-->
         <div class="card-header border-0 pt-6">
             <!--begin::Card title-->
@@ -26,7 +38,9 @@
                 <!--begin::Toolbar-->
                 <div class="d-flex flex-wrap align-items-center" id="{{ $table_id }}_custom_filter">
                     {{-- data table length --}}
-                    @include('adminLte.components.modules.datatable.datatable_length', ['table_id' => $table_id])
+                    @include('adminLte.components.modules.datatable.datatable_length', [
+                        'table_id' => $table_id,
+                    ])
                     {{-- btn reload table --}}
                     @include('adminLte.components.modules.datatable.reload', ['table_id' => $table_id])
 
@@ -38,7 +52,7 @@
                         {{-- Start Custom Filters --}}
 
                         <!-- ================== begin Role filter =============================== -->
-                                <!-- Create Filters -->
+                        <!-- Create Filters -->
                         <!-- ================== end Role filter =============================== -->
 
                         {{-- End Custom Filters --}}
@@ -48,7 +62,7 @@
 
 
                     <!--begin::Add role-->
-                        <a href="{{ route('roles.create') }}" class="btn btn-primary m-1">{{ __('acl::view.add_role') }}</a>
+                    <a href="{{ route('roles.create') }}" class="btn btn-primary m-1">{{ __('acl::view.add_role') }}</a>
                     <!--end::Add role-->
                 </div>
                 <!--end::Toolbar-->
@@ -58,7 +72,7 @@
                     'table_id' => $table_id,
                     'url' => route('roles.multi-destroy'),
                     'callback' => 'reload-table',
-                    'model_name' => __('acl::view.selected_roles')
+                    'model_name' => __('acl::view.selected_roles'),
                 ])
                 <!--end::Group actions-->
 
@@ -82,18 +96,17 @@
     <!--end::Card-->
 
 
-{{-- Inject styles --}}
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('assets/lte/plugins/custom/datatables/datatables.bundle.css') }}">
-@endsection
+    {{-- Inject styles --}}
+    @section('styles')
+        <link rel="stylesheet" href="{{ asset('assets/lte/plugins/custom/datatables/datatables.bundle.css') }}">
+    @endsection
 
-{{-- Inject Scripts --}}
-@section('scripts')
-    <script src="{{ asset('assets/lte/plugins/custom/datatables/datatables.bundle.js') }}"></script>
-    {{ $dataTable->scripts() }}
-@endsection
+    {{-- Inject Scripts --}}
+    @section('scripts')
+        <script src="{{ asset('assets/lte/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+        {{ $dataTable->scripts() }}
+    @endsection
 
 
 
 </x-base-layout>
-

@@ -33,7 +33,7 @@ class UsersDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->rawColumns(['action', 'select', 'user', 'role'])
+            ->rawColumns(['action', 'user', 'role'])
 
             ->filterColumn('user', function($query, $keyword) {
                 $query->where('name', 'LIKE', "%$keyword%");
@@ -44,10 +44,10 @@ class UsersDataTable extends DataTable
                 $query->orderBy('name', $order);
             })
 
-            ->addColumn('select', function (User $model) {
-                $adminTheme = env('ADMIN_THEME', 'adminLte');
-                return view($adminTheme.'.components.modules.datatable.columns.checkbox', ['model' => $model, 'ifHide' => $model->id == 1]);
-            })
+            // ->addColumn('select', function (User $model) {
+            //     $adminTheme = env('ADMIN_THEME', 'adminLte');
+            //     return view($adminTheme.'.components.modules.datatable.columns.checkbox', ['model' => $model, 'ifHide' => $model->id == 1]);
+            // })
             ->editColumn('id', function (User $model) {
                 return $model->id;
             })
@@ -110,17 +110,23 @@ class UsersDataTable extends DataTable
             ->minifiedAjax()
             ->stateSave(true)
             ->orderBy(1)
-            ->responsive()
-            ->autoWidth(false)
-            ->parameters([
-                'scrollX' => true,
-                'dom' => 'Bfrtip',
-                'bDestroy' => true,
-                'language' => ['url' => "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/$lang.json"],
-                'buttons' => [
-                    ...$this->buttonsExport(),
-                ],
-            ])
+            ->responsive(true)
+            ->autoWidth(true)
+                ->parameters([
+                    'scrollX' => true,
+                    'dom' => 'Bfrtip',
+                    'bDestroy' => true,
+                    'language' => ['url' => "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/$lang.json"],
+                    'dom' => '<"pagination-info-wrapper"<"info"i><"pagination"p>><"table-wrapper"t>',
+                    'paging' => true,
+                    'lengthChange' => true,
+                    'pageLength' => 10,
+                    'pagingType' => 'full_numbers',
+                    'buttons' => [
+                        ...$this->buttonsExport(),
+                    ],
+                    'colReorder' => true, // Enable column reorder
+                ])
             ->addTableClass('align-middle table-row-dashed fs-6 gy-5');
     }
 
@@ -132,15 +138,15 @@ class UsersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('select')
-                    ->title('
-                        <div class="form-check form-check-sm form-check-custom form-check-solid">
-                            <input class="form-check-input checkbox-all-rows" type="checkbox">
-                        </div>
-                    ')
-                    ->responsivePriority(-1)
-                    ->addClass('not-export')
-                    ->width(50),
+            // Column::computed('select')
+            //         ->title('
+            //             <div class="form-check form-check-sm form-check-custom form-check-solid">
+            //                 <input class="form-check-input checkbox-all-rows" type="checkbox">
+            //             </div>
+            //         ')
+            //         ->responsivePriority(-1)
+            //         ->addClass('not-export')
+            //         ->width(50),
             Column::make('id')->title(__('users::view.table.id'))->width(50),
             Column::make('user')->title(__('users::view.table.user')),
             Column::make('role')->title(__('users::view.table.user_type')),

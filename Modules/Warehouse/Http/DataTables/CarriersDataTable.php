@@ -46,10 +46,10 @@ class CarriersDataTable extends DataTable
                 $query->orderBy('tracking_url', $order);
             })
 
-            ->addColumn('select', function (Carrier $model) {
-                $adminTheme = env('ADMIN_THEME', 'adminLte');
-                return view($adminTheme.'.components.modules.datatable.columns.checkbox', ['model' => $model, 'ifHide' => $model->id == 0]);
-            })
+            // ->addColumn('select', function (Carrier $model) {
+            //     $adminTheme = env('ADMIN_THEME', 'adminLte');
+            //     return view($adminTheme.'.components.modules.datatable.columns.checkbox', ['model' => $model, 'ifHide' => $model->id == 0]);
+            // })
             ->editColumn('id', function (Carrier $model) {
                 return '#'.$model->id;
             })
@@ -106,17 +106,23 @@ class CarriersDataTable extends DataTable
             ->minifiedAjax()
             ->stateSave(true)
             ->orderBy(1)
-            ->responsive()
-            ->autoWidth(false)
-            ->parameters([
-                'scrollX' => true,
-                'dom' => 'Bfrtip',
-                'bDestroy' => true,
-                'language' => ['url' => "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/$lang.json"],
-                'buttons' => [
-                    ...$this->buttonsExport(),
-                ],
-            ])
+            ->responsive(true)
+            ->autoWidth(true)
+                ->parameters([
+                    'scrollX' => true,
+                    'dom' => 'Bfrtip',
+                    'bDestroy' => true,
+                    'language' => ['url' => "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/$lang.json"],
+                    'dom' => '<"pagination-info-wrapper"<"info"i><"pagination"p>><"table-wrapper"t>',
+                    'paging' => true,
+                    'lengthChange' => true,
+                    'pageLength' => 10,
+                    'pagingType' => 'full_numbers',
+                    'buttons' => [
+                        ...$this->buttonsExport(),
+                    ],
+                    'colReorder' => true, // Enable column reorder
+                ])
             ->addTableClass('align-middle table-row-dashed fs-6 gy-5');
     }
 
@@ -128,15 +134,15 @@ class CarriersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('select')
-                ->title('
-                        <div class="form-check form-check-sm form-check-custom form-check-solid">
-                            <input class="form-check-input checkbox-all-rows" type="checkbox">
-                        </div>
-                    ')
-                ->responsivePriority(-1)
-                ->addClass('not-export')
-                ->width(50),
+            // Column::computed('select')
+            //     ->title('
+            //             <div class="form-check form-check-sm form-check-custom form-check-solid">
+            //                 <input class="form-check-input checkbox-all-rows" type="checkbox">
+            //             </div>
+            //         ')
+            //     ->responsivePriority(-1)
+            //     ->addClass('not-export')
+            //     ->width(50),
             Column::make('id')->title(__('warehouse::view.table.id'))->width(50 ),
             Column::make('name')->title(__('warehouse::view.name')),
             Column::make('tracking_url')->title(__('warehouse::view.tracking_url')),

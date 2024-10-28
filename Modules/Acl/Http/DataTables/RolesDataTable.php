@@ -30,10 +30,10 @@ class RolesDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->rawColumns(['action', 'select'])
-            ->addColumn('select', function (Role $model) {
-                $adminTheme = env('ADMIN_THEME', 'adminLte');
-                return view($adminTheme.'.components.modules.datatable.columns.checkbox', ['model' => $model]);
-            })
+            // ->addColumn('select', function (Role $model) {
+            //     $adminTheme = env('ADMIN_THEME', 'adminLte');
+            //     return view($adminTheme.'.components.modules.datatable.columns.checkbox', ['model' => $model]);
+            // })
             ->editColumn('id', function (Role $model) {
                 return $model->id;
             })
@@ -98,15 +98,15 @@ class RolesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('select')
-                    ->title('
-                        <div class="form-check form-check-sm form-check-custom form-check-solid">
-                            <input class="form-check-input checkbox-all-rows" type="checkbox">
-                        </div>
-                    ')
-                    ->responsivePriority(-1)
-                    ->addClass('not-export')
-                    ->width(50),
+            // Column::computed('select')
+            //         ->title('
+            //             <div class="form-check form-check-sm form-check-custom form-check-solid">
+            //                 <input class="form-check-input checkbox-all-rows" type="checkbox">
+            //             </div>
+            //         ')
+            //         ->responsivePriority(-1)
+            //         ->addClass('not-export')
+            //         ->width(50),
             Column::make('id')->title(__('acl::view.table.id'))->width(50),
             Column::make('name')->title(__('acl::view.table.name')),
             Column::make('created_at')->title(__('view.created_at')),

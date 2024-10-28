@@ -1,13 +1,21 @@
 @extends('users::adminLte.layouts.master')
 
-@section('pageTitle')
-    {{ __('users::view.user_list') }}
-@endsection
+
 
 @section('content')
-
     <!--begin::Card-->
-    <div class="card">
+    <div class="card table-card-wrapper">
+
+        {{-- start page title --}}
+        <div class="table-header card-header">
+
+            <div class="custom-title">
+                <i class="fa-solid fa-user-gear"></i>{{ __('users::view.user_list') }}
+            </div>
+
+        </div>
+        {{-- end page title --}}
+
         <!--begin::Card header-->
         <div class="card-header border-0 pt-6">
             <!--begin::Card title-->
@@ -26,7 +34,9 @@
                 <!--begin::Toolbar-->
                 <div class="d-flex flex-wrap align-items-center" id="{{ $table_id }}_custom_filter">
                     {{-- data table length --}}
-                    @include('adminLte.components.modules.datatable.datatable_length', ['table_id' => $table_id])
+                    @include('adminLte.components.modules.datatable.datatable_length', [
+                        'table_id' => $table_id,
+                    ])
                     {{-- btn reload table --}}
                     @include('adminLte.components.modules.datatable.reload', ['table_id' => $table_id])
 
@@ -34,16 +44,25 @@
                     <x-table-filter :table_id="$table_id" :filters="$filters">
                         {{-- Start Custom Filters --}}
                         <!-- ================== begin Role filter =============================== -->
-                                    @include('users::adminLte.pages.users.table.filters.role', ['table_id' => $table_id, 'filters' => $filters])
-                                    @include('users::adminLte.pages.users.table.filters.name', ['table_id' => $table_id, 'filters' => $filters])
+                        @include('users::adminLte.pages.users.table.filters.role', [
+                            'table_id' => $table_id,
+                            'filters' => $filters,
+                        ])
+                        @include('users::adminLte.pages.users.table.filters.name', [
+                            'table_id' => $table_id,
+                            'filters' => $filters,
+                        ])
                         <!-- ================== end Role filter =============================== -->
                         {{-- End Custom Filters --}}
-                        </x-table-filter>
+                    </x-table-filter>
                     <!--end::Filter-->
 
                     @can('export-table-users')
                         <!-- ================== begin export buttons =============================== -->
-                        @include('adminLte.components.modules.datatable.export', ['table_id' => $table_id, 'btn_exports' => $btn_exports])
+                        @include('adminLte.components.modules.datatable.export', [
+                            'table_id' => $table_id,
+                            'btn_exports' => $btn_exports,
+                        ])
                         <!-- ================== end export buttons =============================== -->
                     @endcan
 
@@ -61,7 +80,7 @@
                     'permission' => 'delete-users',
                     'url' => fr_route('users.multi-destroy'),
                     'callback' => 'reload-table',
-                    'model_name' => __('users::view.selected_users')
+                    'model_name' => __('users::view.selected_users'),
                 ])
                 <!--end::Group actions-->
 
@@ -83,7 +102,6 @@
         <!--end::Card body-->
     </div>
     <!--end::Card-->
-
 @endsection
 
 

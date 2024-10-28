@@ -1,69 +1,80 @@
 .sidebar-right {
-
-  &.has-sidebar {
-
-  }
-
-  .bd-main,
-  .vc_col-sm-8 {
-    float: left;
-  }
-
-  .bd-main,
-  .vc_col-sm-6 {
-    float: left;
-  }
-
-  .bd-sidebar,
-  .vc_col-sm-4 {
-    float: right;
-  }
+    &.has-sidebar {}
+    .bd-main,
+    .vc_col-sm-8 {
+        float: left;
+    }
+    .bd-main,
+    .vc_col-sm-6 {
+        float: left;
+    }
+    .bd-sidebar,
+    .vc_col-sm-4 {
+        float: right;
+    }
 }
 
 .sidebar-left {
-
-  &.has-sidebar {
-
-  }
-
-  .bd-main,
-  .vc_col-sm-8 {
-    float: right;
-  }
-
-  .bd-main,
-  .vc_col-sm-6 {
-    float: right;
-  }
-
-  .bd-sidebar,
-  .vc_col-sm-4 {
-    float: left;
-  }
+    &.has-sidebar {}
+    .bd-main,
+    .vc_col-sm-8 {
+        float: right;
+    }
+    .bd-main,
+    .vc_col-sm-6 {
+        float: right;
+    }
+    .bd-sidebar,
+    .vc_col-sm-4 {
+        float: left;
+    }
 }
 
 .full-width {
-  .bd-main,
-  div.vc_column_container,
-  .vc_column_container {
-    margin-right: auto;
-    margin-left: auto;
-    float: none;
-    max-width: 100%;
-    width: 100%;
-  }
+    .bd-main,
+    div.vc_column_container,
+    .vc_column_container {
+        margin-right: auto;
+        margin-left: auto;
+        float: none;
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
-.one-column-no-sidebar{
-
-  .bd-main {
-    margin-right: auto;
-    margin-left: auto;
-    float: none;
-
-    @media (min-width: 992px) {
-      max-width: 850px;
-      width: 100%;
+.one-column-no-sidebar {
+    .bd-main {
+        margin-right: auto;
+        margin-left: auto;
+        float: none;
+        @media (min-width: 992px) {
+            max-width: 850px;
+            width: 100%;
+        }
     }
-  }
+}
+
+.os-content {
+    padding: 0 !important;
+}
+
+.nav-sidebar .nav-item>.nav-link {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 0;
+    width: 100%;
+}
+
+.nav-sidebar .nav-item>.nav-link.active {
+    background-color: #475360 !important;
+    border-left: 5px solid #35baf6;
+}
+
+.nav-sidebar .nav-item>.nav-link i {
+    width: 44px;
+    text-align: center;
 }
