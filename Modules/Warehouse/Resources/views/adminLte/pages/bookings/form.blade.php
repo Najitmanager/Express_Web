@@ -1,156 +1,20 @@
 @csrf
 
 
-<div class="row mb-6">
-    <!--begin::Input group -- Company Name -->
-    <!--begin::Input group-->
-    <div class="col-lg-3 fv-row">
-        <!--begin::Label-->
-        <label
-            class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.truck_company_name') }}</label>
-        <!--end::Label-->
-        <div class="input-group mb-4">
-            <input type="text" name="company_name"
-                   class="form-control form-control-lg @error('company_name') is-invalid @enderror"
-                   placeholder="{{ __('warehouse::view.truck_company_name') }}"
-                   value="{{ old('company_name', isset($model) ? $model->company_name : '') }}"/>
-            @error('company_name')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-            @enderror
-        </div>
-    </div>
-    <!--end::Input group-->
-
-    <!--begin::Input group -- Contact Full Name -->
-    <!--begin::Input group-->
-    <div class="col-lg-3 fv-row">
-        <!--begin::Label-->
-        <label
-            class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.contact_full_name') }}</label>
-        <!--end::Label-->
-        <div class="input-group mb-4">
-            <input type="text" name="contact_full_name"
-                   class="form-control form-control-lg @error('contact_full_name') is-invalid @enderror"
-                   placeholder="{{ __('warehouse::view.contact_full_name') }}"
-                   value="{{ old('contact_full_name', isset($model) ? $model->contact_full_name : '') }}"/>
-            @error('contact_full_name')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-            @enderror
-        </div>
-    </div>
-    <!--end::Input group-->
-
-
-    <!--begin::Input group -- phones -->
-    <!--begin::Input group-->
-    <div class="col-lg-3 fv-row">
-        <!--begin::Label-->
-        <label class="col-form-label fw-bold fs-6 ">{{ __('warehouse::view.phones') }}</label>
-        <!--end::Label-->
-        <div class="input-group mb-4">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-phone"></i></span>
-            </div>
-            <input type="text" name="phones"
-                   class="form-control form-control-lg @error('phones') is-invalid @enderror"
-                   placeholder="{{ __('warehouse::view.phones') }}"
-                   value="{{ old('phones', isset($model) ? $model->phones : '') }}"/>
-            @error('phones')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-            @enderror
-        </div>
-    </div>
-    <!--end::Input group-->
-
-    <!--begin::Input group -- Email -->
-    <!--begin::Input group-->
-    <div class="col-lg-3 fv-row">
-        <!--begin::Label-->
-        <label class="col-form-label fw-bold fs-6 ">{{ __('warehouse::view.email') }}</label>
-        <!--end::Label-->
-        <div class="input-group mb-4">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-            </div>
-            <input type="email" name="email"
-                   class="form-control form-control-lg @error('email') is-invalid @enderror"
-                   placeholder="{{ __('warehouse::view.email') }}"
-                   value="{{ old('email', isset($model) ? $model->email : '') }}"/>
-            @error('email')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-            @enderror
-        </div>
-    </div>
-    <!--end::Input group-->
-
-</div>
-<!--end::Input group-->
-
-
-<!--begin::Input group-->
-<div class="form-group">
-    <!--begin::Label-->
-    <label class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.table.country') }}</label>
-    <!--end::Label-->
-    <select
-        class="form-control  @error('country_id') is-invalid @enderror"
-        name="country_id"
-        data-control="select2"
-        data-placeholder="{{ __('warehouse::view.table.choose_country') }}"
-        data-allow-clear="true"
-    >
-        <option></option>
-        @foreach($countries as $country)
-            <option value="{{ $country->id }}"
-                {{ old('country_id') == $country->id ? 'selected' : '' }}
-            @if($typeForm == 'edit')
-                {{ $model->country_id == $country->id ? 'selected' : '' }}
-                @endif
-            >{{ $country->name }}</option>
-        @endforeach
-    </select>
-    @error('country_id')
-    <div class="invalid-feedback">
-        {{ $message }}
-    </div>
-    @enderror
-</div>
-<!--end::Input group-->
-
-
-<div class="form-group">
-    <label class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.address') }}</label>
-    <textarea name="address" class="form-control @error('address') is-invalid @enderror"
-              placeholder="{{ __('warehouse::view.address') }}">{{ old('address', isset($model) ? $model->address : '') }}</textarea>
-    @error('address')
-    <div class="invalid-feedback">
-        {{ $message }}
-    </div>
-    @enderror
-</div>
-
 
 <div class="row mb-6">
-    <!--begin::Input group -- Company Name -->
-    <!--begin::Input group-->
-    <div class="col-lg-4 fv-row">
+    <!--begin::Input group -- Booking No -->
+
+    <div class="col-lg-6 fv-row">
         <!--begin::Label-->
-        <label class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.city') }}</label>
+        <label class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.booking_no') }}</label>
         <!--end::Label-->
         <div class="input-group mb-4">
-            <input type="text" name="city"
-                   class="form-control form-control-lg @error('city') is-invalid @enderror"
-                   placeholder="{{ __('warehouse::view.city') }}"
-                   value="{{ old('city', isset($model) ? $model->city : '') }}"/>
-            @error('city')
+            <input type="text" name="booking_no"
+                   class="form-control form-control-lg @error('booking_no') is-invalid @enderror"
+                   placeholder="{{ __('warehouse::view.booking_no') }}"
+                   value="{{ old('booking_no', isset($model) ? $model->booking_no : '') }}"/>
+            @error('booking_no')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
@@ -159,18 +23,18 @@
     </div>
     <!--end::Input group-->
 
-    <!--begin::Input group -- Contact Full Name -->
-    <!--begin::Input group-->
-    <div class="col-lg-4 fv-row">
+    <!--begin::Input group -- Booking Date -->
+
+    <div class="col-lg-6 fv-row">
         <!--begin::Label-->
-        <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.state') }}</label>
+        <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.booking_date') }}</label>
         <!--end::Label-->
         <div class="input-group mb-4">
-            <input type="text" name="state"
-                   class="form-control form-control-lg @error('state') is-invalid @enderror"
-                   placeholder="{{ __('warehouse::view.state') }}"
-                   value="{{ old('state', isset($model) ? $model->state : '') }}"/>
-            @error('state')
+            <input type="date" name="booking_date"
+                   class="form-control form-control-lg @error('booking_date') is-invalid @enderror"
+                   placeholder="{{ __('warehouse::view.booking_date') }}"
+                   value="{{ old('booking_date', isset($model) ? $model->booking_date : date('Y-m-d')) }}"/>
+            @error('booking_date')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
@@ -179,25 +43,125 @@
     </div>
     <!--end::Input group-->
 
+    <!--begin::Input group -- Booking No -->
 
-    <!--begin::Input group -- phones -->
-    <!--begin::Input group-->
-    <div class="col-lg-4 fv-row">
+    @if($typeForm=='edit')
+
+
+    <div class="col-lg-6 fv-row">
         <!--begin::Label-->
-        <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.zip') }}</label>
+        <label class="col-form-label fw-bold fs-6 ">{{ __('warehouse::view.containers / LP') }}:</label>
         <!--end::Label-->
         <div class="input-group mb-4">
-            <input type="text" name="zip"
-                   class="form-control form-control-lg @error('zip') is-invalid @enderror"
-                   placeholder="{{ __('warehouse::view.zip') }}"
-                   value="{{ old('zip', isset($model) ? $model->zip : '') }}"/>
-            @error('zip')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-            @enderror
+            <input type="text" disabled class="form-control form-control-lg " value=" 1 / 0"/>
         </div>
     </div>
     <!--end::Input group-->
 
+    <!--begin::Input group  -->
+    <div class="col-lg-6 fv-row">
+        <!--begin::Label-->
+        <label class="col-form-label fw-bold fs-6">{{ __('view.created_at') }}</label>
+        <!--end::Label-->
+        <div class="input-group mb-4">
+            <input type="text" disabled class="form-control form-control-lg" value="{{ $model->created_at->format('Y-m-d') }}"/>
+
+        </div>
+    </div>
+    <!--end::Input group-->
+        <!--begin::Input group  -->
+        <div class="col-lg-6 row">
+            <!--begin::Label-->
+            <label
+                class="col-lg-3 col-form-label  fw-bold fs-6">{{ __('warehouse::view.Is Closed') }}?</label>
+            <!--end::Label-->
+
+            <!--begin::Input group-->
+            <div class="col-lg-3 fv-row">
+{{--                <span class="input-group mr-1">--}}
+{{--                    <i class="fa-solid fa-unlock-keyhole text-success"></i>--}}
+{{--                </span>--}}
+                <div class="input-group">
+                    <button type="button" class="btn btn-primary ">
+                        {{ __('warehouse::view.close_the_booking') }}
+
+                    </button>
+                </div>
+            </div>
+        </div>
+    <!--end::Input group-->
+    @endif
 </div>
+<div class="row">
+    <div class="col-12">
+        <div class="card mt-3">
+            <div class="card-header">
+
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <form id="file-upload-form" action="#" method="post" enctype="multipart/form-data">
+                            @csrf
+
+                            <button type="submit" class="btn btn-success m-2">
+                                <i class="fa-solid fa-file-circle-plus"></i>
+
+                                    {{ __('warehouse::view.add_booking_files') }}
+
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table id="files" class="table table-head-fixed text-nowrap">
+                    <thead>
+                    <tr>
+                        <th >{{ __('warehouse::view.table.file_name') }}</th>
+                        <th >{{ __('view.created_at') }}</th>
+                        <th >{{ __('view.action') }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    @foreach([] as $file)
+
+                        <tr>
+                            <td class="btn btn-link">
+                                <a href="{{ $file->getFullUrl() }}" download>
+                                    <i class="fa-solid fa-file-arrow-down"></i> {{ $file->name }}
+                                </a>
+                            </td>
+                            <td >{{ $file->created_at }}</td>
+                            <td>
+                                <button
+                                    type="button"
+                                    data-action="{{ fr_route('bookings.media.destroy', [$model->id,$file->id]) }}"
+                                    data-callback="reload-page"
+                                    data-table-id="files"
+                                    data-model-name="{{ __('warehouse::view.table.file') }}"
+                                    data-time-alert="1100"
+                                    class="delete-row btn btn-sm btn-danger btn-action-table btn-custom"
+                                    data-toggle="tooltip" title="{{ __('view.delete') }}"
+                                    data-modal-message="@lang('view.modal_message_delete')"
+                                    data-modal-action="@lang('view.delete')"
+                                >
+                                    <i class="fas fa-trash fa-fw"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+

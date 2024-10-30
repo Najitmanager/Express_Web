@@ -6,7 +6,9 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Acl\Repositories\AclRepository;
+use Modules\Warehouse\Entities\Booking;
 use Modules\Warehouse\Http\DataTables\BookingsDataTable;
+use Modules\Warehouse\Http\Requests\Booking\StoreRequest;
 
 class BookingController extends Controller
 {
@@ -56,9 +58,12 @@ class BookingController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $data = $request->validated();
+        Booking::create($data);
+        return response()->json(['success'=>true]);
+
     }
 
     /**
@@ -68,7 +73,7 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        return view('warehouse::show');
+        return error(404);
     }
 
     /**
@@ -78,7 +83,23 @@ class BookingController extends Controller
      */
     public function edit($id)
     {
-        return view('warehouse::edit');
+
+        breadcrumb([
+            [
+                'name' => __('warehouse::view.bookings'),
+                'path' => fr_route('bookings.index')
+            ],
+            [
+                'name' => __('warehouse::view.edit_consignee'),
+            ]
+        ]);
+
+
+        $booking = Booking::findOrFail($id);
+        $adminTheme = env('ADMIN_THEME', 'adminLte');
+        $table_id = 'bookings_table';
+        $view = view('warehouse::'.$adminTheme.'.pages.bookings.ajax.booking_form_edit', ['model' => $booking  ,'table_id' => $table_id])->render();
+        return response()->json(['value' => 1, 'view' => $view ]);
     }
 
     /**
@@ -87,9 +108,18 @@ class BookingController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(StoreRequest $request, $id)
     {
-        //
+        $booking = Booking::findOrFail($id);
+        $booking->update($request->validated());
+        return response()->json(['success'=>true]);
+    }
+
+    public function bookingClose($id)
+    {
+        $booking = Booking::findOrFai($id);
+        $booking->update(['closed_on' => now()->format('Y-m-d')]);
+        return response()->json(['success'=>true]);
     }
 
     /**
@@ -99,6 +129,8 @@ class BookingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $booking = Booking::findOrFail($id);
+        Booking::destroy($id);
+        return response()->json(['message' => __('cargo::messages.deleted')]);
     }
 }

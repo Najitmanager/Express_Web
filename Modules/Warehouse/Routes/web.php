@@ -83,7 +83,7 @@ Route::get('test', function () {
             Route::get('/static-bookings-search', 'BookingController@searchStaticPages')->name('static_bookings.search');
             Route::post('/bookings/upload_files/{id}', 'BookingController@upload_files')->name('bookings.upload_files');
             Route::delete('media-bookings/{booking_id}/destroy/{id}', 'BookingController@destroyMedia')->name('bookings.media.destroy');
-
+            Route::get('booking-close', 'BookingController@bookingClose')->name('bookings.close');
             // docks
             Route::resource('/docks', 'DockReceiptController')->parameters(['docks' => 'id']);
             Route::get('/docks-search', 'DockReceiptController@searchPages')->name('docks.search');

@@ -132,6 +132,10 @@ return [
     'attachments'=>'Attachments',
     'bookings'=>'Bookings',
     'add_booking'=>'Add New Booking',
+    'containers / LP'=>'Containers / LP',
+    'Is Closed'=>'Is Closed',
+    'close_the_booking'=>'Closed The Booking',
+    'add_booking_files'=>'Add Booking Files',
 
     'table' => [
         'port' => 'Port',
