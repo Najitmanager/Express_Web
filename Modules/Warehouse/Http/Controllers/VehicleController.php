@@ -110,8 +110,9 @@ class VehicleController extends Controller
      */
     public function show($id)
     {
+        $model = Vehicle::findOrFail($id);
         $adminTheme = env('ADMIN_THEME', 'adminLte');
-        return view('warehouse::'.$adminTheme.'.pages.vehicles.show');
+        return view('warehouse::'.$adminTheme.'.pages.vehicles.show', compact('model'));
     }
 
     /**

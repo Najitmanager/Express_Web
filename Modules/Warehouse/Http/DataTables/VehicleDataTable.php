@@ -81,13 +81,13 @@ class VehicleDataTable extends DataTable
                 return $model->name;
             })
             ->editColumn('color', function (Vehicle $model) {
-                return $model->color->name;
+                return optional($model->color)->name;
             })
             ->editColumn('customer', function (Vehicle $model) {
                 return $model->client->user->name."(".$model->client->contact_full_name.")" ;
             })
             ->editColumn('port', function (Vehicle $model) {
-                return $model->port->name;
+                return optional($model->port)->name;
             })
             ->editColumn('photos', function (Vehicle $model) {
                 return 0;
@@ -98,7 +98,7 @@ class VehicleDataTable extends DataTable
             })
             ->addColumn('row_link', function (Vehicle $model) {
                 // Define the URL for each row (e.g., view or edit page)
-                $url = route('vehicles.edit', $model->id); // Update the route as needed
+                $url = route('vehicles.show', $model->id); // Update the route as needed
 
                 // Wrap the name in an anchor tag
                 return '<a class="clickLink" href="'.$url.'">'.$model->name.'</a>';

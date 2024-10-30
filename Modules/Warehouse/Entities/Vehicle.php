@@ -42,6 +42,13 @@ class Vehicle extends Model implements HasMedia
     {
         return "{$this->year} {$this->model->make->name} {$this->model->name}";
     }
+    public function getTotalPhotosNoAttribute()
+    {
+        $sum = count($this->getMedia('photos'));
+        $sum += $this->getFirstMediaUrl('main')?1:0;
+        $sum += $this->getFirstMediaUrl('bill_of_lading')?1:0;
+        return $sum;
+    }
 
     /* =============> Relations <========================= */
     public function model(){
@@ -57,7 +64,7 @@ class Vehicle extends Model implements HasMedia
         return $this->belongsTo(Port::class);
     }
     public function branch(){
-        return $this->belongsTo(Branch::class);
+        return $this->belongsTo(Branch::class,'branch_id');
     }
     public function color(){
         return $this->belongsTo(Color::class,'color_id');
