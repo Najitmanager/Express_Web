@@ -47,9 +47,11 @@
         "stripe/stripe-php": "^7.0.0",
         "touhidurabir/laravel-stub-generator": "^1.0",
         "twilio/sdk": "^6.44",
+        "tymon/jwt-auth": "^1.0@dev",
         "unicodeveloper/laravel-paystack": "^1.0",
         "yajra/laravel-datatables-buttons": "^4.10",
         "yajra/laravel-datatables-oracle": "~9.0"
+
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

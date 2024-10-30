@@ -13,6 +13,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $moduleNamespace = 'Modules\Warehouse\Http\Controllers';
+    protected $moduleNamespaceApi = 'Modules\Warehouse\Http\Controllers\Api';
 
     /**
      * Called before routes are registered.
@@ -63,7 +64,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('api')
             ->middleware('api')
-            ->namespace($this->moduleNamespace)
+            ->namespace($this->moduleNamespaceApi)
             ->group(module_path('Warehouse', '/Routes/api.php'));
     }
 }

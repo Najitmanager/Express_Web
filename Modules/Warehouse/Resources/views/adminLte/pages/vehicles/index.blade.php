@@ -137,7 +137,7 @@
     </div>
     <!-- /.modal -->
 
-    
+
 @endsection
 
 
@@ -195,18 +195,19 @@
 
             $('#{{$table_id}} tbody').on('dblclick', 'tr', function() {
                 if (url) {
-                    $.ajax({
-                        url: url, // Adjust the endpoint as needed
-                        type: 'GET',
-                        success: function (data) {
-                            if (data['value']===1) {
-                                $('.custom-modal-body').html(data['view'])
-                            }
-                        },
-                        error: function () {
-                            console.error("Failed to fetch models.");
-                        }
-                    });
+                    // $.ajax({
+                    //     url: url, // Adjust the endpoint as needed
+                    //     type: 'GET',
+                    //     success: function (data) {
+                    //         if (data['value']===1) {
+                    //             $('.custom-modal-body').html(data['view'])
+                    //         }
+                    //     },
+                    //     error: function () {
+                    //         console.error("Failed to fetch models.");
+                    //     }
+                    // });
+                    window.location=url;
                 }
             });
 

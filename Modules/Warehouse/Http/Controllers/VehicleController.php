@@ -99,7 +99,7 @@ class VehicleController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $vehicle = Vehicle::create($data = \Arr::except($request->validated(), ['make_id'])+['branch_id'=>app('hook')->get('warehouse')->id]);
+        $vehicle = Vehicle::create(\Arr::except($request->validated(), ['make_id'])+['branch_id'=>app('hook')->get('warehouse')->id]);
         return response()->json(['success'=>true]);
     }
 
@@ -110,8 +110,9 @@ class VehicleController extends Controller
      */
     public function show($id)
     {
+        $model = Vehicle::findOrFail($id);
         $adminTheme = env('ADMIN_THEME', 'adminLte');
-        return view('warehouse::'.$adminTheme.'.pages.vehicles.show');
+        return view('warehouse::'.$adminTheme.'.pages.vehicles.show', compact('model'));
     }
 
     /**

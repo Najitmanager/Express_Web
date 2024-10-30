@@ -53,6 +53,13 @@ class Client extends Model implements HasMedia
         return \Modules\Cargo\Database\factories\ClientFactory::new();
     }
 
+    /* =================> Attributes <=====================*/
+
+    public function getFullAddressAttribute()
+    {
+        return "{$this->address},{$this->city},{$this->state},{$this->state},".optional($this->country)->iso3;
+    }
+
     public function branch(){
         return $this->hasOne('Modules\Cargo\Entities\Branch', 'id', 'branch_id');
     }

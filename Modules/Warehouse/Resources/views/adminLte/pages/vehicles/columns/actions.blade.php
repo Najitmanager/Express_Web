@@ -13,9 +13,10 @@
     <div class="dropdown-menu custom-drodown-content" aria-labelledby="dropdownMenuButton">
         <!-- begin: Btn Edit Row -->
 
+        <a href="{{ fr_route('vehicles.show', $model->id) }}"></a>
         @if (/*auth()->user()->can('edit-currencies') ||*/ $user_role == $admin)
             <div>
-                <a href="{{ fr_route('customers.edit', $model->id) }}" class="btn btn-sm btn-action-table px-3"
+                <a href="{{ fr_route('vehicles.edit', $model->id) }}" class="btn btn-sm btn-action-table px-3"
                     data-toggle="tooltip" title="{{ __('view.edit') }}">
                     <i class="fas fa-edit fa-fw text-warning"></i> {{ __('view.edit') }}
                 </a>
@@ -25,9 +26,9 @@
 
         {{--    @if ($model->id != 1) --}}
         <div>
-            <button type="button" data-action="{{ fr_route('customers.destroy', $model->id) }}"
+            <button type="button" data-action="{{ fr_route('vehicles.destroy', $model->id) }}"
                 data-callback="reload-table" data-table-id="{{ isset($table_id) ? $table_id : '' }}"
-                data-model-name="{{ __('warehouse::view.table.customer') }}" data-time-alert="2000"
+                data-model-name="{{ __('warehouse::view.table.vehicle') }}" data-time-alert="2000"
                 class="delete-row btn btn-sm btn-action-table btn-custom px-3" data-toggle="tooltip"
                 title="{{ __('view.delete') }}" data-modal-message="@lang('view.modal_message_delete')"
                 data-modal-action="@lang('view.delete')">
