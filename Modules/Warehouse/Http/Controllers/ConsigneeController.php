@@ -111,7 +111,7 @@ class ConsigneeController extends Controller
         $adminTheme = env('ADMIN_THEME', 'adminLte');
         $table_id = 'consignees_table';
         $view = view('warehouse::'.$adminTheme.'.pages.consignees.ajax.consignee_form_edit', ['model' => $consignee , 'countries' => $countries ,'table_id' => $table_id])->render();
-        return response()->json(['value' => 1, 'view' => $view ]);  
+        return response()->json(['value' => 1, 'view' => $view ]);
 
     }
 
@@ -125,7 +125,7 @@ class ConsigneeController extends Controller
     {
         $consignee = Consignee::findOrFail($id);
         $consignee->update($request->validated());
-        return redirect()->back()->with(['message_alert' => __('cargo::messages.saved')]);
+        return response()->json(['success'=>true]);
     }
 
 

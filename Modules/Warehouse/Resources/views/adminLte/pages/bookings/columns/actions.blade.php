@@ -5,18 +5,18 @@
 
 
 
-<!-- begin: Dropdown Menu -->
+    <!-- begin: Dropdown Menu -->
 <div class="btn-group" role="group" aria-label="Actions">
     <button type="button" class="btn btn-sm  dropdown-toggle custom-dropdown" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
+            aria-expanded="false">
     </button>
     <div class="dropdown-menu custom-drodown-content" aria-labelledby="dropdownMenuButton">
         <!-- begin: Btn Edit Row -->
 
         @if (/*auth()->user()->can('edit-currencies') ||*/ $user_role == $admin)
             <div>
-                <a href="{{ fr_route('truck_companies.edit', $model->id) }}" class="btn btn-sm btn-action-table px-3"
-                    data-toggle="tooltip" title="{{ __('view.edit') }}">
+                <a href="#" class="btn btn-sm btn-action-table px-3" data-href="{{ fr_route('bookings.edit', $model->id) }}" id="edit-{{ $model->id }}"
+                   data-toggle="tooltip" title="{{ __('view.edit') }}">
                     <i class="fas fa-edit fa-fw text-warning"></i> {{ __('view.edit') }}
                 </a>
             </div>
@@ -25,12 +25,12 @@
 
         {{--    @if ($model->id != 1) --}}
         <div>
-            <button type="button" data-action="{{ fr_route('truck_companies.destroy', $model->id) }}"
-                data-callback="reload-table" data-table-id="{{ isset($table_id) ? $table_id : '' }}"
-                data-model-name="{{ __('warehouse::view.table.truck_company') }}" data-time-alert="2000"
-                class="delete-row btn btn-sm btn-action-table btn-custom px-3" data-toggle="tooltip"
-                title="{{ __('view.delete') }}" data-modal-message="@lang('view.modal_message_delete')"
-                data-modal-action="@lang('view.delete')">
+            <button type="button" data-action="{{ fr_route('bookings.destroy', $model->id) }}"
+                    data-callback="reload-table" data-table-id="{{ isset($table_id) ? $table_id : '' }}"
+                    data-model-name="{{ __('warehouse::view.table.consignee') }}" data-time-alert="2000"
+                    class="delete-row btn btn-sm btn-action-table btn-custom px-3" data-toggle="tooltip"
+                    title="{{ __('view.delete') }}" data-modal-message="@lang('view.modal_message_delete')"
+                    data-modal-action="@lang('view.delete')">
                 <i class="fas fa-trash fa-fw text-danger"></i> {{ __('view.delete') }}
             </button>
         </div>
@@ -40,6 +40,22 @@
 </div>
 <!-- end: Dropdown Menu -->
 
+<script>
+    $(document).ready(function() {
+        $('#edit-{{ $model->id }}').on('click', function() {
+            $.ajax({
+                url: $(this).data('href'), // Adjust the endpoint as needed
+                type: 'GET',
+                success: function(data) {
+                    $('.custom-modal-body').html(data['view']);
 
-{{-- @endcan --}}
-<!-- end: Btn Delete Row -->
+                    $('#modal-overlay-edit').modal('show');
+                },
+                error: function() {
+                    console.error("Failed to fetch models.");
+                }
+            });
+        })
+
+    });
+</script>

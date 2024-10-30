@@ -22,7 +22,7 @@ class BookingsDataTable extends DataTable
         'print',
         'pdf'
     ];
-    public $filters = ['country', 'created_at' , 'name' ];
+    public $filters = ['country', 'created_at' , 'name' , 'city'];
     /**
      * Build DataTable class.
      *
@@ -55,7 +55,13 @@ class BookingsDataTable extends DataTable
             ->editColumn('attachments', function (Booking $model) {
                 return 0;
             })
+            ->addColumn('row_link', function (Booking $model) {
+                // Define the URL for each row (e.g., view or edit page)
+                $url = route('bookings.edit', $model->id); // Update the route as needed
 
+                // Wrap the name in an anchor tag
+                return '<a href="'.$url.'">'.$model->name.'</a>';
+            })
             ->editColumn('created_at', function (Booking $model) {
                 return date('d M, Y H:i', strtotime($model->created_at));
             })
@@ -95,13 +101,13 @@ class BookingsDataTable extends DataTable
         $lang = get_locale_name_by_code($lang, $lang);
 
         return $this->builder()
-        ->setTableId($this->table_id)
-        ->columns($this->getColumns())
-        ->minifiedAjax()
-        ->stateSave(true)
-        ->orderBy(1)
-        ->responsive(true)
-        ->autoWidth(true)
+            ->setTableId($this->table_id)
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->stateSave(true)
+            ->orderBy(1)
+            ->responsive(true)
+            ->autoWidth(true)
             ->parameters([
                 'scrollX' => true,
                 'dom' => 'Bfrtip',
@@ -128,16 +134,7 @@ class BookingsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            // Column::computed('select')
-            //     ->title('
-            //             <div class="form-check form-check-sm form-check-custom form-check-solid">
-            //                 <input class="form-check-input checkbox-all-rows" type="checkbox">
-            //             </div>
-            //         ')
-            //     ->responsivePriority(-1)
-            //     ->addClass('not-export')
-            //     ->width(50),
-            // Column::make('id')->title(__('warehouse::view.table.id'))->width(50),
+
             Column::make('booking')->title(__('warehouse::view.booking_no')),
             Column::make('booking_date')->title(__('warehouse::view.booking_date')),
             Column::make('closed_on')->title(__('warehouse::view.closed_on')),
