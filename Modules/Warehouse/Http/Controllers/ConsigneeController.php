@@ -109,7 +109,9 @@ class ConsigneeController extends Controller
         $countries = Country::all();
         $consignee = Consignee::findOrFail($id);
         $adminTheme = env('ADMIN_THEME', 'adminLte');
-        return view('warehouse::'.$adminTheme.'.pages.consignees.edit')->with(['model' => $consignee , 'countries' => $countries ]);
+        $table_id = 'consignees_table';
+        $view = view('warehouse::'.$adminTheme.'.pages.consignees.ajax.consignee_form_edit', ['model' => $consignee , 'countries' => $countries ,'table_id' => $table_id])->render();
+        return response()->json(['value' => 1, 'view' => $view ]);  
 
     }
 

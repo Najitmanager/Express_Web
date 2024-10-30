@@ -48,9 +48,9 @@ class UsersDataTable extends DataTable
             //     $adminTheme = env('ADMIN_THEME', 'adminLte');
             //     return view($adminTheme.'.components.modules.datatable.columns.checkbox', ['model' => $model, 'ifHide' => $model->id == 1]);
             // })
-            ->editColumn('id', function (User $model) {
-                return $model->id;
-            })
+            // ->editColumn('id', function (User $model) {
+            //     return $model->id;
+            // })
             ->editColumn('role', function (User $model) {
                 return '<div class="badge bg-' . ($model->role == 1 ? 'success' : 'primary') . '">' . $model->userRole . '</div>';
             })
@@ -147,7 +147,7 @@ class UsersDataTable extends DataTable
             //         ->responsivePriority(-1)
             //         ->addClass('not-export')
             //         ->width(50),
-            Column::make('id')->title(__('users::view.table.id'))->width(50),
+            // Column::make('id')->title(__('users::view.table.id'))->width(50),
             Column::make('user')->title(__('users::view.table.user')),
             Column::make('role')->title(__('users::view.table.user_type')),
             Column::make('created_at')->title(__('view.created_at')),

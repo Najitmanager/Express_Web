@@ -113,6 +113,7 @@
                     </button>
                 </div>
                 <!--begin::Form-->
+            <div class="custom-modal-body">
                 <form id="form_body" action="{{ fr_route('vehicles.store') }}" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <!--begin::Card body-->
@@ -123,10 +124,11 @@
 
                     </div>
                     <div class="modal-footer justify-content-navbar">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('view.discard')</button>
-                        <button type="button" class="btn btn-primary" id="form_submit">@lang('view.create')</button>
+                        <button type="button" class="btn btn-custom-discard" data-dismiss="modal">@lang('view.discard')</button>
+                        <button type="button" class="btn btn-custom-save" id="form_submit">@lang('view.create')</button>
                     </div>
                 </form>
+            </div>
                 <!--end::Form-->
             </div>
             <!-- /.modal-content -->
@@ -134,6 +136,8 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+
+    
 @endsection
 
 
@@ -191,7 +195,18 @@
 
             $('#{{$table_id}} tbody').on('dblclick', 'tr', function() {
                 if (url) {
-                    window.location = url;
+                    $.ajax({
+                        url: url, // Adjust the endpoint as needed
+                        type: 'GET',
+                        success: function (data) {
+                            if (data['value']===1) {
+                                $('.custom-modal-body').html(data['view'])
+                            }
+                        },
+                        error: function () {
+                            console.error("Failed to fetch models.");
+                        }
+                    });
                 }
             });
 

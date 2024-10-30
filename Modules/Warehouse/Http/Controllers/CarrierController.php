@@ -107,7 +107,9 @@ class CarrierController extends Controller
 
         $carrier = Carrier::findOrFail($id);
         $adminTheme = env('ADMIN_THEME', 'adminLte');
-        return view('warehouse::'.$adminTheme.'.pages.carriers.edit')->with(['model' => $carrier ]);
+        $table_id = 'carriers_table';
+        $view = view('warehouse::'.$adminTheme.'.pages.carriers.ajax.carrier_form_edit', ['model' => $carrier ,'table_id' => $table_id])->render();
+        return response()->json(['value' => 1, 'view' => $view ]); 
 
     }
 
@@ -121,7 +123,7 @@ class CarrierController extends Controller
     {
         $carrier = Carrier::findOrFail($id);
         $carrier->update($request->validated());
-        return redirect()->back()->with(['message_alert' => __('cargo::messages.saved')]);
+        return response()->json(['success'=>true]);
     }
     public function update_active(Request $request)
     {

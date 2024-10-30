@@ -15,7 +15,7 @@
 
         @if (/*auth()->user()->can('edit-currencies') ||*/ $user_role == $admin)
             <div>
-                <a href="{{ fr_route('ports.edit', $model->id) }}" class="btn btn-sm btn-action-table px-3"
+                <a href="#" data-href="{{ fr_route('ports.edit', $model->id) }}" class="btn btn-sm btn-action-table px-3" id="edit-{{ $model->id }}"
                     data-toggle="tooltip" title="{{ __('view.edit') }}">
                     <i class="fas fa-edit fa-fw text-warning"></i> {{ __('view.edit') }}
                 </a>
@@ -42,4 +42,30 @@
 </div>
 <!-- end: Dropdown Menu -->
 
+<script>
+    $(document).ready(function() {
+        $('#edit-{{ $model->id }}').on('click', function() {
+            console.log("aaaa");
+            url = $(this).data('href');
+            if (url) {
+                showEditModal(url);
+            }
+        })
+
+        function showEditModal(url) {
+            $.ajax({
+                url: url, // Adjust the endpoint as needed
+                type: 'GET',
+                success: function(data) {
+                    $('.custom-modal-body').html(data['view']);
+
+                    $('#modal-overlay-edit').modal('show');
+                },
+                error: function() {
+                    console.error("Failed to fetch models.");
+                }
+            });
+        }
+    });
+</script>
 

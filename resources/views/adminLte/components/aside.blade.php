@@ -28,7 +28,7 @@
 {{--        </div>--}}
 
         <!--begin::Aside menu-->
-        <nav class="mt-2" style="padding-bottom: 30px !important;">
+        <nav class="mt-0" style="padding-bottom: 30px !important;">
             <!--begin::Aside Menu-->
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!--begin::Menu-->

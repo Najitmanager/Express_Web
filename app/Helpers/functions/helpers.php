@@ -1219,3 +1219,15 @@ if (!function_exists('get_ports')) {
         return $ports;
     }
 }
+
+if (!function_exists('get_countries')) {
+    /**
+     * get all admins (role = 1) as array [id => name]
+     * @return array
+     */
+    function get_countries()
+    {
+        $countries = \Modules\Cargo\Entities\Country::all();
+        return $countries;
+    }
+}

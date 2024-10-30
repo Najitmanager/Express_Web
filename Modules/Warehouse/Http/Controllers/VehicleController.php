@@ -110,7 +110,8 @@ class VehicleController extends Controller
      */
     public function show($id)
     {
-        return view('warehouse::show');
+        $adminTheme = env('ADMIN_THEME', 'adminLte');
+        return view('warehouse::'.$adminTheme.'.pages.vehicles.show');
     }
 
     /**

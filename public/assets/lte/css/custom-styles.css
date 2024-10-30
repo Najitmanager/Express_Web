@@ -1,6 +1,4 @@
-/* start table styles */
-
-body {
+start table styles */ body {
     background-color: #ececec;
 }
 
@@ -17,6 +15,18 @@ body {
     border: 1px solid #35baf6;
     border-radius: 0;
     min-height: calc(100vh - 90px);
+}
+
+.vehicle-detail-card {
+    margin-top: 8px;
+    border: 1px solid #35baf6;
+    border-radius: 0;
+}
+
+.vehicle-detail-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .dataTables_scrollBody {
@@ -68,6 +78,23 @@ tbody tr {
     border-radius: 0;
 }
 
+.vehicle-card-header {
+    background-color: #35baf6;
+    height: 44px;
+    padding: 10px;
+    max-height: 44px !important;
+    min-height: 0;
+    border-radius: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-header.card-header span {
+    font-size: large;
+    font-weight: 500;
+}
+
 .table-header.card-header .custom-title {
     gap: 3px;
     margin-top: 7px;
@@ -90,7 +117,7 @@ tbody tr {
 
 .pagination-info-wrapper .info,
 .pagination-info-wrapper .pagination {
-    max-width: 300px;
+    min-width: 300px;
 }
 
 .pagination-info-wrapper {
@@ -207,6 +234,12 @@ ul.pagination li {
     padding-left: 10px !important;
 }
 
+.vehicle-page-dropdown a {
+    gap: 5px;
+    font-size: 12px;
+    padding-left: 5px;
+}
+
 .custom-drodown-content {
     padding: 0;
 }
@@ -235,8 +268,243 @@ ul.pagination li {
     font-weight: 500 !important;
 }
 
+.select2-container span.select2,
+.select2-container {
+    width: 100% !important;
+}
+
+.select2-container .select2-selection {
+    height: 40px !important;
+    border-radius: 0;
+    border-color: #d3d3d3bd;
+}
+
 
 /* end table styles */
+
+
+/* Start Vehicle Page Table */
+
+.vehicle-page-tables tr:nth-child(even) {
+    background: white;
+}
+
+.vehicle-page-tables tr:nth-child(odd) {
+    background: #ececec;
+}
+
+.fa-car-side:before {
+    content: '\f5e4'!important;
+    font-family: 'FontAwesome';
+}
+
+.step_name {
+    top: 4px;
+    font-size: 12px;
+    position: relative;
+}
+
+.step:after,
+.step_valid__true:after {
+    width: 50%;
+    top: -41px;
+    left: 60%;
+}
+
+.x-ltr {
+    direction: ltr;
+}
+
+.x-component,
+.x-container {
+    position: relative;
+}
+
+.step:before,
+.step_valid__true:after,
+.step:after {
+    width: 50%;
+    height: 17px;
+    background: #f3f4f4;
+    content: '';
+    position: relative;
+    display: block;
+    top: 26px;
+}
+
+.step {
+    padding: 5px 0;
+    margin: auto;
+    height: 70px;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block
+}
+
+.step_name {
+    top: 4px;
+    font-size: 12px;
+    position: relative
+}
+
+.step_index {
+    display: block;
+    font-weight: 500;
+    width: 50px!important;
+    height: 32px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    background-color: #f3f4f4;
+    margin: auto;
+    padding: 8px;
+    border-radius: 20px;
+    color: red;
+    -webkit-transition: all .4s cubic-bezier(.215, .61, .355, 1);
+    -o-transition: all .4s cubic-bezier(.215, .61, .355, 1);
+    transition: all .4s cubic-bezier(.215, .61, .355, 1)
+}
+
+.step:hover .step_index {
+    background-color: #e8e9e9
+}
+
+.step_point_done__1 .step_index {
+    color: #28ff28;
+    background-color: #3d7dca
+}
+
+.step_point_done__2 .step_index {
+    color: red;
+    background-color: #3d7dca
+}
+
+.step.x-item-selected:hover .step_index,
+.step_valid__true:hover .step_index {
+    background-color: #6497d5
+}
+
+.step:first-child:before,
+.step:nth-last-child(2):after {
+    display: none
+}
+
+.step:before,
+.step_valid__true:after,
+.step:after {
+    width: 50%;
+    height: 17px;
+    background: #f3f4f4;
+    content: '';
+    position: relative;
+    display: block;
+    top: 26px
+}
+
+.step:after,
+.step_valid__true:after {
+    width: 50%;
+    top: -47px;
+    left: 50%
+}
+
+.step_line_done__true:after {
+    width: 100%;
+    z-index: 2;
+    background-color: #3d7dca
+}
+
+td.bg-danger-400 {
+    background-color: #ffc4c4 !important;
+}
+
+td.bg-warning-400 {
+    background-color: #f5c2648f !important;
+}
+
+td.bg-success-400 {
+    background-color: #c4ffc9 !important;
+}
+
+.max-height-card {
+    max-height: 293px;
+    height: 293px;
+    overflow-y: scroll;
+}
+
+.max-height-132 {
+    max-height: 132px;
+    height: 132px;
+    overflow-y: scroll;
+}
+
+.photo-section-wrapper img {
+    border-radius: 7px;
+}
+
+.border-red {
+    border: 3px solid red;
+}
+
+.border-blue {
+    border: 3px solid blue;
+}
+
+.border-gray {
+    border: 3px solid gray;
+}
+
+
+/* End Vehicle Page Table */
+
+
+/* start modal styles */
+
+.modal-header {
+    background: #35baf6;
+    color: white;
+    padding: 10px 20px;
+}
+
+.modal-header .close span {
+    color: white;
+}
+
+.modal-body {
+    padding: 0
+}
+
+.modal-footer {
+    background: #ececec;
+    padding: 5px 10px;
+}
+
+.btn-custom-save,
+.btn-custom-discard {
+    background: #35baf6;
+    color: white;
+}
+
+.btn-custom-save:hover,
+.btn-custom-discard:hover {
+    background: #148fc7;
+    color: white;
+}
+
+input.form-control {
+    height: 40px;
+    border-radius: 0;
+    border-color: #d3d3d3bd;
+    font-size: 1rem;
+}
+
+input.form-control::placeholder,
+.select2-selection__placeholder {
+    font-size: 14px;
+}
+
+
+/* end modal styles */
 
 
 /* Start Side Menu  */
@@ -271,5 +539,60 @@ ul.pagination li {
     text-align: center;
 }
 
+.nav-pills .nav-link {
+    border-radius: 0 !important;
+}
 
-/* End Side Menu */
+[class*="sidebar-dark"] .brand-link {
+    border-bottom: 0;
+}
+
+
+/* .main-sidebar,
+.main-sidebar::before {
+    width: 220px;
+} */
+
+
+/* .content-wrapper {
+    margin-left: 220px !important;
+} */
+
+
+/* .main-header {
+    margin-left: 220px !important;
+} */
+
+
+/* .layout-fixed .brand-link {
+    width: 220px !important;
+} */
+
+.nav-sidebar>.nav-item {
+    margin-bottom: 0;
+    height: 64px;
+}
+
+
+/* .os-host-scrollbar-horizontal-hidden {
+    width: 220px !important;
+} */
+
+.os-host-scrollbar-horizontal-hidden .nav-item a {
+    width: 100% !important;
+}
+
+.os-host-overflow-x .nav-item a {
+    width: 100% !important;
+}
+
+.os-host-overflow-x~.aside-logo {
+    width: 100% !important;
+}
+
+.os-host-overflow-x~.aside-logo div span {
+    opacity: transparent !important;
+}
+
+
+/* End Side Menu

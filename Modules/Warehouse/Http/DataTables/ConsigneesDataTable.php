@@ -59,9 +59,9 @@ class ConsigneesDataTable extends DataTable
             //     $adminTheme = env('ADMIN_THEME', 'adminLte');
             //     return view($adminTheme.'.components.modules.datatable.columns.checkbox', ['model' => $model, 'ifHide' => $model->id == 0]);
             // })
-            ->editColumn('id', function (Consignee $model) {
-                return '#'.$model->id;
-            })
+            // ->editColumn('id', function (Consignee $model) {
+            //     return '#'.$model->id;
+            // })
             ->editColumn('country', function (Consignee $model) {
                 return $model->country->name;
             })
@@ -156,7 +156,7 @@ class ConsigneesDataTable extends DataTable
             //     ->responsivePriority(-1)
             //     ->addClass('not-export')
             //     ->width(50),
-            Column::make('id')->title(__('warehouse::view.table.id'))->width(50),
+            // Column::make('id')->title(__('warehouse::view.table.id'))->width(50),
             Column::make('name')->title(__('warehouse::view.name')),
             Column::make('address')->title(__('warehouse::view.address')),
             Column::make('country')->title(__('warehouse::view.country')),

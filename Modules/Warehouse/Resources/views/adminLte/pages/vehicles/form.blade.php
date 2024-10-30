@@ -7,8 +7,8 @@
 {{--    --}}
 {{--</div>--}}
 
-<div class="card-body" style="background-color: #f6f6f6">
-    <div class="row mb-6">
+<div class="card-body p-0">
+    <div class="row">
         <!--begin::Input group -- VIN -->
         <div class="col-lg-6 fv-row">
             <!--begin::Label-->
@@ -20,7 +20,7 @@
                        id="vin_input"
                        value="{{ old('vin', isset($model) ? $model->vin : '') }}">
                 <span class="input-group-append">
-                        <button type="button" id="pull_info" class="btn btn-primary btn-flat">{{ __('warehouse::view.pull_vehicle_info') }}</button>
+                        <button type="button" id="pull_info" class="btn btn-custom-save btn-flat" style="height: auto">{{ __('warehouse::view.pull_vehicle_info') }}</button>
                     </span>
                 @error('vin')
                 <div class="invalid-feedback">
@@ -217,7 +217,7 @@
     </div>
 </div>
 
-<div class="row mb-6">
+<div class="row">
     <!--begin::Input group -- Customer -->
     <div class="col-lg-6 fv-row">
         <!--begin::Label-->

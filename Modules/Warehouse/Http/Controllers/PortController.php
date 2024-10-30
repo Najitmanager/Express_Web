@@ -76,7 +76,8 @@ class PortController extends Controller
 
         $data = $request->validated();
         Port::create($data);
-        return response()->json(['success'=>true]);    }
+        return response()->json(['success'=>true]);    
+    }
 
     /**
      * Show the specified resource.
@@ -95,21 +96,23 @@ class PortController extends Controller
      */
     public function edit($id)
     {
-        breadcrumb([
-            [
-                'name' => __('warehouse::view.ports'),
-                'path' => fr_route('ports.index')
-            ],
-            [
-                'name' => __('warehouse::view.edit_port')
-            ]
-        ]);
+        // breadcrumb([
+        //     [
+        //         'name' => __('warehouse::view.ports'),
+        //         'path' => fr_route('ports.index')
+        //     ],
+        //     [
+        //         'name' => __('warehouse::view.edit_port')
+        //     ]
+        // ]);
 
         $countries = Country::all();
         $port = Port::findOrFail($id);
         $adminTheme = env('ADMIN_THEME', 'adminLte');
-        return view('warehouse::'.$adminTheme.'.pages.ports.edit')->with(['model' => $port ,  'countries' => $countries ]);
-    }
+        $table_id = 'ports_table';
+        $view = view('warehouse::'.$adminTheme.'.pages.ports.ajax.port_form_edit', ['model' => $port , 'countries' => $countries ,'table_id' => $table_id])->render();
+        return response()->json(['value' => 1, 'view' => $view ]);  
+      }
 
     /**
      * Update the specified resource in storage.
@@ -121,9 +124,7 @@ class PortController extends Controller
     {
         $port = Port::findOrFail($id);
         $port->update($request->validated());
-
-        return redirect()->back()->with(['message_alert' => __('cargo::messages.saved')]);
-
+        return response()->json(['success'=>true]);  
     }
 
     public function update_active(Request $request)

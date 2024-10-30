@@ -15,7 +15,7 @@ use Modules\Cargo\Http\Filter\ClientFilter;
 class CustomersDataTable extends DataTable
 {
 
-    public $table_id = 'clients';
+    public $table_id = 'clients_table';
     public $btn_exports = [
         'excel',
         'print',
@@ -137,7 +137,7 @@ class CustomersDataTable extends DataTable
      */
     public function query(Client $model, Request $request)
     {
-        $query = $model->getClients($model)->newQuery();
+        $query = $model->newQuery();
 
         // class filter for user only
         $client_filter = new PortFilter($query, $request);

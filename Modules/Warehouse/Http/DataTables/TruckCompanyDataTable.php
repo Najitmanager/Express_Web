@@ -64,9 +64,9 @@ class TruckCompanyDataTable extends DataTable
             //     $adminTheme = env('ADMIN_THEME', 'adminLte');
             //     return view($adminTheme.'.components.modules.datatable.columns.checkbox', ['model' => $model, 'ifHide' => $model->id == 0]);
             // })
-            ->editColumn('id', function (TruckCompany $model) {
-                return '#'.$model->id;
-            })
+            // ->editColumn('id', function (TruckCompany $model) {
+            //     return '#'.$model->id;
+            // })
             ->editColumn('country', function (TruckCompany $model) {
                 return $model->country->name;
             })
@@ -167,7 +167,7 @@ class TruckCompanyDataTable extends DataTable
             //     ->responsivePriority(-1)
             //     ->addClass('not-export')
             //     ->width(50),
-            Column::make('id')->title(__('warehouse::view.table.id'))->width(50),
+            // Column::make('id')->title(__('warehouse::view.table.id'))->width(50),
             Column::make('company_name')->title(__('warehouse::view.name')),
             Column::make('contact_full_name')->title(__('warehouse::view.contact_full_name')),
             Column::make('phones')->title(__('warehouse::view.phones')),

@@ -44,6 +44,7 @@ class CustomerController extends Controller
         $data_with = [];
         $share_data = array_merge(get_class_vars(CustomersDataTable::class), $data_with);
         $adminTheme = env('ADMIN_THEME', 'adminLte');
+      
         return $dataTable->render('warehouse::'.$adminTheme.'.pages.customers.index', $share_data);
 
     }
@@ -120,8 +121,11 @@ class CustomerController extends Controller
 
         $countries = Country::all();
         $client = user::findOrFail($id)->clientInfo;
+        dd($client);
         $adminTheme = env('ADMIN_THEME', 'adminLte');
-        return view('warehouse::'.$adminTheme.'.pages.customers.edit')->with(['model' => $client , 'countries' => $countries ]);
+        $table_id = 'clients';
+        $view = view('warehouse::'.$adminTheme.'.pages.customers.ajax.customer_form_edit', ['model' => $client , 'countries' => $countries ,'table_id' => $table_id])->render();
+        return response()->json(['value' => 1, 'view' => $view ]);  
 
     }
 
