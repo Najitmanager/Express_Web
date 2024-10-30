@@ -95,7 +95,8 @@ tbody tr {
     font-weight: 500;
 }
 
-.table-header.card-header .custom-title {
+.table-header.card-header .custom-title,
+.nav-item.custom-title {
     gap: 3px;
     margin-top: 7px;
     color: #2a95c5;

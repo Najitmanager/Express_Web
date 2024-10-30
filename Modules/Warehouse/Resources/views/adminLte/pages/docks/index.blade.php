@@ -5,143 +5,344 @@
     <!--begin::Card-->
     <div class="card table-card-wrapper">
 
-        {{-- start page title --}}
-        <div class="table-header card-header">
+        <ul class="nav nav-tabs table-header card-header justify-content-start" id="mainTab" role="tablist">
+            <li class="nav-item custom-title" role="presentation">
+                <a class="nav-link text-dark border-0 active" id="tab1-tab" data-bs-toggle="tab" href="#tab1" role="tab">
+                    <i class="fa-solid fa-file"></i>{{ __('warehouse::view.docks') }}
+                </a>
+            </li>
+            <li class="nav-item custom-title ms-2" role="presentation">
+                <a class="nav-link text-dark border-0" id="tab2-tab" data-bs-toggle="tab" href="#tab2"
+                    role="tab">
+                    <i class="fa-solid fa-file"></i> Load Plans
+                </a>
+            </li>
+            <li class="nav-item custom-title ms-2" role="presentation">
+                <a class="nav-link text-dark border-0" id="tab3-tab" data-bs-toggle="tab" href="#tab3"
+                    role="tab">
+                    <i class="fa-solid fa-list"></i> Booking
+                </a>
+            </li>
+        </ul>
 
-            <div class="custom-title">
-                <i class="fa-solid fa-file-alt fa-fw"></i>{{ __('warehouse::view.docks') }}
-            </div>
+        <div class="tab-content" id="tabContent">
+            <!-- Tab 1 Content -->
+            <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                <!--begin::Card header-->
+                <div class="card-header border-0 pt-6">
+                    <!--begin::Card title-->
+                    <div class="card-title">
 
-        </div>
-        {{-- end page title --}}
+                        <!--begin::Search-->
+                        {{-- search table --}}
+                        @include('adminLte.components.modules.datatable.search', ['table_id' => $table_id])
+                        <!--end::Search-->
 
-        <!--begin::Card header-->
-        <div class="card-header border-0 pt-6">
-            <!--begin::Card title-->
-            <div class="card-title">
+                    </div>
+                    <!--begin::Card title-->
 
-                <!--begin::Search-->
-                {{-- search table --}}
-                @include('adminLte.components.modules.datatable.search', ['table_id' => $table_id])
-                <!--end::Search-->
+                    <!--begin::Card toolbar-->
+                    <div class="card-toolbar">
+                        <!--begin::Toolbar-->
+                        <div class="d-flex flex-wrap align-items-center" id="{{ $table_id }}_custom_filter">
+                            {{-- data table length --}}
+                            @include('adminLte.components.modules.datatable.datatable_length', [
+                                'table_id' => $table_id,
+                            ])
+                            {{-- btn reload table --}}
+                            @include('adminLte.components.modules.datatable.reload', [
+                                'table_id' => $table_id,
+                            ])
 
-            </div>
-            <!--begin::Card title-->
+                            @include('adminLte.components.modules.datatable.export', [
+                                'table_id' => $table_id,
+                                'btn_exports' => $btn_exports,
+                            ])
 
-            <!--begin::Card toolbar-->
-            <div class="card-toolbar">
-                <!--begin::Toolbar-->
-                <div class="d-flex flex-wrap align-items-center" id="{{ $table_id }}_custom_filter">
-                    {{-- data table length --}}
-                    @include('adminLte.components.modules.datatable.datatable_length', [
-                        'table_id' => $table_id,
-                    ])
-                    {{-- btn reload table --}}
-                    @include('adminLte.components.modules.datatable.reload', ['table_id' => $table_id])
-
-                    @include('adminLte.components.modules.datatable.export', [
-                        'table_id' => $table_id,
-                        'btn_exports' => $btn_exports,
-                    ])
-
-                    <!--begin::Filter-->
-                    <x-table-filter :table_id="$table_id" :filters="$filters">
-                        {{-- Start Custom Filters --}}
-                        <!-- ================== begin Role filter =============================== -->
-                        @include('cargo::adminLte.pages.table.filters.client', [
-                            'table_id' => $table_id,
-                            'filters' => $filters,
-                        ])
-                        @include('cargo::adminLte.pages.table.filters.branch', [
-                            'table_id' => $table_id,
-                            'filters' => $filters,
-                        ])
-                        <!-- ================== end Role filter =============================== -->
-                        <!-- ================== end Role filter =============================== -->
-                        {{-- End Custom Filters --}}
-                    </x-table-filter>
-                    <!--end::Filter-->
-
-
-                    <a href="#" class="btn btn-primary m-1" data-toggle="modal" data-target="#modal-overlay">{{ __('warehouse::view.add_dock') }}</a>
-
-                    <!--end::Add user-->
-                </div>
-                <!--end::Toolbar-->
-
-                <!--begin::Group actions-->
-                @include('adminLte.components.modules.datatable.columns.checkbox-actions', [
-                    'table_id' => $table_id,
-                    //                    'permission' => 'delete-packages',
-                    'url' => fr_route('docks.multi-destroy'),
-                    'callback' => 'reload-table',
-                    'model_name' => __('warehouse::view.selected_docks'),
-                ])
-                <!--end::Group actions-->
-
-            </div>
-            <!--end::Card toolbar-->
-        </div>
-        <!--end::Card header-->
+                            <!--begin::Filter-->
+                            <x-table-filter :table_id="$table_id" :filters="$filters">
+                                {{-- Start Custom Filters --}}
+                                <!-- ================== begin Role filter =============================== -->
+                                @include('cargo::adminLte.pages.table.filters.client', [
+                                    'table_id' => $table_id,
+                                    'filters' => $filters,
+                                ])
+                                @include('cargo::adminLte.pages.table.filters.branch', [
+                                    'table_id' => $table_id,
+                                    'filters' => $filters,
+                                ])
+                                <!-- ================== end Role filter =============================== -->
+                                <!-- ================== end Role filter =============================== -->
+                                {{-- End Custom Filters --}}
+                            </x-table-filter>
+                            <!--end::Filter-->
 
 
-        <!--begin::Card body-->
-        <div class="card-body pt-6">
+                            <a href="#" class="btn btn-primary m-1" data-toggle="modal"
+                                data-target="#modal-overlay">{{ __('warehouse::view.add_dock') }}</a>
 
-            <!--begin::Table-->
-            {{ $dataTable->table() }}
-            <!--end::Table-->
-
-
-        </div>
-        <!--end::Card body-->
-    </div>
-    <!--end::Card-->
-
-    <div class="modal fade" id="modal-overlay">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div id="preloader" class="overlay" style="display: none;">
-                    <i class="fas fa-2x fa-sync fa-spin"></i>
-                </div>
-                <div class="modal-header">
-                    <h4 class="modal-title" id="modal-overlay-title">{{ __('warehouse::view.create_new_Dock') }}</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <!--begin::Form-->
-            <div class="custom-modal-body">
-                <form id="form_body" action="{{ fr_route('Docks.store') }}" method="post" enctype="multipart/form-data">
-                    <div class="modal-body">
-                        <!--begin::Card body-->
-                        <div class="card-body border-top p-9">
-                            @include('warehouse::adminLte.pages.Docks.form', ['typeForm' => 'create'])
+                            <!--end::Add user-->
                         </div>
-                        <!--end::Card body-->
+                        <!--end::Toolbar-->
+
+                        <!--begin::Group actions-->
+                        @include('adminLte.components.modules.datatable.columns.checkbox-actions', [
+                            'table_id' => $table_id,
+                            //                    'permission' => 'delete-packages',
+                            'url' => fr_route('docks.multi-destroy'),
+                            'callback' => 'reload-table',
+                            'model_name' => __('warehouse::view.selected_docks'),
+                        ])
+                        <!--end::Group actions-->
 
                     </div>
-                    <div class="modal-footer justify-content-navbar">
-                        <button type="button" class="btn btn-custom-discard" data-dismiss="modal">@lang('view.discard')</button>
-                        <button type="button" class="btn btn-custom-save" id="form_submit">@lang('view.create')</button>
+                    <!--end::Card toolbar-->
+                </div>
+                <!--end::Card header-->
+
+
+                <!--begin::Card body-->
+                <div class="card-body pt-6">
+
+                    <!--begin::Table-->
+                    {{ $dataTable->table() }}
+                    <!--end::Table-->
+
+
+                </div>
+                <!--end::Card body-->
+
+            </div>
+
+            <div class="tab-pane fade" id="tab2" role="tabpane2">
+
+                <!--begin::Card header-->
+                <div class="card-header border-0 pt-6">
+                    <!--begin::Card title-->
+                    <div class="card-title">
+
+                        <!--begin::Search-->
+                        {{-- search table --}}
+                        @include('adminLte.components.modules.datatable.search', ['table_id' => $table_id])
+                        <!--end::Search-->
+
                     </div>
-                </form>
+                    <!--begin::Card title-->
+
+                    <!--begin::Card toolbar-->
+                    <div class="card-toolbar">
+                        <!--begin::Toolbar-->
+                        <div class="d-flex flex-wrap align-items-center" id="{{ $table_id }}_custom_filter">
+                            {{-- data table length --}}
+                            @include('adminLte.components.modules.datatable.datatable_length', [
+                                'table_id' => $table_id,
+                            ])
+                            {{-- btn reload table --}}
+                            @include('adminLte.components.modules.datatable.reload', [
+                                'table_id' => $table_id,
+                            ])
+
+                            @include('adminLte.components.modules.datatable.export', [
+                                'table_id' => $table_id,
+                                'btn_exports' => $btn_exports,
+                            ])
+
+                            <!--begin::Filter-->
+                            <x-table-filter :table_id="$table_id" :filters="$filters">
+                                {{-- Start Custom Filters --}}
+                                <!-- ================== begin Role filter =============================== -->
+                                @include('cargo::adminLte.pages.table.filters.client', [
+                                    'table_id' => $table_id,
+                                    'filters' => $filters,
+                                ])
+                                @include('cargo::adminLte.pages.table.filters.branch', [
+                                    'table_id' => $table_id,
+                                    'filters' => $filters,
+                                ])
+                                <!-- ================== end Role filter =============================== -->
+                                <!-- ================== end Role filter =============================== -->
+                                {{-- End Custom Filters --}}
+                            </x-table-filter>
+                            <!--end::Filter-->
+
+
+                            <a href="#" class="btn btn-primary m-1" data-toggle="modal"
+                                data-target="#modal-overlay">{{ __('warehouse::view.add_dock') }}</a>
+
+                            <!--end::Add user-->
+                        </div>
+                        <!--end::Toolbar-->
+
+                        <!--begin::Group actions-->
+                        @include('adminLte.components.modules.datatable.columns.checkbox-actions', [
+                            'table_id' => $table_id,
+                            //                    'permission' => 'delete-packages',
+                            'url' => fr_route('docks.multi-destroy'),
+                            'callback' => 'reload-table',
+                            'model_name' => __('warehouse::view.selected_docks'),
+                        ])
+                        <!--end::Group actions-->
+
+                    </div>
+                    <!--end::Card toolbar-->
+                </div>
+                <!--end::Card header-->
+
+
+                <!--begin::Card body-->
+                <div class="card-body pt-6">
+
+                    <!--begin::Table-->
+                    {{ $dataTable->table() }}
+                    <!--end::Table-->
+
+
+                </div>
+                <!--end::Card body-->
+
             </div>
-                <!--end::Form-->
+
+            <div class="tab-pane fade" id="tab3" role="tabpane3">
+
+                <!--begin::Card header-->
+                <div class="card-header border-0 pt-6">
+                    <!--begin::Card title-->
+                    <div class="card-title">
+
+                        <!--begin::Search-->
+                        {{-- search table --}}
+                        @include('adminLte.components.modules.datatable.search', [
+                            'table_id' => $table_id,
+                        ])
+                        <!--end::Search-->
+
+                    </div>
+                    <!--begin::Card title-->
+
+                    <!--begin::Card toolbar-->
+                    <div class="card-toolbar">
+                        <!--begin::Toolbar-->
+                        <div class="d-flex flex-wrap align-items-center" id="{{ $table_id }}_custom_filter">
+                            {{-- data table length --}}
+                            @include('adminLte.components.modules.datatable.datatable_length', [
+                                'table_id' => $table_id,
+                            ])
+                            {{-- btn reload table --}}
+                            @include('adminLte.components.modules.datatable.reload', [
+                                'table_id' => $table_id,
+                            ])
+
+                            @include('adminLte.components.modules.datatable.export', [
+                                'table_id' => $table_id,
+                                'btn_exports' => $btn_exports,
+                            ])
+
+                            <!--begin::Filter-->
+                            <x-table-filter :table_id="$table_id" :filters="$filters">
+                                {{-- Start Custom Filters --}}
+                                <!-- ================== begin Role filter =============================== -->
+                                @include('cargo::adminLte.pages.table.filters.client', [
+                                    'table_id' => $table_id,
+                                    'filters' => $filters,
+                                ])
+                                @include('cargo::adminLte.pages.table.filters.branch', [
+                                    'table_id' => $table_id,
+                                    'filters' => $filters,
+                                ])
+                                <!-- ================== end Role filter =============================== -->
+                                <!-- ================== end Role filter =============================== -->
+                                {{-- End Custom Filters --}}
+                            </x-table-filter>
+                            <!--end::Filter-->
+
+
+                            <a href="#" class="btn btn-primary m-1" data-toggle="modal"
+                                data-target="#modal-overlay">{{ __('warehouse::view.add_dock') }}</a>
+
+                            <!--end::Add user-->
+                        </div>
+                        <!--end::Toolbar-->
+
+                        <!--begin::Group actions-->
+                        @include('adminLte.components.modules.datatable.columns.checkbox-actions', [
+                            'table_id' => $table_id,
+                            //                    'permission' => 'delete-packages',
+                            'url' => fr_route('docks.multi-destroy'),
+                            'callback' => 'reload-table',
+                            'model_name' => __('warehouse::view.selected_docks'),
+                        ])
+                        <!--end::Group actions-->
+
+                    </div>
+                    <!--end::Card toolbar-->
+                </div>
+                <!--end::Card header-->
+
+
+                <!--begin::Card body-->
+                <div class="card-body pt-6">
+
+                    <!--begin::Table-->
+                    {{ $dataTable->table() }}
+                    <!--end::Table-->
+
+
+                </div>
+                <!--end::Card body-->
+
             </div>
-            <!-- /.modal-content -->
+
         </div>
-        <!-- /.modal-dialog -->
+
+        {{-- Start Create Modal --}}
+        <div class="modal fade" id="modal-overlay">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div id="preloader" class="overlay" style="display: none;">
+                        <i class="fas fa-2x fa-sync fa-spin"></i>
+                    </div>
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-overlay-title">{{ __('warehouse::view.create_new_Dock') }}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!--begin::Form-->
+                    <div class="custom-modal-body">
+                        <form id="form_body" action="{{ fr_route('Docks.store') }}" method="post"
+                            enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <!--begin::Card body-->
+                                <div class="card-body border-top p-9">
+                                    @include('warehouse::adminLte.pages.Docks.form', [
+                                        'typeForm' => 'create',
+                                    ])
+                                </div>
+                                <!--end::Card body-->
+
+                            </div>
+                            <div class="modal-footer justify-content-navbar">
+                                <button type="button" class="btn btn-custom-discard"
+                                    data-dismiss="modal">@lang('view.discard')</button>
+                                <button type="button" class="btn btn-custom-save"
+                                    id="form_submit">@lang('view.create')</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--end::Form-->
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        {{-- End Create Modal --}}
     </div>
-    <!-- /.modal -->
-
-
 @endsection
 
 
 @section('toolbar-btn')
     <!--begin::Button-->
-    {{--     <a href="{{ fr_route('users.create') }}" class="btn btn-sm btn-primary">Create <i class="ms-2 fas fa-plus"></i> </a>--}}
+    {{--     <a href="{{ fr_route('users.create') }}" class="btn btn-sm btn-primary">Create <i class="ms-2 fas fa-plus"></i> </a> --}}
     <!--end::Button-->
 @endsection
 
@@ -155,13 +356,13 @@
 @section('scripts')
     <script src="{{ asset('assets/lte/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     {{ $dataTable->scripts() }}
-    <script>
 
+    <script>
         let url;
         $(document).ready(function() {
-            $('#{{$table_id}} tbody').on('click', 'tr', function() {
+            $('#{{ $table_id }} tbody').on('click', 'tr', function() {
                 // Remove color from all rows
-                $('#{{$table_id}} tbody tr').css('background-color', '').css('color', '');
+                $('#{{ $table_id }} tbody tr').css('background-color', '').css('color', '');
 
                 // Apply color only to the clicked row
                 var item = $(this);
@@ -174,7 +375,7 @@
                 }
             });
 
-            $('#{{$table_id}} tbody').on('dblclick', 'tr', function() {
+            $('#{{ $table_id }} tbody').on('dblclick', 'tr', function() {
                 if (url) {
                     // $.ajax({
                     //     url: url, // Adjust the endpoint as needed
@@ -188,11 +389,11 @@
                     //         console.error("Failed to fetch models.");
                     //     }
                     // });
-                    window.location=url;
+                    window.location = url;
                 }
             });
 
-            $('#make-select').on('change', function () {
+            $('#make-select').on('change', function() {
                 const makeId = $(this).val();
 
                 if (makeId) {
@@ -200,13 +401,13 @@
                     $.ajax({
                         url: `/get-models/${makeId}`, // Adjust the endpoint as needed
                         type: 'GET',
-                        success: function (data) {
+                        success: function(data) {
                             // Clear old data in the model-select dropdown
                             $('#model-select').empty();
 
                             // Append new options to model-select
-                            {{--$('#model-select').append('<option>{{ __('warehouse::view.table.choose_model') }}</option>');--}}
-                            data.models.forEach(function (model) {
+                            {{-- $('#model-select').append('<option>{{ __('warehouse::view.table.choose_model') }}</option>'); --}}
+                            data.models.forEach(function(model) {
                                 $('#model-select').append(
                                     `<option value="${model.id}">${model.name}</option>`
                                 );
@@ -215,42 +416,43 @@
                             // Refresh Select2 to show updated options
                             // $('#model-select').select2();
                         },
-                        error: function () {
+                        error: function() {
                             console.error("Failed to fetch models.");
                         }
                     });
                 } else {
                     // Clear model-select if no make is selected
-                    $('#model-select').empty().append('<option>{{ __('warehouse::view.table.choose_model') }}</option>').select2();
+                    $('#model-select').empty().append(
+                        '<option>{{ __('warehouse::view.table.choose_model') }}</option>').select2();
                 }
             });
-            $('#pull_info').on('click',function (){
+            $('#pull_info').on('click', function() {
                 var vin = $('#vin_input').val();
 
-                if (vin === ''||vin === null || typeof vin === "undefined"){
+                if (vin === '' || vin === null || typeof vin === "undefined") {
                     Toast.fire({
                         icon: 'error',
                         title: 'VIN is required'
                     })
-                }else {
+                } else {
                     $.ajax({
                         url: `/pull-Dock-info/${vin}`, // Adjust the endpoint as needed
                         type: 'GET',
-                        beforeSend: function () {
+                        beforeSend: function() {
                             // Show preloader before the request starts
                             $('#preloader').show();
                         },
-                        success: function (data) {
-                            if(data['value']===1){
+                        success: function(data) {
+                            if (data['value'] === 1) {
                                 $('.Dock_type').html(data['type_view'])
                                 $('.Dock_info').html(data['Dock_view'])
                             }
 
                         },
-                        error: function () {
+                        error: function() {
                             console.error("Failed to fetch models.");
                         },
-                        complete: function () {
+                        complete: function() {
                             // Hide preloader after the request completes
                             $('#preloader').hide();
                         }
@@ -261,7 +463,7 @@
 
             /* ============> Submit form <======================== */
 
-            $('#form_submit').on('click', function (e) {
+            $('#form_submit').on('click', function(e) {
                 e.preventDefault(); // Prevent default form submission
 
                 let formData = new FormData($('#form_body')[0]); // Gather form data
@@ -272,7 +474,7 @@
                     data: formData,
                     processData: false, // Required for FormData
                     contentType: false, // Required for FormData
-                    success: function (response) {
+                    success: function(response) {
                         // Handle success response
                         if (response.success) {
                             Toast.fire({
@@ -291,7 +493,7 @@
                             alert('Failed to create Dock. Please try again.');
                         }
                     },
-                    error: function (xhr) {
+                    error: function(xhr) {
                         // Handle error response
                         alert('An error occurred. Please try again.');
                         console.error(xhr.responseText); // Log error for debugging
@@ -300,9 +502,52 @@
             });
 
         });
-
-
     </script>
 
-@endsection
+    {{-- Start Open New Tab on double click --}}
+    <script>
+        let tabCount = 3;
 
+        // Event listener for row double-clicks to create a new detail tab
+        $('table').on('dblclick', 'tr', function() {
+            const item = $(this).find('td:first').text();
+            const details = $(this).find('td:last').text();
+            const tabId = `tab${tabCount}`;
+
+            // Add new tab to the navigation with a close button
+            $('#mainTab').append(`
+                <li class="nav-item custom-title ml-2" role="presentation" id="${tabId}-tab-container">
+                <a class="nav-link border-0 text-dark" id="${tabId}-tab" data-bs-toggle="tab" href="#${tabId}" role="tab">
+                    ${item} <button type="button" class="btn-close ms-2 p-0 btn btn-sm btn-light" aria-label="Close"><i class="fa-solid fa-xmark text-danger"></i></button>
+                </a>
+                </li>
+            `);
+
+            // Add new tab content
+            $('#tabContent').append(`
+                <div class="tab-pane fade" id="${tabId}" role="tabpanel">
+                <h5 class="mt-3">Details for ${item}</h5>
+                <p>${details}</p>
+                </div>
+            `);
+
+            // Activate the new tab
+            $(`#${tabId}-tab`).tab('show');
+            tabCount++;
+
+            // Close tab on close button click
+            $(`#${tabId}-tab-container .btn-close`).on('click', function(e) {
+                e.stopPropagation(); // Prevent the tab from activating
+                const tabPaneId = $(this).closest('.nav-item').find('.nav-link').attr('href');
+                $(tabPaneId).remove(); // Remove tab content
+                $(this).closest('.nav-item').remove(); // Remove tab header
+
+                // Show the first tab if there are no active tabs
+                if (!$('#mainTab .nav-link.active').length) {
+                    $('#mainTab .nav-link:first').tab('show');
+                }
+            });
+        });
+    </script>
+    {{-- End Open New Tab on double click --}}
+@endsection
