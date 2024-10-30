@@ -454,6 +454,10 @@ td.bg-success-400 {
     border: 3px solid gray;
 }
 
+.progress-tracking-status {
+    overflow-x: scroll;
+}
+
 
 /* End Vehicle Page Table */
 
@@ -509,6 +513,23 @@ input.form-control::placeholder,
 
 /* Start Side Menu  */
 
+.navbar-expand .navbar-nav .dropdown-menu {
+    overflow: hidden !important;
+}
+
+.navbar-expand .navbar-nav .dropdown-menu a:hover,
+.navbar-expand .navbar-nav .dropdown-menu a.active {
+    background-color: #35baf6 !important;
+}
+
+a.nav-link.form-control.btn.btn-primary.text-white {
+    background-color: #35baf6 !important;
+}
+
+a[data-toggle="modal"] {
+    background-color: #35baf6 !important;
+}
+
 .sidebar {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -535,8 +556,9 @@ input.form-control::placeholder,
 }
 
 .nav-sidebar .nav-item>.nav-link i {
-    width: 44px;
+    width: 55px;
     text-align: center;
+    font-size: large;
 }
 
 .nav-pills .nav-link {
@@ -547,36 +569,35 @@ input.form-control::placeholder,
     border-bottom: 0;
 }
 
+aside.main-sidebar.sidebar-dark-primary.elevation-4 {
+    background-color: #32404e !important;
+}
 
-/* .main-sidebar,
-.main-sidebar::before {
+html:not([lang='ar']) .main-sidebar,
+html:not([lang='ar']) .main-sidebar::before {
     width: 220px;
-} */
+}
 
-
-/* .content-wrapper {
+html:not([lang='ar']) .content-wrapper {
     margin-left: 220px !important;
-} */
+}
 
-
-/* .main-header {
+html:not([lang='ar']) .main-header {
     margin-left: 220px !important;
-} */
+}
 
-
-/* .layout-fixed .brand-link {
+html:not([lang='ar']) .layout-fixed .brand-link {
     width: 220px !important;
-} */
+}
 
 .nav-sidebar>.nav-item {
     margin-bottom: 0;
     height: 64px;
 }
 
-
-/* .os-host-scrollbar-horizontal-hidden {
+html:not([lang='ar']) .os-host-scrollbar-horizontal-hidden {
     width: 220px !important;
-} */
+}
 
 .os-host-scrollbar-horizontal-hidden .nav-item a {
     width: 100% !important;
@@ -594,5 +615,32 @@ input.form-control::placeholder,
     opacity: transparent !important;
 }
 
+html[lang='ar'] span.svg-icon.svg-icon-1.position-absolute.ms-6 {
+    left: 0 !important;
+}
+
+@media( min-width: 760px) and ( max-width: 992px) {
+    html[lang='ar'] .main-header,
+    html[lang='ar'] .content-wrapper {
+        margin-right: 0 !important;
+    }
+}
+
 
 /* End Side Menu
+
+/* Start Navbar */
+
+.dropdown-item-navbar {
+    color: black;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 5px 15px;
+    gap: 10px;
+    width: 100%;
+    height: 30px;
+}
+
+
+/* End Navbar */

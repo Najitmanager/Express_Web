@@ -1,12 +1,12 @@
 @can('manage-users')
     {{-- {{ areActiveRoutes(['users', ['class_name' => 'show']]) }} --}}
-    <li class="nav-item   {{ areActiveRoutes(['users.index', 'users.create','users.edit'], 'menu-is-opening menu-open active') }}">
+    {{-- <li class="nav-item   {{ areActiveRoutes(['users.index', 'users.create','users.edit'], 'menu-is-opening menu-open active') }}">
         <a href="{{ fr_route('users.index') }}"
            class="nav-link {{ areActiveRoutes(['users.index', 'users.create','users.edit']) }}">
             <i class="fa-solid fa-user-gear"></i>
             <p>{{ __('users::view.users') }}</p>
         </a>
-    </li>
+    </li> --}}
 
 {{--    <li class="nav-item {{ areActiveRoutes(['users.index', 'users.create'], 'menu-is-opening menu-open active') }}">--}}
 {{--        <a href="#"--}}

@@ -125,4 +125,6 @@ return [
         'expected_arrival_date'=>'Expected Arrival Date',
         'lot'=>'Lot'
     ],
+
+    'settings'=> 'Settings',
 ];

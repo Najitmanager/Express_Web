@@ -1,11 +1,11 @@
 {{--@can('view-pages')--}}
-<li class="nav-item   {{ areActiveRoutes(['ports.index', 'ports.create','ports.edit'], 'menu-is-opening menu-open active') }}">
+{{-- <li class="nav-item   {{ areActiveRoutes(['ports.index', 'ports.create','ports.edit'], 'menu-is-opening menu-open active') }}">
     <a href="{{ fr_route('ports.index') }}"
        class="nav-link {{ areActiveRoutes(['ports.index', 'ports.create','ports.edit']) }}">
         <i class="fas fa-anchor fa-fw"></i>
         <p>{{ __('warehouse::view.ports') }}</p>
     </a>
-</li>
+</li> --}}
 
 {{--<li class="nav-item {{ areActiveRoutes(['ports.index', 'ports.create','ports.edit'], 'menu-is-opening menu-open active') }}">--}}
 {{--    <a href="#"--}}
@@ -45,13 +45,13 @@
 
 {{--@can('view-pages')--}}
 
-<li class="nav-item   {{ areActiveRoutes(['carriers.index','carriers.create','carriers.edit'], 'menu-is-opening menu-open active') }}">
+{{-- <li class="nav-item   {{ areActiveRoutes(['carriers.index','carriers.create','carriers.edit'], 'menu-is-opening menu-open active') }}">
     <a href="{{ fr_route('carriers.index') }}"
        class="nav-link {{ areActiveRoutes(['carriers.index','carriers.create','carriers.edit']) }}">
         <i class="fas fa-ship fa-fw"></i>
         <p>{{ __('warehouse::view.carriers') }}</p>
     </a>
-</li>
+</li> --}}
 
 {{--<li class="nav-item {{ areActiveRoutes(['carriers.index','carriers.create','carriers.edit'], 'menu-is-opening menu-open active') }}">--}}
 {{--    <a href="#"--}}
@@ -91,13 +91,13 @@
 
 {{--@can('view-pages')--}}
 
-<li class="nav-item   {{ areActiveRoutes(['consignees.index', 'consignees.create','consignees.edit'], 'menu-is-opening menu-open active') }}">
+{{-- <li class="nav-item   {{ areActiveRoutes(['consignees.index', 'consignees.create','consignees.edit'], 'menu-is-opening menu-open active') }}">
     <a href="{{ fr_route('consignees.index') }}"
        class="nav-link {{ areActiveRoutes(['consignees.index', 'consignees.create','consignees.edit']) }}">
         <i class="fa-solid fa-store"></i>
         <p>{{ __('warehouse::view.consignees') }}</p>
     </a>
-</li>
+</li> --}}
 
 {{--<li class="nav-item {{ areActiveRoutes(['consignees.index', 'consignees.create','consignees.edit'], 'menu-is-opening menu-open active') }}">--}}
 {{--    <a href="#"--}}

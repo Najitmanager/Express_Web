@@ -1,11 +1,11 @@
 @admin
-<li class="nav-item   {{ areActiveRoutes(['roles.index', 'roles.create','roles.edit'], 'menu-is-opening menu-open active') }}">
+{{-- <li class="nav-item   {{ areActiveRoutes(['roles.index', 'roles.create','roles.edit'], 'menu-is-opening menu-open active') }}">
     <a href="{{ fr_route('roles.index') }}"
        class="nav-link {{ areActiveRoutes(['roles.index', 'roles.create','roles.edit']) }}">
         <i class="fa-solid fa-user-lock"></i>
         <p>{{ __('acl::view.roles') }}</p>
     </a>
-</li>
+</li> --}}
 
 {{--<li class="nav-item {{ areActiveRoutes(['roles.index' , 'roles.create'],'menu-is-opening menu-open active') }}">  --}}
 {{--    <a href="#" class="nav-link  {{ areActiveRoutes(['roles.index' , 'roles.create'],'menu-is-opening menu-open active') }}">--}}

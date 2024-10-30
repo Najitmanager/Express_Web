@@ -15,7 +15,7 @@
         {{-- end page title --}}
 
         <div class="row px-3">
-            <div class="col-md-3">
+            <div class="col-lg-3 col-md-4">
 
                 {{-- Vehicle Info --}}
                 <div class="card  vehicle-detail-card  mb-0 ">
@@ -65,7 +65,7 @@
 
             </div>
 
-            <div class="col-md-9">
+            <div class="col-lg-9 col-md-8">
                 <div class="row">
 
                     <div class="col-md-12">
@@ -78,10 +78,10 @@
                                 </span>
                             </div>
 
-                            <div class="card-body p-0 pb-0 pt-0">
+                            <div class="card-body p-0 pb-0 pt-0 progress-tracking-status">
                                 <div id="panel-2418-body" data-ref="body"
                                     class="x-panel-body x-panel-body-default x-panel-body-default x-scroller x-noborder-t x-panel-default-outer-border-rbl"
-                                    role="presentation" style="overflow: auto hidden; width: 1080px; height: 106px;left: 0px; top: 44px;">
+                                    role="presentation" style="overflow: hidden; width: 1080px; height: 106px;left: 0px; top: 44px;">
                                     <div id="panel-2418-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt"
                                         role="presentation" style="width: 100%; height: 100%;">
                                         <div id="panel-2418-innerCt" data-ref="innerCt" style="" role="presentation"

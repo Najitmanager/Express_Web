@@ -1,7 +1,7 @@
 @csrf
 
 
-<div class="row mb-6">
+<div class="row">
     <!--begin::Input group -- Company Name -->
     <!--begin::Input group-->
     <div class="col-lg-4 fv-row">
@@ -116,7 +116,7 @@
 </div>
 
 
-<div class="row mb-6">
+<div class="row">
     <!--begin::Input group -- City -->
     <!--begin::Input group-->
     <div class="col-lg-4 fv-row">
@@ -207,8 +207,8 @@
         <h3 class="card-title" style="color: #ffffff;">{{ __('warehouse::view.login_credentials') }}</h3>
     </div>
 
-    <div class="card-body" style="background-color: #f6f6f6">
-        <div class="row mb-6">
+    <div class="card-body px-5" style="background-color: #f6f6f6">
+        <div class="row">
             <!--begin::Input group -- Email -->
             <div class="col-lg-6 fv-row">
                 <!--begin::Label-->
