@@ -8,19 +8,19 @@
         <ul class="nav nav-tabs table-header card-header justify-content-start" id="mainTab" role="tablist">
             <li class="nav-item custom-title" role="presentation">
                 <a class="nav-link text-dark border-0 active" id="tab1-tab" data-bs-toggle="tab" href="#tab1" role="tab">
-                    <i class="fa-solid fa-file"></i>{{ __('warehouse::view.docks') }}
+                    <i class="fa-solid fa-file me-2"></i>{{ __('warehouse::view.docks') }}
                 </a>
             </li>
             <li class="nav-item custom-title ms-2" role="presentation">
                 <a class="nav-link text-dark border-0" id="tab2-tab" data-bs-toggle="tab" href="#tab2"
                     role="tab">
-                    <i class="fa-solid fa-file"></i> Load Plans
+                    <i class="fa-solid fa-file me-2"></i> Load Plans
                 </a>
             </li>
             <li class="nav-item custom-title ms-2" role="presentation">
                 <a class="nav-link text-dark border-0" id="tab3-tab" data-bs-toggle="tab" href="#tab3"
                     role="tab">
-                    <i class="fa-solid fa-list"></i> Booking
+                    <i class="fa-solid fa-list me-2"></i> Booking
                 </a>
             </li>
         </ul>
