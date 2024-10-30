@@ -21,8 +21,8 @@ class VehicleResource extends JsonResource
             'name'=>$this->name,
             'vin'=>$this->vin,
             'photos_count'=>!is_null($this->photos)?count($this->photos):0,
-            'color'=>$this->when($this->color,$this->color->name),
-            'color_value'=>'#ffffff',
+            'color'=>!is_null($this->color)?$this->color->name:'---------',
+            'color_value'=>!is_null($this->color)?$this->color->value:'',
             'expected_arrival_date'=>$this->expected_arrival_date,
             'arrival_date'=>optional($this->workflow)->arrival_date,
             'client'=>[

@@ -227,7 +227,7 @@ class CustomersDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'clients_'.date('YmdHis');
+        return 'customers_'.date('YmdHis');
     }
 
 

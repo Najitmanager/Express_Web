@@ -90,7 +90,7 @@ class VehicleDataTable extends DataTable
                 return optional($model->port)->name;
             })
             ->editColumn('photos', function (Vehicle $model) {
-                return 0;
+                return $model->total_photos_no;
             })
 
             ->editColumn('created_at', function (Vehicle $model) {
@@ -117,7 +117,7 @@ class VehicleDataTable extends DataTable
      */
     public function query(Vehicle $model, Request $request)
     {
-        $query = $model->newQuery();
+        $query = $model->where('branch_id',app('hook')->get('warehouse')->id)->newQuery();
 
         // class filter for user only
         $user_filter = new PortFilter($query, $request);
@@ -193,7 +193,7 @@ class VehicleDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Truck_Companies_'.date('YmdHis');
+        return 'Vehicles_'.date('YmdHis');
     }
 
 
