@@ -66,10 +66,13 @@ class VehicleDataTable extends DataTable
                 $query->orderBy('vin', $order);
             })
             ->orderColumn('color', function ($query, $order) {
-                $query->color->orderBy('name', $order);
+                $query->join('colors', 'vehicles.color_id', '=', 'colors.id')
+                    ->orderBy('colors.name', $order);
+
             })
             ->orderColumn('port', function ($query, $order) {
-                $query->port->orderBy('name', $order);
+                $query->join('ports', 'vehicles.port_id', '=', 'ports.id')
+                    ->orderBy('ports.name', $order);
             })
 
             ->editColumn('id', function (Vehicle $model) {

@@ -20,6 +20,8 @@ class StoreRequest extends FormRequest
             'color_id' => 'required|integer|exists:colors,id',
             'model_id' => 'required|integer|exists:models,id',
             'year'=>'required|integer|digits:4',
+            'price'=>'required|integer|digits_between:1,2',
+            'weight'=>'required|integer|digits_between:1,2',
             'client_id' => 'required|integer|exists:clients,id',
             'port_id' => 'required|integer|exists:ports,id',
             'expected_arrival_date'=>'sometimes|date',

@@ -6,14 +6,32 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Cargo\Entities\Branch;
 use Modules\Cargo\Entities\Client;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Vehicle extends Model
+class Vehicle extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
 
     protected $fillable = [];
     protected  $guarded = [];
 
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('main')->singleFile();
+        $this->addMediaCollection('bill_of_lading')->singleFile();
+        $this->addMediaCollection('photos');
+        $this->addMediaCollection('titles');
+        $this->addMediaCollection('keys');
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('preview')->fit(Manipulations::FIT_CROP, 300, 300)->nonQueued();
+    }
     protected static function newFactory()
     {
         return \Modules\Warehouse\Database\factories\VehicleFactory::new();
@@ -42,6 +60,10 @@ class Vehicle extends Model
         return $this->belongsTo(Branch::class);
     }
     public function color(){
-        return $this->belongsTo(Color::class);
+        return $this->belongsTo(Color::class,'color_id');
+    }
+    public function workflow()
+    {
+        return $this->hasOne(Workflow::class,'vehicle_id');
     }
 }

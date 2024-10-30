@@ -99,7 +99,7 @@ class VehicleController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $vehicle = Vehicle::create($data = \Arr::except($request->validated(), ['make_id'])+['branch_id'=>app('hook')->get('warehouse')->id]);
+        $vehicle = Vehicle::create(\Arr::except($request->validated(), ['make_id'])+['branch_id'=>app('hook')->get('warehouse')->id]);
         return response()->json(['success'=>true]);
     }
 
