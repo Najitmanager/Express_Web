@@ -22,6 +22,10 @@ class Shipment extends Model implements HasMedia
     protected $guarded = [];
     protected $table = 'shipments';
 
+    const NEW_STATUS = 15; // Define the constant here
+    const IN_INVENTORY_STATUS = 50;
+    const SHIPPED_STATUS = 20;
+    
     //Shipment Types
     const PICKUP = 1;
     const DROPOFF = 2;

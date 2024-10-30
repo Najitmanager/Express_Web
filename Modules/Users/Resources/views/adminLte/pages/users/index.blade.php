@@ -91,7 +91,7 @@
 
 
         <!--begin::Card body-->
-        <div class="card-body pt-6">
+        <div class="card-body pt-0">
 
             <!--begin::Table-->
             {{ $dataTable->table() }}

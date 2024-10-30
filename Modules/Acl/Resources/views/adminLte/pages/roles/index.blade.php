@@ -21,7 +21,7 @@
 
 
         <!--begin::Card header-->
-        <div class="card-header border-0 pt-6">
+        <div class="card-header border-0 pt-0">
             <!--begin::Card title-->
             <div class="card-title">
 

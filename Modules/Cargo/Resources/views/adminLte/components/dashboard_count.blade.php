@@ -1,4 +1,4 @@
-@php
+{{-- @php
     $user_role = auth()->user()->role;
     $admin  = 1;
     $staff  = 0;
@@ -30,7 +30,7 @@
 
 @endphp
 
-@if($user_role == $admin || auth()->user()->can('manage-branches'))
+@if ($user_role == $admin || auth()->user()->can('manage-branches'))
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-info">
@@ -47,8 +47,8 @@
     <!-- ./col -->
 @endif
 
-@if(in_array($user_role ,[$admin,$branch]) || auth()->user()->can('manage-staffs'))
-    <div class= @if($user_role == $admin)"col-xl-3 col-6" @else "col-xl-4 col-6"@endif >
+@if (in_array($user_role, [$admin, $branch]) || auth()->user()->can('manage-staffs'))
+    <div class= @if ($user_role == $admin)"col-xl-3 col-6" @else "col-xl-4 col-6"@endif >
         <!-- small box -->
         <div class="small-box bg-success">
             <div class="inner">
@@ -64,8 +64,8 @@
     <!-- ./col -->
 @endif
 
-@if(in_array($user_role ,[$admin,$branch]) || auth()->user()->can('manage-customers'))
-    <div class= @if($user_role == $admin)"col-xl-3 col-6" @else "col-xl-4 col-6"@endif>
+@if (in_array($user_role, [$admin, $branch]) || auth()->user()->can('manage-customers'))
+    <div class= @if ($user_role == $admin)"col-xl-3 col-6" @else "col-xl-4 col-6"@endif>
         <!-- small box -->
         <div class="small-box bg-warning">
             <div class="inner">
@@ -81,8 +81,8 @@
     <!-- ./col -->
 @endif
 
-@if(in_array($user_role ,[$admin,$branch]) || auth()->user()->can('manage-drivers'))
-    <div class= @if($user_role == $admin)"col-xl-3 col-6" @else "col-xl-4 col-6"@endif>
+@if (in_array($user_role, [$admin, $branch]) || auth()->user()->can('manage-drivers'))
+    <div class= @if ($user_role == $admin)"col-xl-3 col-6" @else "col-xl-4 col-6"@endif>
         <!-- small box -->
         <div class="small-box bg-danger">
             <div class="inner">
@@ -98,7 +98,7 @@
     <!-- ./col -->
 @endif
 
-@if($user_role == $admin || auth()->user()->can('manage-missions') || auth()->user()->can('manage-shipments'))
+@if ($user_role == $admin || auth()->user()->can('manage-missions') || auth()->user()->can('manage-shipments'))
 
     @php
         $all_shipments       = Modules\Cargo\Entities\Shipment::count();
@@ -417,4 +417,143 @@
         </div>
         <!--end::Stats Widget 30-->
     </div>
-@endif
+@endif --}}
+
+
+
+
+
+<div class="col-md-4 mb-2">
+    <!-- small box -->
+    <div class="custom-dashboard-widget custom-bg-danger">
+        <img src="https://express.nejoum.net/resources/workflow-icons/icons8-new-80.png" alt="">
+        <div class="widget-text text-center" style="margin-inline-end: 24%;">
+            <h1 class="m-0 text-light">1219</h1>
+            <h6 class="text-light">New Vehicles</h6>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 mb-2">
+    <div class="custom-dashboard-widget custom-bg-warning">
+        <img src="https://express.nejoum.net/resources/workflow-icons/icons8-warehouse-100.png" alt="">
+        <div class="widget-text text-center" style="margin-inline-end: 24%;">
+            <h1 class="m-0 text-dark">656</h1>
+            <h6 class="text-dark">In Warehouse</h6>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-4 mb-2">
+    <div class="custom-dashboard-widget custom-bg-blue">
+        <img src="https://express.nejoum.net/resources/workflow-icons/icons8-sent-200.png" alt="">
+        <div class="widget-text text-center" style="margin-inline-end: 24%;">
+            <h1 class="m-0 text-light">1657</h1>
+            <h6 class="text-light">Shipped</h6>
+        </div>
+    </div>
+</div>
+<!-- ./col -->
+<div class="col-md-12">
+    <div class="card  vehicle-detail-card">
+
+        <div class="vehicle-card-header">
+            <span class="custom-title text-light">
+                Arrived & Shipped Vehicles each month
+            </span>
+        </div>
+
+        <div class="card-body p-0 pb-0 pt-0 border-1">
+            <div class="chart">
+                <div class="chartjs-size-monitor">
+                    <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                    </div>
+                </div>
+                <canvas id="barChart"
+                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 861px;"
+                    width="861" height="250" class="chartjs-render-monitor"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+@section('scripts')
+    <script>
+        $(function() {
+            /* ChartJS
+             * -------
+             * Here we will create a few charts using ChartJS
+             */
+
+
+            var areaChartData = {
+                labels: ['01-30 Oct, 2024', 'Sep 2024', 'Aug 2024', 'Jul 2024', 'Jun 2024', 'May 2024',
+                    'Apr 2024', 'Mar 2024', 'Feb 2024', 'Jan 2024', 'Dec 2023', 'Nov 2023', 'Oct 2023'
+                ],
+                datasets: [{
+                        label: 'Shipped',
+                        backgroundColor: '#417fb8',
+                        borderColor: '#417fb8',
+                        pointRadius: false,
+                        pointColor: '#3b8bba',
+                        pointStrokeColor: '#24639d',
+                        pointHighlightFill: '#fff',
+                        pointHighlightStroke: '#24639d',
+                        data: [1700, 1400, 2000, 1800, 2200, 2300, 2200, 2550, 2530, 2500, 1990, 2020, 2300]
+                    },
+                    {
+                        label: 'Arrived',
+                        backgroundColor: '#a9be3b',
+                        borderColor: '#a9be3b',
+                        pointRadius: false,
+                        pointColor: '#a9be3b',
+                        pointStrokeColor: '#a9be3b',
+                        pointHighlightFill: '#fff',
+                        pointHighlightStroke: '#a9be3b',
+                        data: [1600, 1500, 1800, 1300, 2400, 1800, 2800, 2150, 2030, 2100, 1790, 2320, 2400]
+
+                    },
+                ],
+                options: {
+                    scales: {
+                        xAxes: [{
+                            font: {
+                                style: 'normal' // or 'bold' if you want bold labels
+                            }
+                        }]
+                    }
+                }
+            }
+
+            //-------------
+            //- BAR CHART -
+            //-------------
+            var barChartCanvas = $('#barChart').get(0).getContext('2d')
+            var barChartData = $.extend(true, {}, areaChartData)
+            var temp0 = areaChartData.datasets[0]
+            var temp1 = areaChartData.datasets[1]
+            barChartData.datasets[0] = temp1
+            barChartData.datasets[1] = temp0
+
+            var barChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                datasetFill: false
+            }
+
+            new Chart(barChartCanvas, {
+                type: 'bar',
+                data: barChartData,
+                options: barChartOptions
+            })
+
+
+        })
+    </script>
+@endsection

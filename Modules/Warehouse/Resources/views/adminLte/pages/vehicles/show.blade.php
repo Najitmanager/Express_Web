@@ -257,7 +257,7 @@
                         <div class="btn-group" role="group" aria-label="Actions">
                             <button type="button" class="btn btn-light btn-sm px-4 rounded-0" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <i class="fa-solid fa-bars text-success"></i> __('view.action')
+                                <i class="fa-solid fa-bars text-success"></i> {{__('view.action')}}
                             </button>
                             <div class="dropdown-menu custom-drodown-content" aria-labelledby="dropdownMenuButton">
                                 <div class="vehicle-page-dropdown">
@@ -372,7 +372,7 @@
                         <div class="d-inline-flex ml-auto gap-2">
                             <div class="">
                                 <button type="button" class="btn btn-light btn-sm px-4 rounded-0">
-                                    <i class="fa-solid fa-plus text-success"></i> Add Photo
+                                    <i class="fa-solid fa-plus text-success"></i> <span class="d-none d-md-block">Add Photo</span>
                                 </button>
                             </div>
 
@@ -380,7 +380,7 @@
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <button type="button" class="btn btn-light btn-sm px-4 rounded-0"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa-regular fa-image text-success"></i> Set Photo Type
+                                        <i class="fa-regular fa-image text-success"></i><span class="d-none d-md-block"> Set Photo Type</span>
                                     </button>
                                     <div class="dropdown-menu custom-drodown-content"
                                         aria-labelledby="dropdownMenuButton">
@@ -410,7 +410,7 @@
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <button type="button" class="btn btn-light btn-sm px-4 rounded-0"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa-solid fa-bars text-success"></i> {{ __('view.action') }}
+                                        <i class="fa-solid fa-bars text-success"></i> <span class="d-none d-md-block">{{ __('view.action') }}</span>
                                     </button>
                                     <div class="dropdown-menu custom-drodown-content"
                                         aria-labelledby="dropdownMenuButton">
