@@ -74,6 +74,7 @@ class VehicleController extends Controller
             'date' => 'required|date|after_or_equal:today',
         ]);
         $vehicle = Vehicle::findOrFail($id);
+        $vehicle->update(['status' => 1]);
         $vehicle->workflow()->updateOrCreate(['arrival_date'=>$request->date]);
         return (new VehicleResource($vehicle))->additional(['status' => 'success', 'message' => 'Update Successfully.']);
     }

@@ -238,3 +238,13 @@
 </li>
 
 {{--@endcan--}}
+{{--@can('view-pages')--}}
+<li class="nav-item   {{ areActiveRoutes(['docks.index', 'docks.create','docks.edit'], 'menu-is-opening menu-open active') }}">
+    <a href="{{ fr_route('docks.index') }}"
+       class="nav-link {{ areActiveRoutes(['docks.index', 'docks.create','docks.edit']) }}">
+        <i class="fa-solid fa-file-alt fa-fw"></i>
+        <p>{{ __('warehouse::view.docks') }}</p>
+    </a>
+</li>
+
+{{--@endcan--}}

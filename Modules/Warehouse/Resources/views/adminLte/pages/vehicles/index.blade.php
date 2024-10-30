@@ -75,9 +75,9 @@
                 @include('adminLte.components.modules.datatable.columns.checkbox-actions', [
                     'table_id' => $table_id,
                     //                    'permission' => 'delete-packages',
-                    'url' => fr_route('customers.multi-destroy'),
+                    'url' => fr_route('vehicles.multi-destroy'),
                     'callback' => 'reload-table',
-                    'model_name' => __('warehouse::view.selected_customers'),
+                    'model_name' => __('warehouse::view.selected_vehicles'),
                 ])
                 <!--end::Group actions-->
 
@@ -158,24 +158,7 @@
     <script src="{{ asset('assets/lte/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     {{ $dataTable->scripts() }}
     <script>
-        function update_customer_active(el){
-            var id = $(el).data('row-id');
-            if(el.checked){
-                var active = 1;
-            }
-            else{
-                var active = 0;
-            }
 
-            $.post('{{ route('customers.update_active') }}', {_token:'{{ csrf_token() }}', id:id, active:active}, function(data){
-                if(data == 1){
-                    Swal.fire("{{ __('currency::messages.saved') }}", "", "");
-                }
-                else{
-                    Swal.fire("{{ __('currency::messages.something_wrong') }}", "", "");
-                }
-            });
-        }
         let url;
         $(document).ready(function() {
             $('#{{$table_id}} tbody').on('click', 'tr', function() {

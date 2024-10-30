@@ -77,6 +77,20 @@ Route::get('test', function () {
             Route::post('/vehicles/upload_files/{id}', 'VehicleController@upload_files')->name('vehicles.upload_files');
             Route::delete('media-vehicles/{vehicle_id}/destroy/{id}', 'VehicleController@destroyMedia')->name('vehicles.media.destroy');
 
+            // bookings
+            Route::resource('/bookings', 'BookingController')->parameters(['bookings' => 'id']);
+            Route::get('/bookings-search', 'BookingController@searchPages')->name('bookings.search');
+            Route::get('/static-bookings-search', 'BookingController@searchStaticPages')->name('static_bookings.search');
+            Route::post('/bookings/upload_files/{id}', 'BookingController@upload_files')->name('bookings.upload_files');
+            Route::delete('media-bookings/{booking_id}/destroy/{id}', 'BookingController@destroyMedia')->name('bookings.media.destroy');
+
+            // docks
+            Route::resource('/docks', 'DockReceiptController')->parameters(['docks' => 'id']);
+            Route::get('/docks-search', 'DockReceiptController@searchPages')->name('docks.search');
+            Route::get('/static-docks-search', 'DockReceiptController@searchStaticPages')->name('static_docks.search');
+            Route::post('/docks/upload_files/{id}', 'DockReceiptController@upload_files')->name('docks.upload_files');
+            Route::delete('media-docks/{dock_id}/destroy/{id}', 'DockReceiptController@destroyMedia')->name('docks.media.destroy');
+
 
             // ============> General Settings <======================
             Route::group(['prefix'=>'warehouse'],function (){
