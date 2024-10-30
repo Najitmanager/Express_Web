@@ -506,48 +506,48 @@
 
     {{-- Start Open New Tab on double click --}}
     <script>
-        let tabCount = 3;
+        // let tabCount = 3;
 
         // Event listener for row double-clicks to create a new detail tab
-        $('table').on('dblclick', 'tr', function() {
-            const item = $(this).find('td:first').text();
-            const details = $(this).find('td:last').text();
-            const tabId = `tab${tabCount}`;
+        // $('table').on('dblclick', 'tr', function() {
+        //     const item = $(this).find('td:first').text();
+        //     const details = $(this).find('td:last').text();
+        //     const tabId = `tab${tabCount}`;
 
             // Add new tab to the navigation with a close button
-            $('#mainTab').append(`
-                <li class="nav-item custom-title ml-2" role="presentation" id="${tabId}-tab-container">
-                <a class="nav-link border-0 text-dark" id="${tabId}-tab" data-bs-toggle="tab" href="#${tabId}" role="tab">
-                    ${item} <button type="button" class="btn-close ms-2 p-0 btn btn-sm btn-light" aria-label="Close"><i class="fa-solid fa-xmark text-danger"></i></button>
-                </a>
-                </li>
-            `);
+            // $('#mainTab').append(`
+            //     <li class="nav-item custom-title ml-2" role="presentation" id="${tabId}-tab-container">
+            //     <a class="nav-link border-0 text-dark" id="${tabId}-tab" data-bs-toggle="tab" href="#${tabId}" role="tab">
+            //         ${item} <button type="button" class="btn-close ms-2 p-0 btn btn-sm btn-light" aria-label="Close"><i class="fa-solid fa-xmark text-danger"></i></button>
+            //     </a>
+            //     </li>
+            // `);
 
             // Add new tab content
-            $('#tabContent').append(`
-                <div class="tab-pane fade" id="${tabId}" role="tabpanel">
-                <h5 class="mt-3">Details for ${item}</h5>
-                <p>${details}</p>
-                </div>
-            `);
+            // $('#tabContent').append(`
+            //     <div class="tab-pane fade" id="${tabId}" role="tabpanel">
+            //     <h5 class="mt-3">Details for ${item}</h5>
+            //     <p>${details}</p>
+            //     </div>
+            // `);
 
             // Activate the new tab
-            $(`#${tabId}-tab`).tab('show');
-            tabCount++;
+            // $(`#${tabId}-tab`).tab('show');
+            // tabCount++;
 
             // Close tab on close button click
-            $(`#${tabId}-tab-container .btn-close`).on('click', function(e) {
-                e.stopPropagation(); // Prevent the tab from activating
-                const tabPaneId = $(this).closest('.nav-item').find('.nav-link').attr('href');
-                $(tabPaneId).remove(); // Remove tab content
-                $(this).closest('.nav-item').remove(); // Remove tab header
+            // $(`#${tabId}-tab-container .btn-close`).on('click', function(e) {
+            //     e.stopPropagation(); // Prevent the tab from activating
+            //     const tabPaneId = $(this).closest('.nav-item').find('.nav-link').attr('href');
+            //     $(tabPaneId).remove(); // Remove tab content
+            //     $(this).closest('.nav-item').remove(); // Remove tab header
 
                 // Show the first tab if there are no active tabs
-                if (!$('#mainTab .nav-link.active').length) {
-                    $('#mainTab .nav-link:first').tab('show');
-                }
-            });
-        });
+        //         if (!$('#mainTab .nav-link.active').length) {
+        //             $('#mainTab .nav-link:first').tab('show');
+        //         }
+        //     });
+        // });
     </script>
     {{-- End Open New Tab on double click --}}
 @endsection
