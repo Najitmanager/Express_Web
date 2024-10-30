@@ -16,109 +16,6 @@
           <img alt="Logo" src="{{ $model->getFirstMediaUrl('login_page_logo') ? $model->getFirstMediaUrl('login_page_logo') : ( $system_logo->getFirstMediaUrl('system_logo') ? $system_logo->getFirstMediaUrl('system_logo') : asset('assets/lte/cargo-logo.svg') ) }}" style="max-width: 88px;max-height: 52px;" />
         </a>
     </div>
-{{--    @if(env('DEMO_MODE') == 'On')--}}
-{{--      <div class="mb-10">--}}
-{{--        <table class="kt-form">--}}
-{{--          <tbody>--}}
-
-{{--            <tr>--}}
-{{--              <td colspan="3" style="--}}
-{{--                  text-align: left;--}}
-{{--                  background: #ffefbe;--}}
-{{--                  padding: 18px 24px;--}}
-{{--                  border: 0 none !important;--}}
-{{--                  border-radius: 8px;--}}
-{{--                  margin-bottom: 20px;--}}
-{{--                  width: 100%;--}}
-{{--                  font-size: 13px;--}}
-{{--                  color: #a87831;">--}}
-{{--                <div style="font-size: 15px !important; text-align: center !important; margin-bottom: 10px !important;">--}}
-{{--                  {{ __('view.demo_login_details') }}--}}
-{{--                </div>--}}
-{{--                {{ __('view.demo_details') }}--}}
-{{--              </td>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--              <td  colspan="3">--}}
-{{--                <br>--}}
-{{--              </td>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--              <td>--}}
-{{--                <span style="font-weight: bold; font-size: 12px">--}}
-{{--                  {{ __('view.ADMIN') }}--}}
-{{--                </span>--}}
-{{--                <br />--}}
-{{--                <span id="login_admin" style="color: #EE6517; font-size: 13px; text-decoration: underline; margin-bottom: 15px; display: block;cursor: pointer;">{{ __('view.click_to_copy') }}</span>--}}
-{{--              </td>--}}
-{{--              <td>--}}
-{{--                <span style="opacity: 0.8;">--}}
-{{--                  admin@admin.com--}}
-{{--                </span>--}}
-{{--                <br>--}}
-{{--                <span style="opacity: 0.6; font-size: 12px; margin-bottom: 15px; display: block">123456</span>--}}
-{{--              </td>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--              <td>--}}
-{{--                <span style="font-weight: bold; font-size: 12px">--}}
-{{--                {{ __('view.EMPLOYEE') }}--}}
-{{--                </span>--}}
-{{--                <br />--}}
-{{--                <span id="login_employee" style="color: #EE6517; font-size: 13px; text-decoration: underline; margin-bottom: 15px; display: block;cursor: pointer;">{{ __('view.click_to_copy') }}</span>--}}
-{{--              </td>--}}
-{{--              <td>--}}
-{{--                employee@cargo.com--}}
-{{--                <br>--}}
-{{--                <span style="opacity: 0.6; font-size: 12px; margin-bottom: 15px; display: block">123456</span>--}}
-{{--              </td>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--              <td>--}}
-{{--                <span style="font-weight: bold; font-size: 12px">--}}
-{{--                {{ __('view.BRANCH_MANAGER') }}--}}
-{{--                </span>--}}
-{{--                <br />--}}
-{{--                <span id="login_branch" style="color: #EE6517; font-size: 13px; text-decoration: underline; margin-bottom: 15px; display: block;cursor: pointer;">{{ __('view.click_to_copy') }}</span>--}}
-{{--              </td>--}}
-{{--              <td>--}}
-{{--                branch@cargo.com--}}
-{{--                <br>--}}
-{{--                <span style="opacity: 0.6; font-size: 12px; margin-bottom: 15px; display: block">123456</span>--}}
-{{--              </td>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--              <td>--}}
-{{--                <span style="font-weight: bold; font-size: 12px">--}}
-{{--                {{ __('view.DRIVER_CAPTAIN') }}--}}
-{{--                </span>--}}
-{{--                <br />--}}
-{{--                <span id="login_driver" style="color: #EE6517; font-size: 13px; text-decoration: underline; margin-bottom: 15px; display: block;cursor: pointer;">{{ __('view.click_to_copy') }}</span>--}}
-{{--              </td>--}}
-{{--              <td>--}}
-{{--                driver@cargo.com--}}
-{{--                <br>--}}
-{{--                <span style="opacity: 0.6; font-size: 12px; margin-bottom: 15px; display: block">123456</span>--}}
-{{--              </td>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--              <td>--}}
-{{--                <span style="font-weight: bold; font-size: 12px">--}}
-{{--                {{ __('view.CUSTOMER') }}--}}
-{{--                </span>--}}
-{{--                <br />--}}
-{{--                <span id="login_client" style="color: #EE6517; font-size: 13px; text-decoration: underline; margin-bottom: 15px; display: block;cursor: pointer;">{{ __('view.click_to_copy') }}</span>--}}
-{{--              </td>--}}
-{{--              <td>--}}
-{{--                client@cargo.com--}}
-{{--                <br>--}}
-{{--                <span style="opacity: 0.6; font-size: 12px; margin-bottom: 15px; display: block">123456</span>--}}
-{{--              </td>--}}
-{{--            </tr>--}}
-{{--          </tbody>--}}
-{{--        </table>--}}
-{{--      </div>--}}
-{{--    @endif--}}
     <div class="card-body">
       <h3 class="widget-title">{{ __('view.LOG_IN_TO_YOUR_ACCOUNT') }}</h3>
 
@@ -173,15 +70,7 @@
         <!--end::Link-->
       </p>
 
-{{--      @if (check_module('cargo'))--}}
-{{--      <p class="forgot-password">--}}
-{{--        <!--begin::Link-->--}}
-{{--          <a href="{{ route('register') }}">--}}
-{{--              {{ __('view.register_as_a_customer') }}--}}
-{{--          </a>--}}
-{{--        <!--end::Link-->--}}
-{{--      </p>--}}
-{{--      @endif--}}
+
     </div>
     <!-- /.card-body -->
   </div>
@@ -265,47 +154,6 @@
   }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-{{--<script type="text/javascript">--}}
-{{--    function autoFill(){--}}
-{{--        $('#email').val('admin@admin.com');--}}
-{{--        $('#password').val('123456');--}}
-{{--    }--}}
-
-
-{{--    @if(env('DEMO_MODE') == 'On')--}}
-{{--      // Class Initialization--}}
-{{--      $(document).ready(function() {--}}
-{{--        autoFill();--}}
-
-{{--        $('body').on('click','#login_admin', function(e){--}}
-{{--          $('#email').val('admin@admin.com');--}}
-{{--          $('#password').val('123456');--}}
-{{--          $('#signin_submit').trigger('click');--}}
-{{--        });--}}
-{{--        $('body').on('click','#login_employee', function(e){--}}
-{{--          $('#email').val('employee@cargo.com');--}}
-{{--          $('#password').val('123456');--}}
-{{--          $('#signin_submit').trigger('click');--}}
-{{--        });--}}
-{{--        $('body').on('click','#login_driver', function(e){--}}
-{{--          $('#email').val('driver@cargo.com');--}}
-{{--          $('#password').val('123456');--}}
-{{--          $('#signin_submit').trigger('click');--}}
-{{--        });--}}
-{{--        $('body').on('click','#login_branch', function(e){--}}
-{{--          $('#email').val('branch@cargo.com');--}}
-{{--          $('#password').val('123456');--}}
-{{--          $('#signin_submit').trigger('click');--}}
-{{--        });--}}
-{{--        $('body').on('click','#login_client', function(e){--}}
-{{--          $('#email').val('client@cargo.com');--}}
-{{--          $('#password').val('123456');--}}
-{{--          $('#signin_submit').trigger('click');--}}
-{{--        });--}}
-
-{{--      });--}}
-{{--    @endif--}}
-{{--</script>--}}
 @endsection
 
 
