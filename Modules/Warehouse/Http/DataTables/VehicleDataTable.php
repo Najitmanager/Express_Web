@@ -74,10 +74,9 @@ class VehicleDataTable extends DataTable
                 $query->join('ports', 'vehicles.port_id', '=', 'ports.id')
                     ->orderBy('ports.name', $order);
             })
-
-            ->editColumn('id', function (Vehicle $model) {
-                return '#'.$model->id;
-            })
+            // ->editColumn('id', function (Vehicle $model) {
+            //     return '#'.$model->id;
+            // })
             ->editColumn('vehicle', function (Vehicle $model) {
                 return $model->name;
             })
@@ -172,7 +171,7 @@ class VehicleDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id')->title(__('warehouse::view.table.id'))->width(50),
+            // Column::make('id')->title(__('warehouse::view.table.id'))->width(50),
             Column::make('vehicle')->title(__('warehouse::view.name')),
             Column::make('vin')->title(__('warehouse::view.vin')),
             Column::make('color')->title(__('warehouse::view.color')),

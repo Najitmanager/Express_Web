@@ -71,7 +71,7 @@ Route::get('test', function () {
             Route::delete('price-destroy/{customer_id}/{id}','CustomerController@priceStore')->name('customers.price.destroy');
 
             // vehicles
-            Route::resource('/vehicles', 'VehicleController')->parameters(['vehicles' => 'id'])->except(['show']);
+            Route::resource('/vehicles', 'VehicleController')->parameters(['vehicles' => 'id']);
             Route::get('/vehicles-search', 'VehicleController@searchPages')->name('vehicles.search');
             Route::get('/static-vehicles-search', 'VehicleController@searchStaticPages')->name('static_vehicles.search');
             Route::post('/vehicles/upload_files/{id}', 'VehicleController@upload_files')->name('vehicles.upload_files');

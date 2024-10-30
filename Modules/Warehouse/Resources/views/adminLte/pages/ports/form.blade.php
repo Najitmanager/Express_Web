@@ -4,12 +4,12 @@
 <div class="row mb-6">
     <!--begin::Label-->
     <label
-        class="col-lg-4 col-form-label @if ($typeForm == 'create') required @endif fw-bold fs-6">{{ __('warehouse::view.port_name') }}</label>
+        class="col-lg-2 col-form-label @if ($typeForm == 'create') required @endif fw-bold fs-6">{{ __('warehouse::view.port_name') }}</label>
     <!--end::Label-->
 
     <!--begin::Input group-->
-    <div class="col-lg-8 fv-row">
-        <div class="input-group mb-4">
+    <div class="col-lg-10 fv-row">
+        <div class="input-group">
             <input type="text" name="name" class="form-control form-control-lg @error('name') is-invalid @enderror"
                    placeholder="{{ __('warehouse::view.port_name') }}"
                    value="{{ old('name', isset($model) ? $model->name : '') }}"/>
@@ -28,12 +28,12 @@
 <!--begin::Input group -- Country -->
 <div class="row mb-6">
         <!--begin::Label-->
-        <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('warehouse::view.table.country') }}</label>
+        <label class="col-lg-2 col-form-label required fw-bold fs-6">{{ __('warehouse::view.table.country') }}</label>
         <!--end::Label-->
 
         <!--begin::Input group-->
-        <div class="col-lg-8 fv-row fv-row">
-            <div class="mb-4">
+        <div class="col-lg-10 fv-row fv-row">
+            <div class= select2-container">
                 <select
                     class="form-control  @error('country_id') is-invalid @enderror"
                     name="country_id"
@@ -43,7 +43,7 @@
                     id="change-country"
                 >
                     <option></option>
-                    @foreach(\Modules\Cargo\Entities\Country::all() as $country)
+                    @foreach(get_countries() as $country)
                         <option value="{{ $country->id }}"
                             {{ old('country_id') == $country->id ? 'selected' : '' }}
                         @if($typeForm == 'edit')
@@ -65,15 +65,15 @@
 
 
 <!--begin::Input group --  City -->
-<div class="row mb-6">
+<div class="row">
     <!--begin::Label-->
     <label
-        class="col-lg-4 col-form-label @if ($typeForm == 'create') required @endif fw-bold fs-6">{{ __('warehouse::view.city') }}</label>
+        class="col-lg-2 col-form-label @if ($typeForm == 'create') required @endif fw-bold fs-6">{{ __('warehouse::view.city') }}</label>
     <!--end::Label-->
 
     <!--begin::Input group-->
-    <div class="col-lg-8 fv-row">
-        <div class="input-group mb-4">
+    <div class="col-lg-10 fv-row">
+        <div class="input-group">
             <input type="text" name="city" class="form-control form-control-lg @error('city') is-invalid @enderror"
                    placeholder="{{ __('warehouse::view.city') }}"
                    value="{{ old('city', isset($model) ? $model->city : '') }}"/>

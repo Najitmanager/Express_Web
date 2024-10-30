@@ -86,7 +86,7 @@
         data-allow-clear="true"
     >
         <option></option>
-        @foreach($countries as $country)
+        @foreach(get_countries() as $country)
             <option value="{{ $country->id }}"
                 {{ old('country_id') == $country->id ? 'selected' : '' }}
             @if($typeForm == 'edit')
@@ -274,11 +274,3 @@
     </div>
 </div>
 <!--end::Input group-->
-@section('scripts')
-    <script>
-        $('#check').click(function(){
-            const type = $('#password').attr('type') === 'password' ? 'text' : 'password';
-            $('#password').prop('type', type);
-        });
-    </script>
-@stop

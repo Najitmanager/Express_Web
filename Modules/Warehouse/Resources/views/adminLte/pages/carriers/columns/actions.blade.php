@@ -1,6 +1,6 @@
 @php
     $user_role = auth()->user()->role;
-    $admin  = 1;
+    $admin = 1;
 @endphp
 
 
@@ -14,8 +14,9 @@
 
         @if (/*auth()->user()->can('edit-currencies') ||*/ $user_role == $admin)
             <div>
-                <a href="{{ fr_route('carriers.edit', $model->id) }}" class="btn btn-sm btn-action-table px-3"
-                    data-toggle="tooltip" title="{{ __('view.edit') }}">
+                <a href="#" data-href="{{ fr_route('carriers.edit', $model->id) }}" id="edit-{{ $model->id }}"
+                    class="btn btn-sm btn-action-table px-3 edit-row" data-toggle="tooltip"
+                    title="{{ __('view.edit') }}">
                     <i class="fas fa-edit fa-fw text-warning"></i> {{ __('view.edit') }}
                 </a>
             </div>
@@ -24,12 +25,9 @@
 
         {{--    @if ($model->id != 1) --}}
         <div>
-            <button type=type="button"
-            data-action="{{ fr_route('carriers.destroy', $model->id) }}"
-            data-callback="reload-table"
-            data-table-id="{{ isset($table_id) ? $table_id : '' }}"
-            data-model-name="{{ __('warehouse::view.table.carrier') }}"
-            data-time-alert="2000"
+            <button type="button" data-action="{{ fr_route('carriers.destroy', $model->id) }}"
+                data-callback="reload-table" data-table-id="{{ isset($table_id) ? $table_id : '' }}"
+                data-model-name="{{ __('warehouse::view.table.carrier') }}" data-time-alert="2000"
                 class="delete-row btn btn-sm btn-action-table btn-custom px-3" data-toggle="tooltip"
                 title="{{ __('view.delete') }}" data-modal-message="@lang('view.modal_message_delete')"
                 data-modal-action="@lang('view.delete')">
@@ -42,3 +40,23 @@
 </div>
 <!-- end: Dropdown Menu -->
 
+
+<script>
+    $(document).ready(function() {
+        $('#edit-{{ $model->id }}').on('click', function() {
+                $.ajax({
+                url: $(this).data('href'), // Adjust the endpoint as needed
+                type: 'GET',
+                success: function(data) {
+                    $('.custom-modal-body').html(data['view']);
+
+                    $('#modal-overlay-edit').modal('show');
+                },
+                error: function() {
+                    console.error("Failed to fetch models.");
+                }
+            });
+        })
+
+    });
+</script>

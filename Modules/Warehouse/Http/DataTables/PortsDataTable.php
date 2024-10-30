@@ -58,9 +58,9 @@ class PortsDataTable extends DataTable
             //     $adminTheme = env('ADMIN_THEME', 'adminLte');
             //     return view($adminTheme.'.components.modules.datatable.columns.checkbox', ['model' => $model, 'ifHide' => $model->id == 0]);
             // })
-            ->editColumn('id', function (Port $model) {
-                return '#'.$model->id;
-            })
+            // ->editColumn('id', function (Port $model) {
+            //     return '#'.$model->id;
+            // })
             ->editColumn('country', function (Port $model) {
                 return $model->country->name;
             })
@@ -154,7 +154,7 @@ class PortsDataTable extends DataTable
             //     ->responsivePriority(-1)
             //     ->addClass('not-export')
             //     ->width(50),
-            Column::make('id')->title(__('warehouse::view.table.id'))->width(50),
+            // Column::make('id')->title(__('warehouse::view.table.id'))->width(50),
             Column::make('name')->title(__('warehouse::view.name')),
             Column::make('country')->title(__('warehouse::view.country')),
             Column::make('city')->title(__('warehouse::view.city')),

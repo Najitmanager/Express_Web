@@ -50,9 +50,9 @@ class CarriersDataTable extends DataTable
             //     $adminTheme = env('ADMIN_THEME', 'adminLte');
             //     return view($adminTheme.'.components.modules.datatable.columns.checkbox', ['model' => $model, 'ifHide' => $model->id == 0]);
             // })
-            ->editColumn('id', function (Carrier $model) {
-                return '#'.$model->id;
-            })
+            // ->editColumn('id', function (Carrier $model) {
+            //     return '#'.$model->id;
+            // })
             ->addColumn('active', function (Carrier $model) {
                 $adminTheme = env('ADMIN_THEME', 'adminLte');return view('warehouse::'.$adminTheme.'.pages.carriers.columns.checkbox', ['model' => $model, 'active' => $model->active, 'ifHide' => $model->id == 0]);
             })
@@ -143,7 +143,7 @@ class CarriersDataTable extends DataTable
             //     ->responsivePriority(-1)
             //     ->addClass('not-export')
             //     ->width(50),
-            Column::make('id')->title(__('warehouse::view.table.id'))->width(50 ),
+            // Column::make('id')->title(__('warehouse::view.table.id'))->width(50 ),
             Column::make('name')->title(__('warehouse::view.name')),
             Column::make('tracking_url')->title(__('warehouse::view.tracking_url')),
             Column::make('active')->title(__('port::view.active')),
