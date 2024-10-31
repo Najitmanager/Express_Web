@@ -45,7 +45,7 @@
     </div>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto d-flex align-items-center">
 
         <!-- Navbar Search -->
         {{--        <li class="nav-item"> --}}
@@ -103,10 +103,8 @@
 
         <!-- Branch Dropdown Menu -->
         <li class="nav-item dropdown d-none d-md-block">
-            <a class="nav-link form-control btn btn-primary btn-sm text-white" data-toggle="dropdown" href="#">
-
-                <span class="mr-2">{{ app('hook')->get('warehouse')->name }}</span> <i
-                    class="fa-solid fa-chevron-down"></i>
+            <a class="nav-link form-control btn btn-primary btn-sm text-white d-flex align-items-center text-center" data-toggle="dropdown" href="#" style="height: 32px">
+                <span >{{ app('hook')->get('warehouse')->name }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right p-0">
                 @foreach (auth()->user()->branches as $branch)
@@ -121,32 +119,32 @@
         <!-- Settings Dropdown Menu -->
         <li class="nav-item dropdown d-none d-md-block">
             @if (check_module('Localization'))
-                <a class="nav-link btn btn-secondary btn-sm mx-2" data-toggle="dropdown" href="#">
+                <a class="nav-link btn btn-secondary btn-sm mx-2 d-flex align-items-center text-center" data-toggle="dropdown" href="#" style="height: 32px">
                     <i class="fa-solid fa-gear"></i>
                     {{ __('warehouse::view.settings') }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right p-0">
-                    <a class="dropdown-item-navbar" href="{{ fr_route('ports.index') }}"
+                    <a class="dropdown-item-navbar" style="color: #404040" href="{{ fr_route('ports.index') }}"
                         class="nav-link {{ areActiveRoutes(['ports.index', 'ports.create', 'ports.edit']) }}">
                         <i class="fas fa-anchor fa-fw"></i>
                         <p class="mb-0">{{ __('warehouse::view.ports') }}</p>
                     </a>
-                    <a class="dropdown-item-navbar" href="{{ fr_route('carriers.index') }}"
+                    <a class="dropdown-item-navbar" style="color: #404040" href="{{ fr_route('carriers.index') }}"
                         class="nav-link {{ areActiveRoutes(['carriers.index', 'carriers.create', 'carriers.edit']) }}">
                         <i class="fas fa-ship fa-fw"></i>
                         <p class="mb-0">{{ __('warehouse::view.carriers') }}</p>
                     </a>
-                    <a class="dropdown-item-navbar" href="{{ fr_route('consignees.index') }}"
+                    <a class="dropdown-item-navbar" style="color: #404040" href="{{ fr_route('consignees.index') }}"
                         class="nav-link {{ areActiveRoutes(['consignees.index', 'consignees.create', 'consignees.edit']) }}">
                         <i class="fa-solid fa-store"></i>
                         <p class="mb-0">{{ __('warehouse::view.consignees') }}</p>
                     </a>
-                    <a class="dropdown-item-navbar" href="{{ fr_route('users.index') }}"
+                    <a class="dropdown-item-navbar" style="color: #404040" href="{{ fr_route('users.index') }}"
                         class="nav-link {{ areActiveRoutes(['users.index', 'users.create', 'users.edit']) }}">
                         <i class="fa-solid fa-user-gear"></i>
                         <p class="mb-0">{{ __('users::view.users') }}</p>
                     </a>
-                    <a class="dropdown-item-navbar" href="{{ fr_route('roles.index') }}"
+                    <a class="dropdown-item-navbar" style="color: #404040" href="{{ fr_route('roles.index') }}"
                         class="nav-link {{ areActiveRoutes(['roles.index', 'roles.create', 'roles.edit']) }}">
                         <i class="fa-solid fa-user-lock"></i>
                         <p class="mb-0">{{ __('acl::view.roles') }}</p>
@@ -160,7 +158,7 @@
         <!-- Language Dropdown Menu -->
         <li class="nav-item dropdown">
             @if (check_module('Localization'))
-                <a class="nav-link" data-toggle="dropdown" href="#">
+                <a class="nav-link btn-sm mx-2 d-flex align-items-center text-center px-0" data-toggle="dropdown" href="#" style="height: 32px">
                     {{--                    @if (Config::get('current_lang_image')) --}}
                     <img src="{{ get_current_lang_image() }}" alt="" class="flag-icon mx-1" />
                     {{--                    @endif --}}
@@ -278,7 +276,7 @@
                 </form>
                 <div class="dropdown-divider"></div>
             </div>
-            <a class="nav-link" data-toggle="dropdown" href="#">
+            <a class="nav-link btn-sm mx-2 d-flex align-items-center text-center px-0 gap-3" data-toggle="dropdown" href="#" style="height: 32px">
                 <span class="d-none d-md-block">{{ auth()->user()->name }}</span>
                 <img src="{{ auth()->user()->getFirstMediaUrl('avatar') ? auth()->user()->getFirstMediaUrl('avatar') : asset('assets/lte/media/avatars/user-avatar.png') }}"
                     class="img-circle img-size-32 mr-2" alt="User Image">

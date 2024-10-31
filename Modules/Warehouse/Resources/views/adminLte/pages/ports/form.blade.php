@@ -1,7 +1,7 @@
 @csrf
 
 <!--begin::Input group --  name -->
-<div class="row mb-6">
+<div class="row mb-2">
     <!--begin::Label-->
     <label
         class="col-lg-2 col-form-label @if ($typeForm == 'create') required @endif fw-bold fs-6">{{ __('warehouse::view.port_name') }}</label>
@@ -26,7 +26,7 @@
 
 
 <!--begin::Input group -- Country -->
-<div class="row mb-6">
+<div class="row mb-2">
         <!--begin::Label-->
         <label class="col-lg-2 col-form-label required fw-bold fs-6">{{ __('warehouse::view.table.country') }}</label>
         <!--end::Label-->

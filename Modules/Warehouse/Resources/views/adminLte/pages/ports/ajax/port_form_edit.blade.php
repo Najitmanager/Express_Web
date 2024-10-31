@@ -3,7 +3,7 @@
     @method('PUT')
     <div class="modal-body">
         <!--begin::Card body-->
-        <div class="card-body border-top px-9">
+        <div class="card-body border-top px-5">
             @include('warehouse::adminLte.pages.ports.form', ['typeForm' => 'edit'])
         </div>
         <!--end::Card body-->

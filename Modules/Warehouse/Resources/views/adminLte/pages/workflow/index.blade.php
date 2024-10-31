@@ -5,127 +5,261 @@
     <!--begin::Card-->
     <div class="card table-card-wrapper">
 
-        <ul class="nav nav-tabs table-header card-header justify-content-start" id="mainTab" role="tablist">
-            <li class="nav-item custom-title index-btn" role="presentation" data-href="tab1">
-                <a class="nav-link text-dark border-0 active " id="tab1-tab" data-bs-toggle="tab" href="#tab1" role="tab">
-                    <i class="fa-solid fa-file-alt me-2"></i>{{ __('warehouse::view.New Vehicles') }} ({{ count(get_vehicles(0)) }})
+        <ul class="nav nav-tabs table-header card-header justify-content-start border-0" id="mainTab" role="tablist">
+            <li class="nav-item custom-title index-btn custom-bg-danger" role="presentation" data-href="tab1">
+                <a class="text-light border-0 active " id="tab1-tab" data-bs-toggle="tab" href="#tab1" role="tab">
+                    <img src="https://express.nejoum.net/resources/workflow-icons/icons8-new-80.png" width="25px"
+                        class="me-2" alt="">{{ __('warehouse::view.New Vehicles') }}
+                    ({{ count(get_vehicles(0)) }})
                 </a>
             </li>
-            <li class="nav-item custom-title ms-2 index-btn" role="presentation" data-href="tab2">
-                <a class="nav-link text-dark border-0" id="tab2-tab" data-bs-toggle="tab" href="#tab2"
-                   role="tab">
-                    <i class="fa-solid fa-file-alt me-2"></i> {{ __('warehouse::view.In Warehouse') }} ({{ count(get_vehicles(1)) }})
+            <li class="nav-item custom-title ms-2 index-btn custom-bg-warning" role="presentation" data-href="tab2">
+                <a class="text-light border-0" id="tab2-tab" data-bs-toggle="tab" href="#tab2" role="tab">
+                    <img src="https://express.nejoum.net/resources/workflow-icons/icons8-warehouse-100.png" width="25px"
+                        class="me-2" alt=""> {{ __('warehouse::view.In Warehouse') }}
+                    ({{ count(get_vehicles(1)) }})
                 </a>
             </li>
-            <li class="nav-item custom-title ms-2 index-btn" role="presentation" data-href="tab3">
-                <a class="nav-link text-dark border-0" id="tab3-tab" data-bs-toggle="tab" href="#tab3"
-                   role="tab">
-                    <i class="fa-solid fa-list me-2"></i> {{ __('warehouse::view.Shipped') }} ({{ count(get_vehicles(2)) }})
+            <li class="nav-item custom-title ms-2 index-btn custom-bg-blue" role="presentation" data-href="tab3">
+                <a class="text-light border-0" id="tab3-tab" data-bs-toggle="tab" href="#tab3" role="tab">
+                    <img src="https://express.nejoum.net/resources/workflow-icons/icons8-sent-200.png" width="25px"
+                        class="me-2" alt=""> {{ __('warehouse::view.Shipped') }} ({{ count(get_vehicles(2)) }})
                 </a>
             </li>
         </ul>
         <div id="overlay-loader" class="overlay dark" style="display: none;">
-            <i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">Loading...</div>
+            <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+            <div class="text-bold pt-2">Loading...</div>
         </div>
         <div class="tab-content" id="tabContent">
 
             <!-- Tab 1 Content -->
             <div class="tab-pane fade show active" id="tab1" role="tabpanel">
 
-                <!--begin::Card header-->
-                <div class="card-header border-0 pt-6">
-                    <!--begin::Card title-->
-                    <div class="card-title">
+                <div class="p-2 custom-bg-danger rounded-0">
 
-                        <!--begin::Search-->
-                        {{-- search table --}}
-                        @include('adminLte.components.modules.datatable.search', ['table_id' => $table_id])
-                        <!--end::Search-->
-
-                    </div>
-                    <!--begin::Card title-->
-
-                    <!--begin::Card toolbar-->
-                    <div class="card-toolbar">
-                        <!--begin::Toolbar-->
-                        <div class="d-flex flex-wrap align-items-center" id="{{ $table_id }}_custom_filter">
-                            {{-- data table length --}}
-                            @include('adminLte.components.modules.datatable.datatable_length', [
-                                'table_id' => $table_id,
-                            ])
-                            {{-- btn reload table --}}
-                            @include('adminLte.components.modules.datatable.reload', [
-                                'table_id' => $table_id,
-                            ])
-
-                            @include('adminLte.components.modules.datatable.export', [
-                                'table_id' => $table_id,
-                                'btn_exports' => $btn_exports,
-                            ])
-
-                            <!--begin::Filter-->
-                            <x-table-filter :table_id="$table_id" :filters="$filters">
-                                {{-- Start Custom Filters --}}
-                                <!-- ================== begin Role filter =============================== -->
-                                @include('cargo::adminLte.pages.table.filters.client', [
-                                    'table_id' => $table_id,
-                                    'filters' => $filters,
-                                ])
-                                @include('cargo::adminLte.pages.table.filters.branch', [
-                                    'table_id' => $table_id,
-                                    'filters' => $filters,
-                                ])
-                                <!-- ================== end Role filter =============================== -->
-                                <!-- ================== end Role filter =============================== -->
-                                {{-- End Custom Filters --}}
-                            </x-table-filter>
-                            <!--end::Filter-->
-
-
-                            <a href="#" class="btn btn-primary m-1" data-toggle="modal"
-                               data-target="#modal-overlay">{{ __('warehouse::view.add_dock') }}</a>
-
-                            <!--end::Add user-->
+                    <div class="d-inline-flex justify-content-start flex-wrap gap-2">
+                        <div class="">
+                            <input type="search" class="btn btn-light btn-sm px-4 rounded-0 text-start"
+                                placeholder="Search" style="width: 150px;" />
                         </div>
-                        <!--end::Toolbar-->
 
-                        <!--begin::Group actions-->
-                        @include('adminLte.components.modules.datatable.columns.checkbox-actions', [
-                            'table_id' => $table_id,
-                            //                    'permission' => 'delete-packages',
-                            'url' => fr_route('docks.multi-destroy'),
-                            'callback' => 'reload-table',
-                            'model_name' => __('warehouse::view.selected_docks'),
-                        ])
-                        <!--end::Group actions-->
+                        <div class="">
+                            <div class="btn-group" role="group" aria-label="Actions">
+                                <select class="btn btn-light btn-sm px-4 rounded-0" name="dsdsds" data-control="select2"
+                                    data-placeholder="Filter By Company" data-allow-clear="true" data-select2-id="1"
+                                    tabindex="-1" aria-hidden="true"
+                                    style="height: 32px; display: flex; align-items: center;">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <div class="btn-group" role="group" aria-label="Actions">
+                                <select class="btn btn-light btn-sm px-4 rounded-0" name="country_id" data-control="select2"
+                                    data-placeholder="Filter By Port" data-allow-clear="true" data-select2-id="2"
+                                    tabindex="-1" aria-hidden="true"
+                                    style="height: 32px; display: flex; align-items: center;">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <span class="mx-2 text-light">|</span>
+                            <button type="search" class="btn btn-light btn-sm px-4 rounded-0">
+                                <i class="fa-solid fa-arrows-rotate text-success"></i>
+                                Reload
+                            </button>
+                        </div>
 
                     </div>
-                    <!--end::Card toolbar-->
-                </div>
-                <!--end::Card header-->
-
-
-                <!--begin::Card body-->
-                <div class="card-body pt-6">
-
-                    <!--begin::Table-->
-                    {{ $dataTable->table() }}
-                    <!--end::Table-->
-
 
                 </div>
-                <!--end::Card body-->
+                <d   iv id="custom-tab1">
+                    <!--begin::Card header-->
+                    {{-- <div class="card-header border-0 pt-6"> --}}
+                        <!--begin::Card title-->
+                        {{-- <div class="card-title"> --}}
+
+                            <!--begin::Search-->
+                            {{-- search table --}}
+                            {{-- @include('adminLte.components.modules.datatable.search', [
+                                'table_id' => $table_id,
+                            ]) --}}
+                            <!--end::Search-->
+
+                        {{-- </div> --}}
+                        <!--begin::Card title-->
+
+                        <!--begin::Card toolbar-->
+                        {{-- <div class="card-toolbar"> --}}
+                            <!--begin::Toolbar-->
+                            {{-- <div class="d-flex flex-wrap align-items-center" id="{{ $table_id }}_custom_filter"> --}}
+                                {{-- data table length --}}
+                                {{-- @include('adminLte.components.modules.datatable.datatable_length', [
+                                    'table_id' => $table_id,
+                                ]) --}}
+                                {{-- btn reload table --}}
+                                {{-- @include('adminLte.components.modules.datatable.reload', [
+                                    'table_id' => $table_id,
+                                ])
+
+                                @include('adminLte.components.modules.datatable.export', [
+                                    'table_id' => $table_id,
+                                    'btn_exports' => $btn_exports,
+                                ]) --}}
+
+                                <!--begin::Filter-->
+                                {{-- <x-table-filter :table_id="$table_id" :filters="$filters"> --}}
+                                    {{-- Start Custom Filters --}}
+                                    <!-- ================== begin Role filter =============================== -->
+                                    {{-- @include('cargo::adminLte.pages.table.filters.client', [
+                                        'table_id' => $table_id,
+                                        'filters' => $filters,
+                                    ])
+                                    @include('cargo::adminLte.pages.table.filters.branch', [
+                                        'table_id' => $table_id,
+                                        'filters' => $filters,
+                                    ]) --}}
+                                    <!-- ================== end Role filter =============================== -->
+                                    <!-- ================== end Role filter =============================== -->
+                                    {{-- End Custom Filters --}}
+                                {{-- </x-table-filter> --}}
+                                <!--end::Filter-->
+
+
+                                {{-- <a href="#" class="btn btn-primary m-1" data-toggle="modal"
+                                    data-target="">{{ __('warehouse::view.add_dock') }}</a> --}}
+
+                                <!--end::Add user-->
+                            {{-- </div> --}}
+                            <!--end::Toolbar-->
+
+                            <!--begin::Group actions-->
+                            @include('adminLte.components.modules.datatable.columns.checkbox-actions', [
+                                'table_id' => $table_id,
+                                //                    'permission' => 'delete-packages',
+                                'url' => fr_route('docks.multi-destroy'),
+                                'callback' => 'reload-table',
+                                'model_name' => __('warehouse::view.selected_docks'),
+                            ])
+                            <!--end::Group actions-->
+
+                        </div>
+                        <!--end::Card toolbar-->
+                    </div>
+                    <!--end::Card header-->
+
+
+                    <!--begin::Card body-->
+                    <div class="card-body pt-0">
+
+                        <!--begin::Table-->
+                        {{ $dataTable->table() }}
+                        <!--end::Table-->
+
+
+                    </div>
+                    <!--end::Card body-->
+                </div>
 
             </div>
 
-            <div  class="tab-pane fade" id="tab2" role="tabpane2">
+            <div class="tab-pane fade" id="tab2" role="tabpane2">
+                <div class="p-2 custom-bg-warning rounded-0">
 
+                    <div class="d-inline-flex justify-content-start flex-wrap gap-2">
 
+                        <div class="">
+                            <input type="search" class="btn btn-light btn-sm px-4 rounded-0 text-start"
+                                placeholder="Search" style="width: 150px;" />
+                        </div>
+
+                        <div class="">
+                            <div class="btn-group" role="group" aria-label="Actions">
+                                <select class="btn btn-light btn-sm px-4 rounded-0" name="dsdsds" data-control="select2"
+                                    data-placeholder="Filter By Company" data-allow-clear="true" data-select2-id="7"
+                                    tabindex="-1" aria-hidden="true"
+                                    style="height: 32px; display: flex; align-items: center;">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <div class="btn-group" role="group" aria-label="Actions">
+                                <select class="btn btn-light btn-sm px-4 rounded-0" name="country_id"
+                                    data-control="select2" data-placeholder="Filter By Port" data-allow-clear="true"
+                                    data-select2-id="6" tabindex="-1" aria-hidden="true"
+                                    style="height: 32px; display: flex; align-items: center;">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <span class="mx-2 text-light">|</span>
+                            <button type="search" class="btn btn-light btn-sm px-4 rounded-0">
+                                <i class="fa-solid fa-file text-success"></i>
+                                Create Load Plan
+                            </button>
+                        </div>
+
+                        <div class="">
+                            <span class="mx-2 text-light">|</span>
+                            <button type="search" class="btn btn-light btn-sm px-4 rounded-0 d-flex flex-row justify-content-center gap-2">
+                                <i class="fa-solid fa-arrows-rotate text-success"></i>
+                                Reload
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div id="custom-tab2"></div>
 
             </div>
 
             <div class="tab-pane fade" id="tab3" role="tabpane3">
 
+                <div class="p-2 custom-bg-blue rounded-0">
+                    <div class="d-inline-flex justify-content-start flex-wrap gap-2">
+
+                        <div class="">
+                            <input type="search" class="btn btn-light btn-sm px-4 rounded-0 text-start"
+                                placeholder="Search" style="width: 150px;" />
+                        </div>
+
+                        <div class="">
+                            <div class="btn-group" role="group" aria-label="Actions">
+                                <select class="btn btn-light btn-sm px-4 rounded-0" name="dsdsds" data-control="select2"
+                                    data-placeholder="Filter By Company" data-allow-clear="true" data-select2-id="5"
+                                    tabindex="-1" aria-hidden="true"
+                                    style="height: 32px; display: flex; align-items: center;">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <div class="btn-group" role="group" aria-label="Actions">
+                                <select class="btn btn-light btn-sm px-4 rounded-0" name="country_id"
+                                    data-control="select2" data-placeholder="Filter By Port" data-allow-clear="true"
+                                    data-select2-id="4" tabindex="-1" aria-hidden="true"
+                                    style="height: 32px; display: flex; align-items: center;">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <span class="mx-2 text-light">|</span>
+                            <button type="search" class="btn btn-light btn-sm px-4 rounded-0">
+                                <i class="fa-solid fa-arrows-rotate text-success"></i>
+                                Reload
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="custom-tab3"></div>
 
 
             </div>
@@ -134,7 +268,7 @@
 
         {{-- Start Create Modal --}}
         <div class="modal fade" id="modal-overlay">
-            <div class="modal-dialog modal-xl">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div id="preloader" class="overlay" style="display: none;">
                         <i class="fas fa-2x fa-sync fa-spin"></i>
@@ -148,10 +282,10 @@
                     <!--begin::Form-->
                     <div class="custom-modal-body">
                         <form id="form_body" action="{{ fr_route('Docks.store') }}" method="post"
-                              enctype="multipart/form-data">
+                            enctype="multipart/form-data">
                             <div class="modal-body">
                                 <!--begin::Card body-->
-                                <div class="card-body border-top p-9">
+                                <div class="card-body border-top p-5">
                                     @include('warehouse::adminLte.pages.Docks.form', [
                                         'typeForm' => 'create',
                                     ])
@@ -161,9 +295,9 @@
                             </div>
                             <div class="modal-footer justify-content-navbar">
                                 <button type="button" class="btn btn-custom-discard"
-                                        data-dismiss="modal">@lang('view.discard')</button>
+                                    data-dismiss="modal">@lang('view.discard')</button>
                                 <button type="button" class="btn btn-custom-save"
-                                        id="form_submit">@lang('view.create')</button>
+                                    id="form_submit">@lang('view.create')</button>
                             </div>
                         </form>
                     </div>
@@ -189,52 +323,52 @@
     {{ $dataTable->scripts() }}
 
     <script>
-
         let url;
         $(document).ready(function() {
-            $('.index-btn').on('click',function (){
+            $('.index-btn').on('click', function() {
 
-                var tab= $(this).data('href');
-                switch (tab){
+                var tab = $(this).data('href');
+                switch (tab) {
                     case 'tab1':
-                        get_index('{{ fr_route('docks.get.index') }}',tab)
+                        get_index('{{ fr_route('docks.get.index') }}', tab)
                         break
                     case 'tab2':
-                        get_index('{{ fr_route('docks.get.index') }}',tab)
+                        get_index('{{ fr_route('docks.get.index') }}', tab)
                         break
                     case 'tab3':
-                        get_index('{{ fr_route('bookings.index') }}',tab)
+                        get_index('{{ fr_route('bookings.index') }}', tab)
                         break
                 }
             });
-            function get_index(url,tab){
+
+            function get_index(url, tab) {
                 $.ajax({
                     url: url, // Adjust the endpoint as needed
                     type: 'GET',
-                    beforeSend: function () {
+                    beforeSend: function() {
                         // Show preloader before the request starts
                         $('#overlay-loader').show();
-                        $('#'+tab).html('')
+                        $('#custom-' + tab).html('')
                     },
-                    success: function (data) {
-                        if (tab==='tab1'){
-                            $('#tab2').html('');
-                            $('#tab3').html('');
-                        }else if(tab==='tab2') {
-                            $('#tab1').html('');
-                            $('#tab3').html('');
-                        }else {
-                            $('#tab1').html('');
-                            $('#tab2').html('');
+                    success: function(data) {
+                        if (tab === 'tab1') {
+                            $('#custom-tab2').html('');
+                            $('#custom-tab3').html('');
+                        } else if (tab === 'tab2') {
+                            $('#custom-tab1').html('');
+                            $('#custom-tab3').html('');
+                        } else {
+                            $('#custom-tab1').html('');
+                            $('#custom-tab2').html('');
                         }
 
-                        $('#'+tab).html(data)
+                        $('#custom-' + tab).html(data)
 
                     },
-                    error: function () {
+                    error: function() {
                         console.error("Failed to fetch models.");
                     },
-                    complete: function () {
+                    complete: function() {
                         $('#overlay-loader').hide();
                     }
                 });
@@ -384,5 +518,4 @@
 
         });
     </script>
-
 @endsection

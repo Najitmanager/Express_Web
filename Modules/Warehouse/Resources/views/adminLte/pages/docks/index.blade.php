@@ -7,18 +7,18 @@
 
         <ul class="nav nav-tabs table-header card-header justify-content-start" id="mainTab" role="tablist">
             <li class="nav-item custom-title  index-btn" role="presentation" data-href="tab1">
-                <a class="nav-link text-dark border-0 active " id="tab1-tab" data-bs-toggle="tab" href="#tab1" role="tab">
+                <a class="text-dark border-0 active " id="tab1-tab" data-bs-toggle="tab" href="#tab1" role="tab">
                     <i class="fa-solid fa-file-alt me-2"></i>{{ __('warehouse::view.docks') }}
                 </a>
             </li>
             <li class="nav-item custom-title ms-2 index-btn" role="presentation" data-href="tab2">
-                <a class="nav-link text-dark border-0" id="tab2-tab" data-bs-toggle="tab" href="#tab2"
+                <a class="text-dark border-0" id="tab2-tab" data-bs-toggle="tab" href="#tab2"
                     role="tab">
                     <i class="fa-solid fa-file-alt me-2"></i> {{ __('warehouse::view.load_plans') }}
                 </a>
             </li>
             <li class="nav-item custom-title ms-2 index-btn" role="presentation" data-href="tab3">
-                <a class="nav-link text-dark border-0" id="tab3-tab" data-bs-toggle="tab" href="#tab3"
+                <a class="text-dark border-0" id="tab3-tab" data-bs-toggle="tab" href="#tab3"
                     role="tab">
                     <i class="fa-solid fa-list me-2"></i> {{ __('warehouse::view.bookings') }}
                 </a>
@@ -353,7 +353,7 @@
             // Add new tab to the navigation with a close button
             // $('#mainTab').append(`
             //     <li class="nav-item custom-title ml-2" role="presentation" id="${tabId}-tab-container">
-            //     <a class="nav-link border-0 text-dark" id="${tabId}-tab" data-bs-toggle="tab" href="#${tabId}" role="tab">
+            //     <a class="border-0 text-dark" id="${tabId}-tab" data-bs-toggle="tab" href="#${tabId}" role="tab">
             //         ${item} <button type="button" class="btn-close ms-2 p-0 btn btn-sm btn-light" aria-label="Close"><i class="fa-solid fa-xmark text-danger"></i></button>
             //     </a>
             //     </li>

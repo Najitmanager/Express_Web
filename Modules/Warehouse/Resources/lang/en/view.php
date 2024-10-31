@@ -48,7 +48,7 @@ return [
     'email'=>'Email',
     'state'=>'State',
     'zip'=>'Zip',
-    'contact_full_name'=>'Contact Full Name',
+    'contact_full_name'=>'Full Name',
     'truck_company_information'=>'Truck Company Information',
 
 
@@ -63,7 +63,7 @@ return [
     'create_new_customer' => 'Create New Customer',
     'edit_customer' => 'Edit Customer',
     'customer_list' => 'Customer list',
-    'company_name'=>'Company Name',
+    'company_name'=>'Company',
     'customer_information'=>'Customer Information',
     'total_vehicles'=>'Total Vehicles',
     'new'=> 'New',

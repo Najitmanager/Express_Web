@@ -1,15 +1,15 @@
 @csrf
 
 
-<div class="row mb-6">
+<div class="row">
     <!--begin::Input group -- Company Name -->
     <!--begin::Input group-->
     <div class="col-lg-3 fv-row">
         <!--begin::Label-->
         <label
-            class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.truck_company_name') }}</label>
+            class="col-form-label required">{{ __('warehouse::view.truck_company_name') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <input type="text" name="company_name"
                    class="form-control form-control-lg @error('company_name') is-invalid @enderror"
                    placeholder="{{ __('warehouse::view.truck_company_name') }}"
@@ -28,9 +28,9 @@
     <div class="col-lg-3 fv-row">
         <!--begin::Label-->
         <label
-            class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.contact_full_name') }}</label>
+            class="col-form-label required">{{ __('warehouse::view.contact_full_name') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <input type="text" name="contact_full_name"
                    class="form-control form-control-lg @error('contact_full_name') is-invalid @enderror"
                    placeholder="{{ __('warehouse::view.contact_full_name') }}"
@@ -49,9 +49,9 @@
     <!--begin::Input group-->
     <div class="col-lg-3 fv-row">
         <!--begin::Label-->
-        <label class="col-form-label fw-bold fs-6 ">{{ __('warehouse::view.phones') }}</label>
+        <label class="col-form-label ">{{ __('warehouse::view.phones') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
             </div>
@@ -72,9 +72,9 @@
     <!--begin::Input group-->
     <div class="col-lg-3 fv-row">
         <!--begin::Label-->
-        <label class="col-form-label fw-bold fs-6 ">{{ __('warehouse::view.email') }}</label>
+        <label class="col-form-label ">{{ __('warehouse::view.email') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
             </div>
@@ -96,9 +96,9 @@
 
 
 <!--begin::Input group-->
-<div class="form-group">
+<div class="form-group mb-0">
     <!--begin::Label-->
-    <label class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.table.country') }}</label>
+    <label class="col-form-label required">{{ __('warehouse::view.table.country') }}</label>
     <!--end::Label-->
     <select
         class="form-control  @error('country_id') is-invalid @enderror"
@@ -108,7 +108,7 @@
         data-allow-clear="true"
     >
         <option></option>
-        @foreach($countries as $country)
+        @foreach(get_countries() as $country)
             <option value="{{ $country->id }}"
                 {{ old('country_id') == $country->id ? 'selected' : '' }}
             @if($typeForm == 'edit')
@@ -126,8 +126,8 @@
 <!--end::Input group-->
 
 
-<div class="form-group">
-    <label class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.address') }}</label>
+<div class="form-group mb-0">
+    <label class="col-form-label required">{{ __('warehouse::view.address') }}</label>
     <textarea name="address" class="form-control @error('address') is-invalid @enderror"
               placeholder="{{ __('warehouse::view.address') }}">{{ old('address', isset($model) ? $model->address : '') }}</textarea>
     @error('address')
@@ -138,14 +138,14 @@
 </div>
 
 
-<div class="row mb-6">
+<div class="row">
     <!--begin::Input group -- Company Name -->
     <!--begin::Input group-->
     <div class="col-lg-4 fv-row">
         <!--begin::Label-->
-        <label class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.city') }}</label>
+        <label class="col-form-label required">{{ __('warehouse::view.city') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <input type="text" name="city"
                    class="form-control form-control-lg @error('city') is-invalid @enderror"
                    placeholder="{{ __('warehouse::view.city') }}"
@@ -163,9 +163,9 @@
     <!--begin::Input group-->
     <div class="col-lg-4 fv-row">
         <!--begin::Label-->
-        <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.state') }}</label>
+        <label class="col-form-label">{{ __('warehouse::view.state') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <input type="text" name="state"
                    class="form-control form-control-lg @error('state') is-invalid @enderror"
                    placeholder="{{ __('warehouse::view.state') }}"
@@ -184,9 +184,9 @@
     <!--begin::Input group-->
     <div class="col-lg-4 fv-row">
         <!--begin::Label-->
-        <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.zip') }}</label>
+        <label class="col-form-label">{{ __('warehouse::view.zip') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <input type="text" name="zip"
                    class="form-control form-control-lg @error('zip') is-invalid @enderror"
                    placeholder="{{ __('warehouse::view.zip') }}"

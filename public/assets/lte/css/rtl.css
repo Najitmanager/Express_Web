@@ -148,7 +148,7 @@ div.dataTables_wrapper div.dataTables_filter {
 .sidebar-collapse .main-sidebar,
 .sidebar-collapse .main-sidebar::before {
     margin-left: 0px;
-    margin-right: -250px;
+    margin-right: -220px;
 }
 
 .ml-auto,
@@ -191,7 +191,7 @@ div.dataTables_wrapper div.dataTables_filter {
     body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-footer,
     body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-header {
         margin-left: 0;
-        margin-right: 250px;
+        margin-right: 220px;
     }
 }
 

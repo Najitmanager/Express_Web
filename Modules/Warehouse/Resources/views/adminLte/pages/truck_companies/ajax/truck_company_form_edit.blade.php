@@ -1,10 +1,10 @@
-<form id="form_body-edit" class="form" action="{{ fr_route('consignees.update', ['id' => $model->id]) }}" method="post"
+<form id="form_body-edit" class="form" action="{{ fr_route('truck_companies.update', ['id' => $model->id]) }}" method="post"
     enctype="multipart/form-data">
     @method('PUT')
     <div class="modal-body">
         <!--begin::Card body-->
-        <div class="card-body border-top px-5">
-            @include('warehouse::adminLte.pages.consignees.form', ['typeForm' => 'edit'])
+        <div class="card-body border-top px-9">
+            @include('warehouse::adminLte.pages.truck_companies.form', ['typeForm' => 'edit'])
         </div>
         <!--end::Card body-->
 
@@ -17,6 +17,10 @@
     </div>
 </form>
 <script>
+    $('#change-country').select2({
+        placeholder: "Select a State",
+        allowClear: true
+    });
 
     $('#form_submit-edit').on('click', function(e) {
         e.preventDefault(); // Prevent default form submission
@@ -34,7 +38,7 @@
                 if (response.success) {
                     Toast.fire({
                         icon: 'success',
-                        title: 'consignee updated successfully!'
+                        title: 'Truck Company updated successfully!'
                     })
                     // Close the edit modal
                     setTimeout(function() {
@@ -45,7 +49,7 @@
                     var table = $('#' + tableId);
                     table.DataTable().ajax.reload()
                 } else {
-                    alert('Failed to update consignee. Please try again.');
+                    alert('Failed to update Truck Company. Please try again.');
                 }
             },
             error: function(xhr) {
