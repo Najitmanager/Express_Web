@@ -5,7 +5,8 @@ namespace Modules\Warehouse\Http\DataTables;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Modules\Warehouse\Entities\Port;
-use Modules\Warehouse\Entities\Booking;
+use Modules\Warehouse\Entities\TruckCompany;
+use Modules\Warehouse\Entities\Vehicle;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\Html\Button;
@@ -13,16 +14,16 @@ use Illuminate\Http\Request;
 
 use Modules\Warehouse\Http\Filter\PortFilter;
 
-class BookingsDataTable extends DataTable
+class NewVehicleDataTable extends DataTable
 {
 
-    public $table_id = 'bookings_table';
+    public $table_id = 'new_vehicle_table';
     public $btn_exports = [
         'excel',
         'print',
         'pdf'
     ];
-    public $filters = ['country', 'created_at' , 'name' , 'city'];
+    public $filters = ['country', 'created_at' , 'name' ];
     /**
      * Build DataTable class.
      *
@@ -34,40 +35,58 @@ class BookingsDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->rawColumns(['action','booking','booking_date','closed_on'])
-            ->filterColumn('booking', function($query, $keyword) {
-                $query->where('booking_no', 'LIKE', "%$keyword%");
+            ->rawColumns(['action', 'select','vehicle','vin','color','customer', 'port'])
+            ->filterColumn('vehicle', function($query, $keyword) {
+                $query->where('vin', 'LIKE', "%$keyword%")
+                    ->orWhereHas('port', function($query) use($keyword) {
+                        $query->where('name', 'LIKE', "%$keyword%");
+                    })
+                    ->orWhereHas('customer', function($query) use($keyword) {
+                        $query->where('name', 'LIKE', "%$keyword%");
+                    })
+                    ->orWhereHas('make', function($query) use($keyword) {
+                        $query->where('name', 'LIKE', "%$keyword%");
+                    })
+                    ->orWhereHas('model', function($query) use($keyword) {
+                        $query->where('name', 'LIKE', "%$keyword%");
+                    })
+                    ->orWhere('year', 'LIKE', "%$keyword%");
             })
 
-            ->orderColumn('booking', function ($query, $order) {
-                $query->orderBy('booking_no', $order);
+
+
+            ->orderColumn('vehicle', function ($query, $order) {
+                $query->orderBy('id', $order);
             })
 
-            ->editColumn('load_plans', function (Booking $model) {
-                return 0;
+
+            ->editColumn('vehicle', function (Vehicle $model) {
+                return $model->name ." / \n" . $model->vin;
             })
-            ->editColumn('booking', function (Booking $model) {
-                return $model->name_icon;
+
+            ->editColumn('customer', function (Vehicle $model) {
+                return $model->client->user->name." / \n". $model->port->name;
             })
-            ->editColumn('containers', function (Booking $model) {
-                return 0;
+            ->editColumn('created_at', function (Vehicle $model) {
+                return date('d M, Y', strtotime($model->created_at));
             })
-            ->editColumn('attachments', function (Booking $model) {
-                return 0;
+            ->editColumn('photos', function (Vehicle $model) {
+                return $model->total_photos_no;
             })
-            ->addColumn('row_link', function (Booking $model) {
+            ->editColumn('expected_arrival_date', function (Vehicle $model) {
+                return date('d M, Y', strtotime($model->expected_arrival_date));
+            })
+
+
+            ->addColumn('row_link', function (Vehicle $model) {
                 // Define the URL for each row (e.g., view or edit page)
-                $url = route('bookings.edit', $model->id); // Update the route as needed
+                $url = route('vehicles.show', $model->id); // Update the route as needed
 
                 // Wrap the name in an anchor tag
-                return '<a href="'.$url.'">'.$model->name.'</a>';
+                return '<a class="clickLink" href="'.$url.'">'.$model->name.'</a>';
             })
-            ->editColumn('created_at', function (Booking $model) {
-                return date('d M, Y H:i', strtotime($model->created_at));
-            })
-
-            ->addColumn('action', function (Booking $model) {
-                $adminTheme = env('ADMIN_THEME', 'adminLte');return view('warehouse::'.$adminTheme.'.pages.bookings.columns.actions', ['model' => $model, 'table_id' => $this->table_id]);
+            ->addColumn('action', function (Vehicle $model) {
+                $adminTheme = env('ADMIN_THEME', 'adminLte');return view('warehouse::'.$adminTheme.'.pages.vehicles.columns.actions', ['model' => $model, 'table_id' => $this->table_id]);
             });
     }
 
@@ -78,7 +97,7 @@ class BookingsDataTable extends DataTable
      *
      * @return Port
      */
-    public function query(Booking $model, Request $request)
+    public function query(Vehicle $model, Request $request)
     {
         $query = $model->where('branch_id',app('hook')->get('warehouse')->id)->newQuery();
 
@@ -134,13 +153,13 @@ class BookingsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-
-            Column::make('booking')->title(__('warehouse::view.booking_no')),
-            Column::make('booking_date')->title(__('warehouse::view.booking_date')),
-            Column::make('closed_on')->title(__('warehouse::view.closed_on')),
-            Column::make('load_plans')->title(__('warehouse::view.load_plans')),
-            Column::make('containers')->title(__('warehouse::view.containers')),
-            Column::make('attachments')->title(__('warehouse::view.attachments')),
+            // Column::make('id')->title(__('warehouse::view.table.id'))->width(50),
+            Column::make('vehicle')->title(__('warehouse::view.name')),
+            Column::make('vin')->title(__('warehouse::view.vin')),
+            Column::make('color')->title(__('warehouse::view.color')),
+            Column::make('customer')->title(__('warehouse::view.customer company (Full Name)')),
+            Column::make('photos')->title(__('warehouse::view.photos')),
+            Column::make('port')->title(__('warehouse::view.port')),
             Column::make('created_at')->title(__('view.created_at')),
             Column::computed('action')
                 ->title(__('view.action'))
@@ -156,7 +175,7 @@ class BookingsDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Bookings_'.date('YmdHis');
+        return 'Vehicles_'.date('YmdHis');
     }
 
 

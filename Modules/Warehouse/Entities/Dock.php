@@ -18,13 +18,14 @@ class Dock extends Model implements HasMedia
 
     protected $fillable = [];
     protected  $guarded = [];
+    const DOCK  = 0;
+    const LOADPLAN  = 1;
+
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('main')->singleFile();
-        $this->addMediaCollection('bill_of_lading')->singleFile();
-        $this->addMediaCollection('photos');
-        $this->addMediaCollection('titles');
-        $this->addMediaCollection('keys');
+        $this->addMediaCollection('container_photos');
+        $this->addMediaCollection('seal_photos');
+        $this->addMediaCollection('loading_photos');
     }
 
     public function registerMediaConversions(Media $media = null): void
@@ -39,10 +40,14 @@ class Dock extends Model implements HasMedia
     /* ===================================> Attributes <================== */
     public function getTotalPhotosNoAttribute()
     {
-        $sum = count($this->getMedia('photos'));
-        $sum += $this->getFirstMediaUrl('main')?1:0;
-        $sum += $this->getFirstMediaUrl('bill_of_lading')?1:0;
+        $sum = count($this->getMedia('container_photos'));
+        $sum += count($this->getMedia('seal_photos'));
+        $sum += count($this->getMedia('loading_photos'));
         return $sum;
+    }
+    public function getVTitleAttribute()
+    {
+        return '<i class="fa-solid fa-rectangle-xmark text-red"></i>';
     }
 
     /* ===========================> Relations <========================= */

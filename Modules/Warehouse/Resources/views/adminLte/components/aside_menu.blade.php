@@ -134,7 +134,13 @@
 {{--    </ul>--}}
 {{--</li>--}}
 {{--@endcan--}}
-
+<li class="nav-item   {{ areActiveRoutes(['workflow.index', 'workflow.create','workflow.edit'], 'menu-is-opening menu-open active') }}">
+    <a href="{{ fr_route('workflow.index') }}"
+       class="nav-link {{ areActiveRoutes(['workflow.index', 'workflow.create','workflow.edit']) }}">
+        <i class="fas fa-network-wired fa-fw"></i>
+        <p>{{ __('warehouse::view.workflow') }}</p>
+    </a>
+</li>
 
 {{--@can('view-pages')--}}
 <li class="nav-item   {{ areActiveRoutes(['truck_companies.index', 'truck_companies.create','truck_companies.edit'], 'menu-is-opening menu-open active') }}">

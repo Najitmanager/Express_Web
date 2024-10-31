@@ -3,9 +3,8 @@
 namespace Modules\Warehouse\Transformers\Api;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Modules\Warehouse\Transformers\Api\Auth\UserResource;
 
-class VehicleResource extends JsonResource
+class DockResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,23 +16,19 @@ class VehicleResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'main'=>$this->getFirstMediaUrl('main'),
-            'name'=>$this->name,
-            'vin'=>$this->vin,
-            'photos_count'=>!is_null($this->photos)?count($this->photos):0,
-            'color'=>!is_null($this->color)?$this->color->name:'---------',
-            'color_value'=>!is_null($this->color)?$this->color->value:'',
-            'expected_arrival_date'=>$this->expected_arrival_date,
-            'arrival_date'=>optional($this->workflow)->arrival_date,
+            'document_no'=>$this->document_no,
+            'booking_no'=>$this->booking->booking_no,
+            'container_no'=>$this->container_no,
+            'loading_date'=>$this->loading_date,
+            'photos_no'=>$this->total_photos_no,
             'client'=>[
                 'id'=>$this->client->id,
                 'company_name'=>$this->client->user->name,
                 'contact_full_name'=>$this->client->contact_full_name
             ],
-            'bill_of_lading'=>$this->getFirstMediaUrl('bill_of_lading'),
-            'photos'=>[
-                'total'=>$this->getMedia('photos')->count(),
-                'images'=>$this->getMedia('photos')->map(function ($media) {
+            'container_photos'=>[
+                'total'=>$this->getMedia('container_photos')->count(),
+                'images'=>$this->getMedia('container_photos')->map(function ($media) {
                     return [
                         'url' => $media->getUrl(), // Full URL to the image
                         'name' => $media->name, // Optional: name of the media file
@@ -41,9 +36,9 @@ class VehicleResource extends JsonResource
                     ];
                 }),
             ],
-            'keys'=>[
-                'total'=>$this->getMedia('keys')->count(),
-                'images'=>$this->getMedia('keys')->map(function ($media) {
+            'seal_photos'=>[
+                'total'=>$this->getMedia('seal_photos')->count(),
+                'images'=>$this->getMedia('seal_photos')->map(function ($media) {
                     return [
                         'url' => $media->getUrl(), // Full URL to the image
                         'name' => $media->name, // Optional: name of the media file
@@ -51,9 +46,9 @@ class VehicleResource extends JsonResource
                     ];
                 }),
             ],
-            'titles'=>[
-                'total'=>$this->getMedia('titles')->count(),
-                'images'=>$this->getMedia('titles')->map(function ($media) {
+            'loading_photos'=>[
+                'total'=>$this->getMedia('loading_photos')->count(),
+                'images'=>$this->getMedia('loading_photos')->map(function ($media) {
                     return [
                         'url' => $media->getUrl(), // Full URL to the image
                         'name' => $media->name, // Optional: name of the media file
@@ -61,7 +56,16 @@ class VehicleResource extends JsonResource
                     ];
                 }),
             ],
-
+            'vehicles'=>$this->vehicles->map(function ($vehicle) {
+                return [
+                    'id'=>$vehicle->id,
+                    'name'=>$vehicle->name,
+                    'vin'=>$vehicle->vin,
+                    'main'=>$vehicle->getFirstMediaUrl('main'),
+                    'color'=>!is_null($vehicle->color)?$vehicle->color->name:'---------',
+                    'color_value'=>!is_null($vehicle->color)?$vehicle->color->value:'',
+                ];
+            })
 
         ];
     }

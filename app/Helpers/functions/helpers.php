@@ -1231,3 +1231,18 @@ if (!function_exists('get_countries')) {
         return $countries;
     }
 }
+if (!function_exists('get_vehicles')) {
+    /**
+     * get all admins (role = 1) as array [id => name]
+     * @return array
+     */
+    function get_vehicles($status = null)
+    {
+        if ($status) {
+            $vehicles = \Modules\Warehouse\Entities\Vehicle::where(['branch_id'=>app('hook')->get('warehouse')->id,'status'=> $status])->get();
+        }else{
+            $vehicles = \Modules\Warehouse\Entities\Vehicle::where('branch_id',app('hook')->get('warehouse')->id)->get();
+        }
+        return $vehicles;
+    }
+}

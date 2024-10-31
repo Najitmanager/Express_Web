@@ -163,7 +163,7 @@
     </div>
     <!-- /.modal -->
 
-    
+
 @endsection
 
 
@@ -183,7 +183,7 @@
 @section('scripts')
     <script src="{{ asset('assets/lte/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     {{ $dataTable->scripts() }}
-   
+
     <script>
         function update_customer_active(el) {
             var id = $(el).data('row-id');
@@ -276,13 +276,18 @@
                             var table = $('#' + tableId);
                             table.DataTable().ajax.reload();
                         } else {
-                            alert('Failed to create Customer. Please try again.');
+
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'Failed to create Booking. Please try again.'
+                            })
                         }
                     },
                     error: function(xhr) {
-                        // Handle error response
-                        alert('An error occurred. Please try again.');
-                        console.error(xhr.responseText); // Log error for debugging
+                        Toast.fire({
+                            icon: 'error',
+                            title: xhr.responseJSON.message
+                        })
                     }
 
                 });
