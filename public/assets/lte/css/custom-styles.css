@@ -750,6 +750,14 @@ body.sidebar-mini.layout-fixed.sidebar-collapse .main-sidebar {
     border-radius: 0 !important;
 }
 
+.btn-light-primary {
+    color: #35baf6 !important
+}
+
+.text-uppercase {
+    text-transform: capitalize !important;
+}
+
 
 /* End Side Menu
 

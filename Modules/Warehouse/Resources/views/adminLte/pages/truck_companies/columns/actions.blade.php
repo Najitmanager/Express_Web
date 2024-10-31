@@ -15,7 +15,7 @@
 
         @if (/*auth()->user()->can('edit-currencies') ||*/ $user_role == $admin)
             <div>
-                <a href="{{ fr_route('truck_companies.edit', $model->id) }}" class="btn btn-sm btn-action-table px-3"
+                <a href="#" data-href="{{ fr_route('truck_companies.edit', $model->id) }}" class="btn btn-sm btn-action-table px-3"
                     data-toggle="tooltip" title="{{ __('view.edit') }}">
                     <i class="fas fa-edit fa-fw text-warning"></i> {{ __('view.edit') }}
                 </a>

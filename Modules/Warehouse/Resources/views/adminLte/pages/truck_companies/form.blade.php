@@ -108,7 +108,7 @@
         data-allow-clear="true"
     >
         <option></option>
-        @foreach($countries as $country)
+        @foreach(get_countries() as $country)
             <option value="{{ $country->id }}"
                 {{ old('country_id') == $country->id ? 'selected' : '' }}
             @if($typeForm == 'edit')

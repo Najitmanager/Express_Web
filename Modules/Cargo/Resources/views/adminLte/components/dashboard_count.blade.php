@@ -475,8 +475,8 @@
                     </div>
                 </div>
                 <canvas id="barChart"
-                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 861px;"
-                    width="861" height="250" class="chartjs-render-monitor"></canvas>
+                    style="min-height: 250px; max-width: 100%; display: block; width: 861px;"
+                    width="861" height="400" class="chartjs-render-monitor"></canvas>
             </div>
         </div>
 

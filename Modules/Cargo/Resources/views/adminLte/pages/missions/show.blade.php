@@ -155,21 +155,21 @@
                                 <thead>
                                     <tr>
                                         <th width="3%">#</th>
-                                        <th class="pl-0 font-weight-bold text-muted text-uppercase">{{__('cargo::view.table.code')}}</th>
-                                        <th class=" font-weight-bold text-muted text-uppercase">{{__('cargo::view.status')}}</th>
-                                        <th class="text-right font-weight-bold text-muted text-uppercase">{{__('cargo::view.type')}}</th>
-                                        <th class="text-right font-weight-bold text-muted text-uppercase">{{__('cargo::view.table.branch')}}</th>
-                                        <th class="text-right font-weight-bold text-muted text-uppercase">{{__('cargo::view.client')}}</th>
-                                        <th class="text-right font-weight-bold text-muted text-uppercase">{{__('cargo::view.payment_type')}}</th>
-                                        <th class="text-right font-weight-bold text-muted text-uppercase">
+                                        <th class="pl-0 font-weight-bold text-muted">{{__('cargo::view.table.code')}}</th>
+                                        <th class=" font-weight-bold text-muted">{{__('cargo::view.status')}}</th>
+                                        <th class="text-right font-weight-bold text-muted">{{__('cargo::view.type')}}</th>
+                                        <th class="text-right font-weight-bold text-muted">{{__('cargo::view.table.branch')}}</th>
+                                        <th class="text-right font-weight-bold text-muted">{{__('cargo::view.client')}}</th>
+                                        <th class="text-right font-weight-bold text-muted">{{__('cargo::view.payment_type')}}</th>
+                                        <th class="text-right font-weight-bold text-muted">
                                             @if($mission->getRawOriginal('type') == Modules\Cargo\Entities\Mission::DELIVERY_TYPE)
                                                 {{__('cargo::view.COD_AMOUNT')}}
                                             @else
                                                 {{__('cargo::view.TOTAL_COST')}}
                                             @endif
                                         </th>
-                                        <th class="text-center font-weight-bold text-muted text-uppercase no-print">{{__('cargo::view.actions')}}</th>
-                                        <th class="text-center font-weight-bold text-muted text-uppercase print-only">{{__('cargo::view.check')}}</th>
+                                        <th class="text-center font-weight-bold text-muted no-print">{{__('cargo::view.actions')}}</th>
+                                        <th class="text-center font-weight-bold text-muted print-only">{{__('cargo::view.check')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -305,14 +305,14 @@
                                         <tr>
                                             @if($mission->status_id == Modules\Cargo\Entities\Mission::REQUESTED_STATUS || $mission->status_id == Modules\Cargo\Entities\Mission::APPROVED_STATUS || $mission->status_id == Modules\Cargo\Entities\Mission::RECIVED_STATUS)
                                                 @if($mission->type == Modules\Cargo\Entities\Mission::getType(Modules\Cargo\Entities\Mission::SUPPLY_TYPE))
-                                                    <th class="text-right font-weight-bold text-muted text-uppercase ">{{__('cargo::view.RETURN_AMOUNT')}}</th>
+                                                    <th class="text-right font-weight-bold text-muted ">{{__('cargo::view.RETURN_AMOUNT')}}</th>
                                                 @endif
                                             @endif
 
                                             @if($mission->type == Modules\Cargo\Entities\Mission::getType(Modules\Cargo\Entities\Mission::DELIVERY_TYPE))
-                                                <th class="text-right font-weight-bold text-muted text-uppercase ">{{__('cargo::view.TOTAL_COD_AMOUNT')}}</th>
+                                                <th class="text-right font-weight-bold text-muted ">{{__('cargo::view.TOTAL_COD_AMOUNT')}}</th>
                                             @else
-                                                <th class="text-right font-weight-bold text-muted text-uppercase ">{{__('cargo::view.TOTAL_COST')}}</th>
+                                                <th class="text-right font-weight-bold text-muted ">{{__('cargo::view.TOTAL_COST')}}</th>
                                             @endif
 
                                         </tr>
