@@ -3,9 +3,9 @@
     <!--begin::Brand-->
     <div class="aside-logo flex-column-auto brand-link" style="background-color: #35baf6!important;" id="kt_aside_logo">
         <!--begin::Logo-->
-        <div  style="display: flex;justify-content: center;">
+        <div  style="display: flex;justify-content: center; gap: 7px;">
             <img src="{{ asset('assets/lte/cargo-logo.gif') }}" alt="Logo" style="height: 38px;" class="logo" />
-            <span class="m-1"> {{ env('APP_NAME') }} </span>
+            <span class="m-1 text-light"> {{ env('APP_NAME') }} </span>
         </div>
         <!--end::Logo-->
     </div>

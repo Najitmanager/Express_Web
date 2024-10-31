@@ -1,6 +1,6 @@
 <x-base-layout>
 
-    <div class="card  table-card-wrapper">
+    <div class="card  table-card-wrapper mx-1">
 
         {{-- start page title --}}
         <div class="table-header card-header">
@@ -12,8 +12,8 @@
         </div>
         {{-- end page title --}}
 
-        <div class="row p-5">
-            <div class="col-md-8">
+        <div class="row p-2">
+            <div class="col-lg-8">
                 <div class="row">
                     {{-- Cards --}}
                     @if (app('hook')->get('dashboard_count'))
@@ -25,7 +25,7 @@
 
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 <div class="card  vehicle-detail-card my-0 " style="max-height: 100%; height: calc(100% - 15px);">
 
                     <div class="vehicle-card-header px-3">
@@ -65,7 +65,7 @@
 
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <div class="card  vehicle-detail-card my-0 ">
 
                     <div class="vehicle-card-header px-3">
@@ -79,13 +79,13 @@
                             <thead>
                                 <tr class="bg-light">
                                     <th scope="col"
-                                        style="border: 1px solid gray; padding: 5px 15px !important; verticle-align: middle">
+                                        style="border: 1px solid #8080805e; padding: 5px 15px !important; verticle-align: middle">
                                         Vehicle Name</th>
                                     <th scope="col"
-                                        style="border: 1px solid gray; padding: 5px 15px !important; verticle-align: middle">
+                                        style="border: 1px solid #8080805e; padding: 5px 15px !important; verticle-align: middle">
                                         Status</th>
                                     <th scope="col"
-                                        style="border: 1px solid gray; padding: 5px 15px !important; verticle-align: middle">
+                                        style="border: 1px solid #8080805e; padding: 5px 15px !important; verticle-align: middle">
                                         Delay</th>
                                 </tr>
                             </thead>
@@ -112,7 +112,7 @@
 
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <div class="card  vehicle-detail-card my-0 ">
 
                     <div class="vehicle-card-header px-3">
@@ -127,13 +127,13 @@
                             <thead>
                                 <tr class="bg-light">
                                     <th scope="col"
-                                        style="border: 1px solid gray; padding: 5px 15px !important; verticle-align: middle">
+                                        style="border: 1px solid #8080805e; padding: 5px 15px !important; verticle-align: middle">
                                         Vehicle Name</th>
                                     <th scope="col"
-                                        style="border: 1px solid gray; padding: 5px 15px !important; verticle-align: middle">
+                                        style="border: 1px solid #8080805e; padding: 5px 15px !important; verticle-align: middle">
                                         Status</th>
                                     <th scope="col"
-                                        style="border: 1px solid gray; padding: 5px 15px !important; verticle-align: middle">
+                                        style="border: 1px solid #8080805e; padding: 5px 15px !important; verticle-align: middle">
                                         Delay</th>
                                 </tr>
                             </thead>
