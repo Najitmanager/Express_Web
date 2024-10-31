@@ -7,8 +7,12 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 bg-color-15 p-0 none-992 bg-img"></div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 bg-color-15 p-0 none-992 bg-img">
+                <div class="info clearfix">
+                    <h1>Welcome to <br><span>Nejoum Express</span></h1>
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
                 <div class="login-box">
                     <div class="card card-outline card-primary">
                         <div class="card-header text-center">
@@ -204,6 +208,41 @@
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
+        }
+
+        .bg-img:before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgb(33 9 90/55%);
+            z-index: -1;
+        }
+
+        .info {
+            max-width: 610px;
+            padding: 10px 30px;
+        }
+
+        .info h1 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-family: jost, sans-serif;
+            font-size: 45px;
+            text-transform: uppercase;
+            font-weight: 600
+        }
+
+        .info h1 span {
+            color: #ff574d;
+        }
+
+        .clearfix::after {
+            display: block;
+            clear: both;
+            content: "";
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -107,6 +107,41 @@ tbody tr {
     align-items: center;
 }
 
+.nav-item.custom-title.tabs-only {
+    gap: 3px;
+    margin-top: 7px;
+    background-color: transparent;
+    color: white;
+    padding: 0 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item.custom-title.tabs-only.active {
+    gap: 3px;
+    margin-top: 7px;
+    background-color: white;
+    padding: 0 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item.custom-title.tabs-only a {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.nav-item.custom-title.tabs-only a {
+    color: white;
+    font-size: 14px;
+}
+
+.nav-item.custom-title.tabs-only a.active {
+    color: #2a95c5;
+}
+
 .dataTables_info {
     padding: 15px!important;
 }
@@ -441,6 +476,7 @@ td.bg-success-400 {
 
 .photo-section-wrapper img {
     border-radius: 7px;
+    max-width: 100px;
 }
 
 .border-red {
@@ -689,7 +725,33 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4 {
 /* End Navbar */
 
 
-/* Start Login Page */
+/* start dock page */
+
+.dock-page label {
+    font-weight: 500 !important;
+    font-size: 14px;
+}
+
+.dock-page input[type="date"],
+.dock-page input[type="text"],
+.dock-page .select2-container .select2-selection {
+    height: 33px !important;
+    display: flex;
+    align-items: center;
+}
+
+@media(max-width: 768px) {
+    .tab-pane {
+        max-width: 100%;
+        overflow-x: scroll;
+    }
+}
+
+@media(max-width: 500px) {
+    .table-header.nav {
+        display: none;
+    }
+}
 
 
-/* End Login Page */
+/* end dock page */
