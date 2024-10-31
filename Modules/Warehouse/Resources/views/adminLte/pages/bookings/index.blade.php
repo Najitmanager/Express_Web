@@ -1,20 +1,4 @@
-@extends('warehouse::adminLte.layouts.master')
 
-
-
-@section('content')
-    <!--begin::Card-->
-    <div class="card table-card-wrapper">
-
-        {{-- start page title --}}
-        <div class="table-header card-header">
-
-            <div class="custom-title">
-                <i class="fas fa-list fa-fw"></i>{{ __('warehouse::view.bookings') }}
-            </div>
-
-        </div>
-        {{-- end page title --}}
 
         <!--begin::Card header-->
         <div class="card-header border-0">
@@ -80,7 +64,7 @@
 
         </div>
         <!--end::Card body-->
-    </div>
+
     <!--end::Card-->
 
 
@@ -144,24 +128,18 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
-@endsection
 
-
-@section('toolbar-btn')
-    <!--begin::Button-->
-    {{--     <a href="{{ fr_route('users.create') }}" class="btn btn-sm btn-primary">Create <i class="ms-2 fas fa-plus"></i> </a> --}}
-    <!--end::Button-->
-@endsection
 
 
 {{-- Inject styles --}}
-@section('styles')
+
+
     <link rel="stylesheet" href="{{ asset('assets/lte/plugins/custom/datatables/datatables.bundle.css') }}">
-@endsection
+
+
 
 {{-- Inject Scripts --}}
-@section('scripts')
+
     <script src="{{ asset('assets/lte/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     {{ $dataTable->scripts() }}
     <script>
@@ -246,4 +224,4 @@
             });
         });
     </script>
-@endsection
+

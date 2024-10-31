@@ -41,6 +41,19 @@ class DockReceiptController extends Controller
         return $dataTable->render('warehouse::'.$adminTheme.'.pages.docks.index', $share_data);
 
     }
+    public function getIndex(DockDataTable $dataTable)
+    {
+        breadcrumb([
+            [
+                'name' => __('warehouse::view.docks'),
+            ],
+        ]);
+        $data_with = [];
+        $share_data = array_merge(get_class_vars(DockDataTable::class), $data_with);
+        $adminTheme = env('ADMIN_THEME', 'adminLte');
+        return $dataTable->render('warehouse::'.$adminTheme.'.pages.docks.ajax.index_ajax', $share_data);
+
+    }
 
     /**
      * Show the form for creating a new resource.

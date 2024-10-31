@@ -86,6 +86,7 @@ Route::get('test', function () {
             Route::get('booking-close', 'BookingController@bookingClose')->name('bookings.close');
             // docks
             Route::resource('/docks', 'DockReceiptController')->parameters(['docks' => 'id']);
+            Route::get('get-docks', 'DockReceiptController@getIndex')->name('docks.get.index');
             Route::get('/docks-search', 'DockReceiptController@searchPages')->name('docks.search');
             Route::get('/static-docks-search', 'DockReceiptController@searchStaticPages')->name('static_docks.search');
             Route::post('/docks/upload_files/{id}', 'DockReceiptController@upload_files')->name('docks.upload_files');

@@ -40,7 +40,8 @@ class BookingController extends Controller
         $data_with = [];
         $share_data = array_merge(get_class_vars(BookingsDataTable::class), $data_with);
         $adminTheme = env('ADMIN_THEME', 'adminLte');
-        return $dataTable->render('warehouse::'.$adminTheme.'.pages.bookings.index', $share_data);
+         return $dataTable->render('warehouse::'.$adminTheme.'.pages.bookings.index', $share_data);
+
 
     }
 
