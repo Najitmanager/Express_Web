@@ -92,68 +92,68 @@
                                                 tabindex="-1" data-tabindex-value="-1" data-tabindex-counter="1"
                                                 data-componentid="dataview-2419">
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__1 step_line_done__true"
+                                                    class="step step_point_done__1 step_line_done__false"
                                                     data-recordindex="0" data-recordid="4876"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
                                                         class="step_name">{{ __('warehouse::view.New Vehicle') }}</span></div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__1 step_line_done__true"
+                                                    class="step step_point_done__0 step_line_done__false"
                                                     data-recordindex="1" data-recordid="4877"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
                                                         class="step_name">{{ __('warehouse::view.Arrived') }}</span></div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__1 step_line_done__true"
+                                                    class="step step_point_done__0 step_line_done__false"
                                                     data-recordindex="2" data-recordid="4878"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
                                                         class="step_name">{{ __('warehouse::view.Pictures Added') }}</span></div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__1 step_line_done__true"
+                                                    class="step step_point_done__0 step_line_done__false"
                                                     data-recordindex="3" data-recordid="4879"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">Key Received</span></div>
+                                                        class="step_name">{{ __('warehouse::view.Key Received') }}</span></div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__1 step_line_done__true"
+                                                    class="step step_point_done__0 step_line_done__false"
                                                     data-recordindex="4" data-recordid="4880"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">Have Title</span></div>
+                                                        class="step_name">{{ __('warehouse::view.Have Title') }}</span></div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__1 step_line_done__true"
+                                                    class="step step_point_done__0 step_line_done__false"
                                                     data-recordindex="5" data-recordid="4881"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">Booking</span></div>
+                                                        class="step_name">{{ __('warehouse::view.Booking') }}</span></div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__1 step_line_done__false"
+                                                    class="step step_point_done__0 step_line_done__false"
                                                     data-recordindex="6" data-recordid="4882"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">Loading Plan</span></div>
+                                                        class="step_name">{{ __('warehouse::view.Loading Plan') }}</span></div>
                                                 <div style="width: 11%;"
                                                     class="step step_point_done__0 step_line_done__false"
                                                     data-recordindex="7" data-recordid="4883"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">Loading Pictures</span></div>
+                                                        class="step_name">{{ __('warehouse::view.Loading Pictures') }}</span></div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__1 step_line_done__false"
+                                                    class="step step_point_done__0 step_line_done__false"
                                                     data-recordindex="8" data-recordid="4884"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">Shipped</span></div>
+                                                        class="step_name">{{ __('warehouse::view.Shipped') }}</span></div>
                                                 <div class="x-tab-guard x-tab-guard-after" tabindex="0"></div>
                                             </div>
                                         </div>
@@ -167,7 +167,6 @@
                                 <div class="col-md-5">
                                     {{-- Customer Info --}}
                                     <div class="card  vehicle-detail-card ">
-
                                         <div class="vehicle-card-header justify-content-start">
                                             <span class="custom-title text-light">
                                                {{ __('warehouse::view.Customer Info') }}
@@ -293,64 +292,123 @@
                         <table class="table vehicle-page-tables">
                             <tbody>
                                 <tr>
-                                    <td class="p-1 px-4">Full Name</td>
+                                    <td class="p-1 px-4">{{ __('warehouse::view.Arrival Date') }}</td>
                                     <td class="p-1 px-4 bg-danger-400"> <i
-                                            class="fa-solid fa-circle-xmark text-danger mr-1"></i> 354353543</td>
+                                            class="fa-solid fa-circle-xmark @if(!$model->workflow || $model->workflow->arrival_date) text-danger @endif mr-1"></i>
+                                        {{ optional($model->workflow)->arrival_date }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="p-1 px-4">Full Address</td>
-                                    <td class="p-1 px-4 bg-warning-400"> <i
-                                            class="fa-solid fa-triangle-exclamation text-warning mr-1"></i> Red</td>
+                                    <td class="p-1 px-4">{{ __('warehouse::view.Hat')  }}</td>
+                                    <td class="p-1 px-4"> <i
+                                            class="fa-solid fa-triangle-exclamation  mr-1"></i> {{ optional($model->workflow)->hat }}  </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-1 px-4">Phone</td>
-                                    <td class="p-1 px-4 bg-danger-400"> <i
-                                            class="fa-solid fa-circle-xmark text-danger mr-1"></i> New Jersey</td>
+                                    <td class="p-1 px-4">{{ __('warehouse::view.Key') }}</td>
+                                    <td class="p-1 px-4 @if(!count($model->getMedia('keys'))) bg-warning-400 @else bg-green-400 @endif ">
+
+                                        @if(!count($model->getMedia('keys')))
+                                            <i class="fa-solid fa-circle-xmark  text-warning mr-1"></i>
+                                            {{ __('warehouse::view.Without Key') }}
+                                            @else
+                                            <i class="fa-solid fa-square-check text-green mr-1"></i>
+                                            {{ __('warehouse::view.Have Key') }}
+                                        @endif
+                                    </td>
+                                </tr>
+                                @if($model->key_received)
+                                    <tr>
+                                        <td class="p-1 px-4">{{ __('warehouse::view.Key Received') }}</td>
+                                        <td class="p-1 px-4 bg-green-400 ">
+                                                <i class="fa-solid fa-circle-check text-green mr-1"></i>
+                                                {{ __('warehouse::view.Confirmed') }}
+
+                                        </td>
+                                    </tr>
+                                @endif
+                                @if(count($model->getMedia('keys')))
+                                    @foreach($model->getMedia('keys') as $key)
+                                        <tr>
+                                            <td class="p-1 px-4">{{ __('warehouse::view.Key File') }}</td>
+                                            <td class="p-1 px-4  ">
+                                                {{ $key->name }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                @endif
+
+                                <tr>
+                                    <td class="p-1 px-4">{{ __('warehouse::view.Title') }}</td>
+                                    <td class="p-1 px-4 @if($model->workflow && $model->workflow->title_number) bg-success-400 @else bg-danger-400 @endif ">
+                                        @if($model->workflow && $model->workflow->title_number)
+                                            <i class="fa-solid fa-circle-check text-success mr-1"></i> {{ __('warehouse::view.Have Title') }}
+                                        @else
+                                            <i class="fa-solid fa-square-xmark text-danger mr-1"></i> {{ __('warehouse::view.No Title') }}
+                                        @endif
+                                    </td>
+                                </tr>
+
+                                @if($model->title_received)
+                                    <tr>
+                                        <td class="p-1 px-4">{{ __('warehouse::view.Title Received') }}</td>
+                                        <td class="p-1 px-4 bg-green-400 ">
+                                            <i class="fa-solid fa-circle-check text-green mr-1"></i>
+                                            {{ __('warehouse::view.Confirmed') }}
+
+                                        </td>
+                                    </tr>
+                                @endif
+
+                                <tr>
+                                    <td class="p-1 px-4">{{ __('warehouse::view.Title Number') }}</td>
+                                    <td class="p-1 px-4 @if($model->worflow && $model->workflow->title_number) bg-success-400 @else bg-danger-400 @endif ">
+                                        @if($model->worflow && $model->workflow->title_number)
+                                            <i class="fa-solid fa-circle-check text-success mr-1"></i>{{ $model->workflow->title_number }}</td>
+                                    @endif
                                 </tr>
                                 <tr>
-                                    <td class="p-1 px-4">Email</td>
-                                    <td class="p-1 px-4 bg-success-400"> <i
-                                            class="fa-solid fa-circle-check text-success mr-1"></i> 354353543</td>
+                                    <td class="p-1 px-4">{{ __('warehouse::view.Title State') }}</td>
+                                    <td class="p-1 px-4 bg-danger-400-400">
+
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-1 px-4">Email</td>
-                                    <td class="p-1 px-4 bg-success-400"> <i
-                                            class="fa-solid fa-circle-check text-success mr-1"></i>354353543</td>
+                                    <td class="p-1 px-4">{{ __('warehouse::view.booking_no') }}</td>
+                                    <td class="p-1 px-4 bg-danger-400-400">
+
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-1 px-4">Email</td>
-                                    <td class="p-1 px-4 bg-success-400"> <i
-                                            class="fa-solid fa-circle-check text-success mr-1"></i> 354353543</td>
+                                    <td class="p-1 px-4">{{ __('warehouse::view.container_no') }}</td>
+                                    <td class="p-1 px-4 bg-danger-400-400">
+
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-1 px-4">Email</td>
-                                    <td class="p-1 px-4 bg-danger-400"> <i
-                                            class="fa-solid fa-circle-xmark text-danger mr-1"></i> 354353543</td>
+                                    <td class="p-1 px-4">{{ __('warehouse::view.Loading Plan') }}</td>
+                                    <td class="p-1 px-4 bg-danger-400-400">
+
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-1 px-4">Email</td>
-                                    <td class="p-1 px-4 bg-danger-400"> <i
-                                            class="fa-solid fa-circle-xmark text-danger mr-1"></i> 354353543</td>
+                                    <td class="p-1 px-4">{{ __('warehouse::view.Booking') }}</td>
+                                    <td class="p-1 px-4 bg-danger-400-400">
+
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-1 px-4">Email</td>
-                                    <td class="p-1 px-4 bg-danger-400"> <i
-                                            class="fa-solid fa-circle-xmark text-danger mr-1"></i> 354353543</td>
+                                    <td class="p-1 px-4">{{ __('warehouse::view.Container Loading Date') }}</td>
+                                    <td class="p-1 px-4 bg-danger-400-400">
+
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="p-1 px-4">Full Name</td>
-                                    <td class="p-1 px-4 bg-danger-400"> <i
-                                            class="fa-solid fa-circle-xmark text-danger mr-1"></i> 354353543</td>
+                                    <td class="p-1 px-4">{{ __('warehouse::view.Container Departure Date') }}</td>
+                                    <td class="p-1 px-4 bg-danger-400-400">
+
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td class="p-1 px-4">Full Address</td>
-                                    <td class="p-1 px-4 bg-warning-400">Red</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-1 px-4">Phone</td>
-                                    <td class="p-1 px-4 bg-danger-400"> <i
-                                            class="fa-solid fa-circle-xmark text-danger mr-1"></i> New Jersey</td>
-                                </tr>
+
                             </tbody>
 
                         </table>

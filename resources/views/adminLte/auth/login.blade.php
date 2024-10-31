@@ -12,21 +12,14 @@
                     <h1>Welcome to <br><span>Nejoum Express</span></h1>
                 </div>
             </div>
-            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+            <div class="col-lg-6 d-flex justify-content-center align-items-center" style="background: #fff7f7">
                 <div class="login-box">
                     <div class="card card-outline card-primary">
                         <div class="card-header text-center">
                             <a href="{{ aurl('/') }}" class="mb-12">
-                                @php
-                                    $model = App\Models\Settings::where('group', 'general')
-                                        ->where('name', 'login_page_logo')
-                                        ->first();
-                                    $system_logo = App\Models\Settings::where('group', 'general')
-                                        ->where('name', 'system_logo')
-                                        ->first();
-                                @endphp
+
                                 <img alt="Logo"
-                                    src="{{ $model->getFirstMediaUrl('login_page_logo') ? $model->getFirstMediaUrl('login_page_logo') : ($system_logo->getFirstMediaUrl('system_logo') ? $system_logo->getFirstMediaUrl('system_logo') : asset('assets/lte/cargo-logo.svg')) }}"
+                                    src="{{ asset('assets/lte/cargo-logo.gif') }}"
                                     style="max-width: 88px;max-height: 52px;" />
                             </a>
                         </div>
@@ -62,32 +55,32 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-8">
-                                        <div class="icheck-primary">
-                                            <input type="checkbox" id="remember">
-                                            <label for="remember" style="font-size: 13px; font-weight: normal">
-                                                {{ __('view.remember_me') }}
-                                            </label>
-                                        </div>
-                                    </div>
+{{--                                    <div class="col-8">--}}
+{{--                                        <div class="icheck-primary">--}}
+{{--                                            <input type="checkbox" id="remember">--}}
+{{--                                            <label for="remember" style="font-size: 13px; font-weight: normal">--}}
+{{--                                                {{ __('view.remember_me') }}--}}
+{{--                                            </label>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <!-- /.col -->
-                                    <div class="col-4">
-                                        <button type="submit"
-                                            class="btn btn-primary btn-block">{{ __('view.login') }}</button>
+                                    <div class="col-12 mb-2" >
+                                        <button type="submit" style="background: #ef4b22;box-shadow: 0 0 10px rgba(0, 0, 0, .2);"
+                                            class="form-control btn text-white btn-block">{{ __('view.login') }}</button>
                                     </div>
                                     <!-- /.col -->
                                 </div>
                             </form>
 
-                            <p class="forgot-password">
-                                <!--begin::Link-->
-                                @if (Route::has('password.request'))
-                                    <a href="{{ route('password.request') }}">
-                                        {{ __('view.forgot_password') }}
-                                    </a>
-                                @endif
-                                <!--end::Link-->
-                            </p>
+{{--                            <p class="forgot-password">--}}
+{{--                                <!--begin::Link-->--}}
+{{--                                @if (Route::has('password.request'))--}}
+{{--                                    <a href="{{ route('password.request') }}">--}}
+{{--                                        {{ __('view.forgot_password') }}--}}
+{{--                                    </a>--}}
+{{--                                @endif--}}
+{{--                                <!--end::Link-->--}}
+{{--                            </p>--}}
 
 
                         </div>

@@ -17,7 +17,7 @@ use Modules\Warehouse\Http\Filter\PortFilter;
 class LoadPlanDataTable extends DataTable
 {
 
-    public $table_id = 'dock_table';
+    public $table_id = 'load_plan_table';
     public $btn_exports = [
         'excel',
         'print',
@@ -53,31 +53,19 @@ class LoadPlanDataTable extends DataTable
             ->editColumn('dock', function (Dock $model) {
                 return $model->document_no;
             })
-            ->editColumn('VTitle', function (Dock $model) {
-                return $model->VTitle;
-            })
+
             ->editColumn('booking', function (Dock $model) {
                 return optional($model->booking)->booking_no;
             })
-            ->editColumn('container_no', function (Dock $model) {
-                $url = optional($model->carrier)->trackin_url; // Update the route as needed
 
-                if ($url){
-
-                    return '<a  href="'.$url.'">'.$model->container_no.'</a>';
-                }else{
-                    return $model->container_no;
-                }
-            })
             ->editColumn('customer', function (Dock $model) {
-                return optional($model->client)->user->name."\n". optional($model->port)->name;
+                return optional($model->client)->user->name ;
             })
-            ->editColumn('loading_date', function (Dock $model) {
-                return $model->loading_date;
+            ->editColumn('port', function (Dock $model) {
+                return optional($model->port)->name ;
             })
-            ->editColumn('dates', function (Dock $model) {
-                return "DD: ".$model->departure_date."\n".'GD: '.$model->in_gate_date ;
-            })
+
+
             ->editColumn('messages', function (Dock $model) {
                 return '';
             })
@@ -86,12 +74,12 @@ class LoadPlanDataTable extends DataTable
             })
 
 
-            ->editColumn('photos', function (Dock $model) {
-                return $model->total_photos_no;
+            ->editColumn('created_by', function (Dock $model) {
+                return optional($model->creator)->name;
             })
 
             ->editColumn('created_at', function (Dock $model) {
-                return date('d M, Y H:i', strtotime($model->created_at));
+                return date('d M, Y ', strtotime($model->created_at));
             })
             ->addColumn('row_link', function (Dock $model) {
                 // Define the URL for each row (e.g., view or edit page)
@@ -114,7 +102,7 @@ class LoadPlanDataTable extends DataTable
      */
     public function query(Dock $model, Request $request)
     {
-        $query = $model->where('type',Dock::DOCK)->newQuery();
+        $query = $model->where('type',Dock::LOADPLAN)->newQuery();
 
         // class filter for user only
         $user_filter = new PortFilter($query, $request);
@@ -174,10 +162,8 @@ class LoadPlanDataTable extends DataTable
             Column::make('customer')->title(__('warehouse::view.customerName Port')),
             Column::make('vehicles')->title(__('warehouse::view.vehicles')),
             Column::make('port')->title(__('warehouse::view.port')),
-            Column::make('dates')->title(__('warehouse::view.DD GD')),
             Column::make('messages')->title(__('warehouse::view.messages unread')),
-            Column::make('photos')->title(__('warehouse::view.photos')),
-            Column::make('VTitle')->title(__('warehouse::view.VTitle')),
+            Column::make('created_by')->title(__('warehouse::view.created_by')),
             Column::make('created_at')->title(__('view.created_at')),
             Column::computed('action')
                 ->title(__('view.action'))
@@ -193,7 +179,7 @@ class LoadPlanDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'DockReceipt_'.date('YmdHis');
+        return 'LoadPlan_'.date('YmdHis');
     }
 
 
