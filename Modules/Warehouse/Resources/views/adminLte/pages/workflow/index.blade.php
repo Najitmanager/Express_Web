@@ -8,19 +8,19 @@
         <ul class="nav nav-tabs table-header card-header justify-content-start" id="mainTab" role="tablist">
             <li class="nav-item custom-title index-btn" role="presentation" data-href="tab1">
                 <a class="nav-link text-dark border-0 active " id="tab1-tab" data-bs-toggle="tab" href="#tab1" role="tab">
-                    <i class="fa-solid fa-file-alt me-2"></i>{{ __('warehouse::view.docks') }}
+                    <i class="fa-solid fa-file-alt me-2"></i>{{ __('warehouse::view.New Vehicles') }} ({{ count(get_vehicles(0)) }})
                 </a>
             </li>
             <li class="nav-item custom-title ms-2 index-btn" role="presentation" data-href="tab2">
                 <a class="nav-link text-dark border-0" id="tab2-tab" data-bs-toggle="tab" href="#tab2"
-                    role="tab">
-                    <i class="fa-solid fa-file-alt me-2"></i> {{ __('warehouse::view.load_plans') }}
+                   role="tab">
+                    <i class="fa-solid fa-file-alt me-2"></i> {{ __('warehouse::view.In Warehouse') }} ({{ count(get_vehicles(1)) }})
                 </a>
             </li>
             <li class="nav-item custom-title ms-2 index-btn" role="presentation" data-href="tab3">
                 <a class="nav-link text-dark border-0" id="tab3-tab" data-bs-toggle="tab" href="#tab3"
-                    role="tab">
-                    <i class="fa-solid fa-list me-2"></i> {{ __('warehouse::view.bookings') }}
+                   role="tab">
+                    <i class="fa-solid fa-list me-2"></i> {{ __('warehouse::view.Shipped') }} ({{ count(get_vehicles(2)) }})
                 </a>
             </li>
         </ul>
@@ -83,7 +83,7 @@
 
 
                             <a href="#" class="btn btn-primary m-1" data-toggle="modal"
-                                data-target="#modal-overlay">{{ __('warehouse::view.add_dock') }}</a>
+                               data-target="#modal-overlay">{{ __('warehouse::view.add_dock') }}</a>
 
                             <!--end::Add user-->
                         </div>
@@ -148,7 +148,7 @@
                     <!--begin::Form-->
                     <div class="custom-modal-body">
                         <form id="form_body" action="{{ fr_route('Docks.store') }}" method="post"
-                            enctype="multipart/form-data">
+                              enctype="multipart/form-data">
                             <div class="modal-body">
                                 <!--begin::Card body-->
                                 <div class="card-body border-top p-9">
@@ -161,9 +161,9 @@
                             </div>
                             <div class="modal-footer justify-content-navbar">
                                 <button type="button" class="btn btn-custom-discard"
-                                    data-dismiss="modal">@lang('view.discard')</button>
+                                        data-dismiss="modal">@lang('view.discard')</button>
                                 <button type="button" class="btn btn-custom-save"
-                                    id="form_submit">@lang('view.create')</button>
+                                        id="form_submit">@lang('view.create')</button>
                             </div>
                         </form>
                     </div>
@@ -200,7 +200,7 @@
                         get_index('{{ fr_route('docks.get.index') }}',tab)
                         break
                     case 'tab2':
-                        get_index('{{ fr_route('docks.get.loadPlans') }}',tab)
+                        get_index('{{ fr_route('docks.get.index') }}',tab)
                         break
                     case 'tab3':
                         get_index('{{ fr_route('bookings.index') }}',tab)
@@ -371,18 +371,13 @@
                             var table = $('#' + tableId);
                             table.DataTable().ajax.reload()
                         } else {
-
-                            Toast.fire({
-                                icon: 'error',
-                                title: 'Failed to create Booking. Please try again.'
-                            })
+                            alert('Failed to create Dock. Please try again.');
                         }
                     },
                     error: function(xhr) {
-                        Toast.fire({
-                            icon: 'error',
-                            title: xhr.responseJSON.message
-                        })
+                        // Handle error response
+                        alert('An error occurred. Please try again.');
+                        console.error(xhr.responseText); // Log error for debugging
                     }
                 });
             });
@@ -390,53 +385,4 @@
         });
     </script>
 
-
-
-
-    {{-- Start Open New Tab on double click --}}
-    <script>
-        // let tabCount = 3;
-
-        // Event listener for row double-clicks to create a new detail tab
-        // $('table').on('dblclick', 'tr', function() {
-        //     const item = $(this).find('td:first').text();
-        //     const details = $(this).find('td:last').text();
-        //     const tabId = `tab${tabCount}`;
-
-            // Add new tab to the navigation with a close button
-            // $('#mainTab').append(`
-            //     <li class="nav-item custom-title ml-2" role="presentation" id="${tabId}-tab-container">
-            //     <a class="nav-link border-0 text-dark" id="${tabId}-tab" data-bs-toggle="tab" href="#${tabId}" role="tab">
-            //         ${item} <button type="button" class="btn-close ms-2 p-0 btn btn-sm btn-light" aria-label="Close"><i class="fa-solid fa-xmark text-danger"></i></button>
-            //     </a>
-            //     </li>
-            // `);
-
-            // Add new tab content
-            // $('#tabContent').append(`
-            //     <div class="tab-pane fade" id="${tabId}" role="tabpanel">
-            //     <h5 class="mt-3">Details for ${item}</h5>
-            //     <p>${details}</p>
-            //     </div>
-            // `);
-
-            // Activate the new tab
-            // $(`#${tabId}-tab`).tab('show');
-            // tabCount++;
-
-            // Close tab on close button click
-            // $(`#${tabId}-tab-container .btn-close`).on('click', function(e) {
-            //     e.stopPropagation(); // Prevent the tab from activating
-            //     const tabPaneId = $(this).closest('.nav-item').find('.nav-link').attr('href');
-            //     $(tabPaneId).remove(); // Remove tab content
-            //     $(this).closest('.nav-item').remove(); // Remove tab header
-
-                // Show the first tab if there are no active tabs
-        //         if (!$('#mainTab .nav-link.active').length) {
-        //             $('#mainTab .nav-link:first').tab('show');
-        //         }
-        //     });
-        // });
-    </script>
-    {{-- End Open New Tab on double click --}}
 @endsection

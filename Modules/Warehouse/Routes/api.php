@@ -36,5 +36,12 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('set/arrival/vehicle/{id}', 'VehicleController@setArrival');
     Route::post('set/photos/vehicle/{id}', 'VehicleController@setPhotos');
 
+    Route::get('containers','DockController@index');
+    Route::post('set/loading/container/{id}', 'DockController@setLoading');
+    Route::get('show/container/{id}', 'DockController@show');
+    Route::post('search/container', 'DockController@search');
+    Route::post('set/photos/container/{id}', 'DockController@setPhotos');
+
+
 
 });

@@ -156,7 +156,6 @@
 
                 // Get the href attribute
                 var href = item.find('a').data('href');
-                console.log(href);
                 if (href) {
                     url = href;
                 }
@@ -197,7 +196,7 @@
                         if (response.success) {
                             Toast.fire({
                                 icon: 'success',
-                                title: 'Customer created successfully!'
+                                title: 'Booking created successfully!'
                             })
                             // You might close the modal here or update the page dynamically
                             // $('#form_body')[0].reset(); // Reset the form after successful submission
@@ -211,13 +210,18 @@
                             var table = $('#' + tableId);
                             table.DataTable().ajax.reload();
                         } else {
-                            alert('Failed to create Customer. Please try again.');
+
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'Failed to create Booking. Please try again.'
+                            })
                         }
                     },
                     error: function(xhr) {
-                        // Handle error response
-                        alert('An error occurred. Please try again.');
-                        console.error(xhr.responseText); // Log error for debugging
+                        Toast.fire({
+                            icon: 'error',
+                            title: xhr.responseJSON.message
+                        })
                     }
 
                 });

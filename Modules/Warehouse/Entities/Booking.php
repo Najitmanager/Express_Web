@@ -14,7 +14,7 @@ class Booking extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
 
-    protected $fillable = ['booking_no','booking_date','closed_on'];
+    protected $fillable = ['booking_no','booking_date','closed_on','branch_id'];
 
     public function registerMediaCollections(): void
     {

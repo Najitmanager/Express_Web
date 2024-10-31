@@ -14,7 +14,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'booking_no'=>'required|unique:bookings,booking_no',
+            'booking_no'=>'required|min:0',
             'booking_date'=>'required|date|date_format:Y-m-d|after_or_equal:today',
         ];
     }

@@ -184,7 +184,7 @@
                 }
             });
         }
-        
+
         let url;
         $(document).ready(function() {
 
@@ -252,13 +252,18 @@
                             var table = $('#' + tableId);
                             table.DataTable().ajax.reload();
                         } else {
-                            alert('Failed to create Carrier. Please try again.');
+
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'Failed to create Booking. Please try again.'
+                            })
                         }
                     },
                     error: function(xhr) {
-                        // Handle error response
-                        alert('An error occurred. Please try again.');
-                        console.error(xhr.responseText); // Log error for debugging
+                        Toast.fire({
+                            icon: 'error',
+                            title: xhr.responseJSON.message
+                        })
                     }
 
                 });

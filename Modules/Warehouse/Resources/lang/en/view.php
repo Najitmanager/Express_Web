@@ -136,6 +136,10 @@ return [
     'Is Closed'=>'Is Closed',
     'close_the_booking'=>'Closed The Booking',
     'add_booking_files'=>'Add Booking Files',
+    'New Vehicles'=>'New Vehicles',
+    'In Warehouse'=>'In Warehouse',
+    'Shipped'=>'Shipped',
+    'workflow'=>'Workflow',
 
     'table' => [
         'port' => 'Port',

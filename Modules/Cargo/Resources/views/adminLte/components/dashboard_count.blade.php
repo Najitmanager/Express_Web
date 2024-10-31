@@ -26,7 +26,7 @@
         $all_captains  = Modules\Cargo\Entities\Driver::where('is_archived', 0)->where('branch_id',$branch_id)->count();
         $all_staff     = Modules\Cargo\Entities\Staff::where('branch_id',$branch_id)->count();
     }
-    
+
 
 @endphp
 
@@ -202,7 +202,7 @@
         </div>
     </div>
     <!-- ./col -->
-    
+
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-success">
@@ -310,9 +310,9 @@
         $delivered_client_shipments    = Modules\Cargo\Entities\Shipment::where('client_id', $client_id )->where('client_status', Modules\Cargo\Entities\Shipment::CLIENT_STATUS_DELIVERED)->count();
 
         $transactions                  = Modules\Cargo\Entities\Transaction::where('client_id', $client_id )->orderBy('created_at','desc')->sum('value');
-        $DEBIT_transactions            = Modules\Cargo\Entities\Transaction::where('client_id', $client_id )->where('value', 'like', '%-%')->orderBy('created_at','desc')->sum('value'); 
+        $DEBIT_transactions            = Modules\Cargo\Entities\Transaction::where('client_id', $client_id )->where('value', 'like', '%-%')->orderBy('created_at','desc')->sum('value');
         $CREDIT_transactions           = Modules\Cargo\Entities\Transaction::where('client_id', $client_id )->where('value', 'not like', '%-%')->orderBy('created_at','desc')->sum('value');
-        
+
         // DEBIT  -
         // CREDIT  +
     @endphp
@@ -329,7 +329,7 @@
                     <div class="mb-3 font-weight-bold text-success mt-4">{{format_price($transactions)}}</div>
                 </a>
                 <p class="m-0 text-dark-75 font-weight-bolder font-size-h5">{{ __('cargo::view.client_wallet_dashboard') }}.</p>
-                
+
             </div>
             <!--end::Body-->
         </div>
@@ -428,8 +428,8 @@
     <div class="custom-dashboard-widget custom-bg-danger">
         <img src="https://express.nejoum.net/resources/workflow-icons/icons8-new-80.png" alt="">
         <div class="widget-text text-center" style="margin-inline-end: 24%;">
-            <h1 class="m-0 text-light">1219</h1>
-            <h6 class="text-light">New Vehicles</h6>
+            <h1 class="m-0 text-light">{{ count(get_vehicles(0)) }}</h1>
+            <h6 class="text-light">{{ __('warehouse::view.New Vehicles') }}</h6>
         </div>
     </div>
 </div>
@@ -438,8 +438,8 @@
     <div class="custom-dashboard-widget custom-bg-warning">
         <img src="https://express.nejoum.net/resources/workflow-icons/icons8-warehouse-100.png" alt="">
         <div class="widget-text text-center" style="margin-inline-end: 24%;">
-            <h1 class="m-0 text-dark">656</h1>
-            <h6 class="text-dark">In Warehouse</h6>
+            <h1 class="m-0 text-dark">{{ count(get_vehicles(1)) }}</h1>
+            <h6 class="text-dark">{{ __('warehouse::view.In Warehouse') }}</h6>
         </div>
     </div>
 
@@ -449,8 +449,8 @@
     <div class="custom-dashboard-widget custom-bg-blue">
         <img src="https://express.nejoum.net/resources/workflow-icons/icons8-sent-200.png" alt="">
         <div class="widget-text text-center" style="margin-inline-end: 24%;">
-            <h1 class="m-0 text-light">1657</h1>
-            <h6 class="text-light">Shipped</h6>
+            <h1 class="m-0 text-light">{{ count(get_vehicles(2)) }}</h1>
+            <h6 class="text-light">{{ __('warehouse::view.Shipped') }}</h6>
         </div>
     </div>
 </div>

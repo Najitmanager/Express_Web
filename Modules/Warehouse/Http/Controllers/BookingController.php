@@ -62,7 +62,7 @@ class BookingController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        Booking::create($data);
+        Booking::create($data+['branch_id'=>app('hook')->get('warehouse')->id]);
         return response()->json(['success'=>true]);
 
     }

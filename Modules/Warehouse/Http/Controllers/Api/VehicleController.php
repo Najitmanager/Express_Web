@@ -20,10 +20,10 @@ class VehicleController extends Controller
         }
         switch ($status) {
             case 'new':
-                $vehicles = Vehicle::where('status', 0)->get();
+                $vehicles = Vehicle::where('status', 0)->latest()->get();
                 break;
             case 'in':
-                $vehicles = Vehicle::where('status', 1)->get();
+                $vehicles = Vehicle::where('status', 1)->latest()->get();
                 break;
         }
 
@@ -63,6 +63,7 @@ class VehicleController extends Controller
                     });
             })
             ->orWhere('year', 'LIKE', "%$keyword%")
+            ->latest()
             ->get();
         return (VehicleResource::collection($vehicles))->additional(['status' => 'success', 'message' => '']);
 

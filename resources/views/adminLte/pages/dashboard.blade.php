@@ -40,36 +40,25 @@
                             <tbody>
                                 <tr>
                                     <td class="p-1 px-4">Vehicles with Title</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
+                                    <td class="p-1 px-4 text-danger fw-bold">{{ count(get_vehicles()) }}</td>
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">Vehicles without Title</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
+                                    <td class="p-1 px-4 text-danger fw-bold">0</td>
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">Vehicles with Load Plans</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
+                                    <td class="p-1 px-4 text-danger fw-bold">0</td>
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">Vehicles without Load Plans</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
+                                    <td class="p-1 px-4 text-danger fw-bold">{{ count(get_vehicles()) }}</td>
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">Vehicles with Title not in Load Plan</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
+                                    <td class="p-1 px-4 text-danger fw-bold">{{ count(get_vehicles()) }}</td>
                                 </tr>
-                                <tr>
-                                    <td class="p-1 px-4">Vehicles with Load Plans</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-1 px-4">Vehicles without Load Plans</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-1 px-4">Vehicles with Title not in Load Plan</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -101,21 +90,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="p-1 px-4">Vehicles with Title</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-1 px-4">Vehicles without Title</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-1 px-4">Vehicles with Load Plans</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                </tr>
+{{--                                <tr>--}}
+{{--                                    <td class="p-1 px-4">Vehicles with Title</td>--}}
+{{--                                    <td class="p-1 px-4 text-danger fw-bold">500</td>--}}
+{{--                                    <td class="p-1 px-4 text-danger fw-bold">500</td>--}}
+{{--                                </tr>--}}
+{{--                                <tr>--}}
+{{--                                    <td class="p-1 px-4">Vehicles without Title</td>--}}
+{{--                                    <td class="p-1 px-4 text-danger fw-bold">500</td>--}}
+{{--                                    <td class="p-1 px-4 text-danger fw-bold">500</td>--}}
+{{--                                </tr>--}}
+{{--                                <tr>--}}
+{{--                                    <td class="p-1 px-4">Vehicles with Load Plans</td>--}}
+{{--                                    <td class="p-1 px-4 text-danger fw-bold">500</td>--}}
+{{--                                    <td class="p-1 px-4 text-danger fw-bold">500</td>--}}
+{{--                                </tr>--}}
                             </tbody>
                         </table>
 
@@ -149,21 +138,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="p-1 px-4">Vehicles with Title</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-1 px-4">Vehicles without Title</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-1 px-4">Vehicles with Load Plans</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                    <td class="p-1 px-4 text-danger fw-bold">500</td>
-                                </tr>
+{{--                                <tr>--}}
+{{--                                    <td class="p-1 px-4">Vehicles with Title</td>--}}
+{{--                                    <td class="p-1 px-4 text-danger fw-bold">500</td>--}}
+{{--                                    <td class="p-1 px-4 text-danger fw-bold">500</td>--}}
+{{--                                </tr>--}}
+{{--                                <tr>--}}
+{{--                                    <td class="p-1 px-4">Vehicles without Title</td>--}}
+{{--                                    <td class="p-1 px-4 text-danger fw-bold">500</td>--}}
+{{--                                    <td class="p-1 px-4 text-danger fw-bold">500</td>--}}
+{{--                                </tr>--}}
+{{--                                <tr>--}}
+{{--                                    <td class="p-1 px-4">Vehicles with Load Plans</td>--}}
+{{--                                    <td class="p-1 px-4 text-danger fw-bold">500</td>--}}
+{{--                                    <td class="p-1 px-4 text-danger fw-bold">500</td>--}}
+{{--                                </tr>--}}
                             </tbody>
                         </table>
 

@@ -106,7 +106,12 @@
                 <div class="col-md-9 d-flex flex-row justify-content-start align-items-center">
                     <!--begin::Input group-->
                     <span class="mr-3">
-                        <i class="fa-solid fa-unlock-keyhole text-success"></i>
+                        @if($model->closed_on)
+                            <i class="fa-solid fa-lock text-success"></i>
+                        @else
+                            <i class="fa-solid fa-unlock-keyhole text-success"></i>
+                        @endif
+
                     </span>
                     <a href="#" class="btn btn-custom-save rounded-0 d-inline-block w-100" id="closed-the-booking"
                         data-href="{{ fr_route('bookings.close', $model->id) }}">

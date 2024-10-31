@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 
 use Modules\Warehouse\Http\Filter\PortFilter;
 
-class DockDataTable extends DataTable
+class LoadPlanDataTable extends DataTable
 {
 
     public $table_id = 'dock_table';
@@ -35,7 +35,7 @@ class DockDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->rawColumns(['action','dock','customer', 'VTitle'])
+            ->rawColumns(['action','dock','booking', 'VTitle'])
             ->filterColumn('dock', function($query, $keyword) {
                 $query->where('document_no', 'LIKE', "%$keyword%")
                     ->orWhereHas('booking', function($query) use($keyword) {
@@ -171,12 +171,11 @@ class DockDataTable extends DataTable
             // Column::make('id')->title(__('warehouse::view.table.id'))->width(50),
             Column::make('dock')->title(__('warehouse::view.document_no')),
             Column::make('booking')->title(__('warehouse::view.booking_no')),
-            Column::make('container_no')->title(__('warehouse::view.container_no')),
             Column::make('customer')->title(__('warehouse::view.customerName Port')),
-            Column::make('loading_date')->title(__('warehouse::view.loading_date')),
+            Column::make('vehicles')->title(__('warehouse::view.vehicles')),
+            Column::make('port')->title(__('warehouse::view.port')),
             Column::make('dates')->title(__('warehouse::view.DD GD')),
             Column::make('messages')->title(__('warehouse::view.messages unread')),
-            Column::make('vehicles')->title(__('warehouse::view.vehicles')),
             Column::make('photos')->title(__('warehouse::view.photos')),
             Column::make('VTitle')->title(__('warehouse::view.VTitle')),
             Column::make('created_at')->title(__('view.created_at')),

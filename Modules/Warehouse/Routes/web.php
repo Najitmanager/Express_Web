@@ -87,11 +87,13 @@ Route::get('test', function () {
             // docks
             Route::resource('/docks', 'DockReceiptController')->parameters(['docks' => 'id']);
             Route::get('get-docks', 'DockReceiptController@getIndex')->name('docks.get.index');
+            Route::get('get-load_plans', 'DockReceiptController@getloadplans')->name('docks.get.loadPlans');
             Route::get('/docks-search', 'DockReceiptController@searchPages')->name('docks.search');
             Route::get('/static-docks-search', 'DockReceiptController@searchStaticPages')->name('static_docks.search');
             Route::post('/docks/upload_files/{id}', 'DockReceiptController@upload_files')->name('docks.upload_files');
             Route::delete('media-docks/{dock_id}/destroy/{id}', 'DockReceiptController@destroyMedia')->name('docks.media.destroy');
 
+            Route::get('workflow','WorkflowController@index')->name('workflow.index');
 
             // ============> General Settings <======================
             Route::group(['prefix'=>'warehouse'],function (){
