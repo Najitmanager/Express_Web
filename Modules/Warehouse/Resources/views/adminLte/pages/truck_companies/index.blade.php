@@ -84,13 +84,13 @@
     <!--end::Card-->
 
     <div class="modal fade" id="modal-overlay">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div id="preloader" class="overlay" style="display: none;">
                     <i class="fas fa-2x fa-sync fa-spin"></i>
                 </div>
                 <div class="modal-header">
-                    <h4 class="modal-title" id="modal-overlay-title">{{ __('warehouse::view.create_new_port') }}</h4>
+                    <h4 class="modal-title" id="modal-overlay-title">{{ __('warehouse::view.create_new_truck_company') }}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -99,7 +99,7 @@
                 <form id="form_body" action="{{ fr_route('truck_companies.store') }}" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <!--begin::Card body-->
-                        <div class="card-body border-top p-9">
+                        <div class="card-body border-top p-5">
                             @include('warehouse::adminLte.pages.truck_companies.form', ['typeForm' => 'create'])
                         </div>
                         <!--end::Card body-->
@@ -123,13 +123,13 @@
 
     <!-- /.modal -->
     <div class="modal fade" id="modal-overlay-edit">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div id="preloader-edit" class="overlay" style="display: none;">
                     <i class="fas fa-2x fa-sync fa-spin"></i>
                 </div>
                 <div class="modal-header">
-                    <h4 class="modal-title" id="modal-overlay-title-edit">{{ __('warehouse::view.edit_truck_companies') }}</h4>
+                    <h4 class="modal-title" id="modal-overlay-title-edit">{{ __('warehouse::view.edit_truck_company') }}</h4>
                     <button type="button" class="close" data-dismiss="modal" id="modal-close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -186,7 +186,7 @@
                 }
             });
         }
-        
+
         let url;
         $(document).ready(function() {
             $('#{{ $table_id }} tbody').on('click', 'tr', function() {

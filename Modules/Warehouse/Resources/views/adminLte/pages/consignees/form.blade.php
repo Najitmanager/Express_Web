@@ -3,14 +3,14 @@
 
 
 
-<div class="row mb-6">
+<div class="row">
     <!--begin::Input group -- Name -->
     <!--begin::Input group-->
     <div class="col-lg-6 fv-row">
         <!--begin::Label-->
         <label class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.name') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <input type="text" name="name" class="form-control form-control-lg @error('name') is-invalid @enderror" placeholder="{{ __('warehouse::view.name') }}" value="{{ old('name', isset($model) ? $model->name : '') }}" />
             @error('name')
             <div class="invalid-feedback">
@@ -26,7 +26,7 @@
         <!--begin::Label-->
         <label class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.phone') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
             </div>
@@ -43,7 +43,7 @@
 </div>
 <!--end::Input group-->
 
-<div class="form-group">
+<div class="form-group mb-0">
     <label class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.address') }}</label>
     <textarea name="address" class="form-control @error('address') is-invalid @enderror" placeholder="{{ __('warehouse::view.address') }}">{{ old('address', isset($model) ? $model->address : '') }}</textarea>
     @error('address')
@@ -55,7 +55,7 @@
 
 
 <!--begin::Input group-->
-<div class="form-group">
+<div class="form-group mb-0">
     <!--begin::Label-->
     <label class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.table.country') }}</label>
     <!--end::Label-->
@@ -85,7 +85,7 @@
 <!--end::Input group-->
 
 
-<div class="form-group">
+<div class="form-group mb-0">
     <label class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.city') }}</label>
     <input type="text" value="{{ old('city', isset($model) ? $model->city : '') }}" placeholder="{{ __('warehouse::view.city') }}" name="city" class="form-control @error('city') is-invalid @enderror" />
     @error('city')

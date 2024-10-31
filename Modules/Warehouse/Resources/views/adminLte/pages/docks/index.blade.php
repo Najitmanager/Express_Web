@@ -134,7 +134,7 @@
 
         {{-- Start Create Modal --}}
         <div class="modal fade" id="modal-overlay">
-            <div class="modal-dialog modal-xl">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div id="preloader" class="overlay" style="display: none;">
                         <i class="fas fa-2x fa-sync fa-spin"></i>
@@ -151,7 +151,7 @@
                             enctype="multipart/form-data">
                             <div class="modal-body">
                                 <!--begin::Card body-->
-                                <div class="card-body border-top p-9">
+                                <div class="card-body border-top p-5">
                                     @include('warehouse::adminLte.pages.Docks.form', [
                                         'typeForm' => 'create',
                                     ])

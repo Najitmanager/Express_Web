@@ -1,4 +1,4 @@
-<form id="form_body-edit" class="form" action="{{ fr_route('ports.update', ['id' => $model->id]) }}" method="post"
+<form id="form_body-edit" class="form" action="{{ fr_route('truck_companies.update', ['id' => $model->id]) }}" method="post"
     enctype="multipart/form-data">
     @method('PUT')
     <div class="modal-body">

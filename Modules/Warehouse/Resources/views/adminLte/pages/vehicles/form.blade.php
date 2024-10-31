@@ -12,9 +12,9 @@
         <!--begin::Input group -- VIN -->
         <div class="col-lg-6 fv-row">
             <!--begin::Label-->
-            <label class="col-form-label fw-bold fs-6 ">{{ __('warehouse::view.vin') }}</label>
+            <label class="col-form-label ">{{ __('warehouse::view.vin') }}</label>
             <!--end::Label-->
-            <div class="input-group mb-4">
+            <div class="input-group">
                 <input type="text" name="vin" class="form-control rounded-0 @error('vin') is-invalid @enderror"
                        placeholder="{{ __('warehouse::view.vin') }}"
                        id="vin_input"
@@ -35,9 +35,9 @@
         <!--begin::Input group -- Type -->
         <div class="col-lg-6 fv-row">
             <!--begin::Label-->
-            <label class="col-form-label fw-bold fs-6">{{ __('cargo::view.table.type') }}</label>
+            <label class="col-form-label">{{ __('cargo::view.table.type') }}</label>
             <!--end::Label-->
-            <div class="input-group mb-4 vehicle_type">
+            <div class="input-group vehicle_type">
                 <select
                     class="form-control @error('type_id') is-invalid @enderror"
                     name="type_id"
@@ -69,9 +69,9 @@
                 <!--begin::Input group -- Make -->
                 <div class="col-lg-5 fv-row">
                     <!--begin::Label-->
-                    <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.table.make') }}</label>
+                    <label class="col-form-label">{{ __('warehouse::view.table.make') }}</label>
                     <!--end::Label-->
-                    <div class="input-group mb-4">
+                    <div class="input-group">
                         <select
                             class="form-control  @error('make_id') is-invalid @enderror"
                             name="make_id"
@@ -101,9 +101,9 @@
                 <!--begin::Input group -- model -->
                 <div class="col-lg-5 fv-row">
                     <!--begin::Label-->
-                    <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.table.model') }}</label>
+                    <label class="col-form-label">{{ __('warehouse::view.table.model') }}</label>
                     <!--end::Label-->
-                    <div class="input-group mb-4">
+                    <div class="input-group">
                         <select
                             class="form-control  @error('model_id') is-invalid @enderror"
                             name="model_id"
@@ -126,9 +126,9 @@
                 <!--begin::Input group -- year -->
                 <div class="col-lg-2 fv-row">
                     <!--begin::Label-->
-                    <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.table.year') }}</label>
+                    <label class="col-form-label">{{ __('warehouse::view.table.year') }}</label>
                     <!--end::Label-->
-                    <div class="input-group mb-4">
+                    <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa-solid fa-calendar-plus"></i></span>
                         </div>
@@ -147,9 +147,9 @@
         <!--begin::Input group -- Color -->
         <div class="col-lg-4 fv-row">
             <!--begin::Label-->
-            <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.table.color') }}</label>
+            <label class="col-form-label">{{ __('warehouse::view.table.color') }}</label>
             <!--end::Label-->
-            <div class="input-group mb-4">
+            <div class="input-group">
                 <select
                     class="form-control  @error('color_id') is-invalid @enderror"
                     name="color_id"
@@ -179,9 +179,9 @@
         <!--begin::Input group -- Price -->
         <div class="col-lg-4 fv-row">
             <!--begin::Label-->
-            <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.table.price') }}</label>
+            <label class="col-form-label">{{ __('warehouse::view.table.price') }}</label>
             <!--end::Label-->
-            <div class="input-group mb-4">
+            <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa-solid fa-hand-holding-dollar"></i></span>
                 </div>
@@ -198,9 +198,9 @@
         <!--begin::Input group -- weight -->
         <div class="col-lg-4 fv-row">
             <!--begin::Label-->
-            <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.table.price') }}</label>
+            <label class="col-form-label">{{ __('warehouse::view.table.price') }}</label>
             <!--end::Label-->
-            <div class="input-group mb-4">
+            <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa-solid fa-weight-scale"></i></span>
                 </div>
@@ -222,9 +222,9 @@
     <div class="col-lg-6 fv-row">
         <!--begin::Label-->
         <label
-            class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.customer') }}</label>
+            class="col-form-label required">{{ __('warehouse::view.customer') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <select
                 class="form-control  @error('client_id') is-invalid @enderror"
                 name="client_id"
@@ -255,9 +255,9 @@
     <div class="col-lg-6 fv-row">
         <!--begin::Label-->
         <label
-            class="col-form-label fw-bold fs-6 required">{{ __('warehouse::view.port') }}</label>
+            class="col-form-label required">{{ __('warehouse::view.port') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <select
                 class="form-control  @error('port_id') is-invalid @enderror"
                 name="port_id"
@@ -287,9 +287,9 @@
     <!--begin::Input group -- expected_arrival_date -->
     <div class="col-lg-6 fv-row">
         <!--begin::Label-->
-        <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.table.expected_arrival_date') }}</label>
+        <label class="col-form-label">{{ __('warehouse::view.table.expected_arrival_date') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <input type="date" name="expected_arrival_date" class="form-control has-feedback @error('expected_arrival_date') is-invalid @enderror" placeholder="{{ __('warehouse::view.table.expected_arrival_date') }}"  />
             @error('expected_arrival_date')
             <div class="invalid-feedback">
@@ -303,9 +303,9 @@
     <!--begin::Input group -- lot -->
     <div class="col-lg-6 fv-row">
         <!--begin::Label-->
-        <label class="col-form-label fw-bold fs-6">{{ __('warehouse::view.table.lot') }}</label>
+        <label class="col-form-label">{{ __('warehouse::view.table.lot') }}</label>
         <!--end::Label-->
-        <div class="input-group mb-4">
+        <div class="input-group">
             <input type="text" name="lot" class="form-control has-feedback @error('lot') is-invalid @enderror" placeholder="{{ __('warehouse::view.table.lot') }}"  />
             @error('lot')
             <div class="invalid-feedback">

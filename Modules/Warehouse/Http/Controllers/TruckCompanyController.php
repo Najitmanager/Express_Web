@@ -124,7 +124,9 @@ class TruckCompanyController extends Controller
         $countries = Country::all();
         $truck_company = TruckCompany::findOrFail($id);
         $adminTheme = env('ADMIN_THEME', 'adminLte');
-        return view('warehouse::'.$adminTheme.'.pages.truck_companies.edit')->with(['model' => $truck_company , 'countries' => $countries ]);
+        $table_id = 'truck_companies_table';
+        $view = view('warehouse::'.$adminTheme.'.pages.truck_companies.ajax.truck_company_form_edit', ['model' => $truck_company , 'countries' => $countries ,'table_id' => $table_id])->render();
+        return response()->json(['value' => 1, 'view' => $view ]);  
 
 
     }
@@ -139,8 +141,7 @@ class TruckCompanyController extends Controller
     {
         $truck_company = TruckCompany::findOrFail($id);
         $truck_company->update($request->validated());
-        return redirect()->back()->with(['message_alert' => __('cargo::messages.saved')]);
-
+        return response()->json(['success'=>true]);
     }
 
     public function update_active(Request $request)

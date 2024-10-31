@@ -623,8 +623,8 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4 {
 }
 
 @media( min-width: 760px) {
-    html:not([lang='ar']) .main-sidebar,
-    html:not([lang='ar']) .main-sidebar::before {
+    html .main-sidebar,
+    html .main-sidebar::before {
         width: 220px;
     }
     html:not([lang='ar']) .content-wrapper {
@@ -633,10 +633,10 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4 {
     html:not([lang='ar']) .main-header {
         margin-left: 220px !important;
     }
-    html:not([lang='ar']) .layout-fixed .brand-link {
+    html .layout-fixed .brand-link {
         width: 220px !important;
     }
-    html:not([lang='ar']) .os-host-scrollbar-horizontal-hidden {
+    html .os-host-scrollbar-horizontal-hidden {
         width: 220px !important;
     }
     .os-host-scrollbar-horizontal-hidden .nav-item a {
@@ -756,6 +756,19 @@ body.sidebar-mini.layout-fixed.sidebar-collapse .main-sidebar {
 
 .text-uppercase {
     text-transform: capitalize !important;
+}
+
+label:not(.form-check-label):not(.custom-file-label) {
+    font-weight: normal !important;
+}
+
+.btn-group .select2-container .select2-selection {
+    height: 29px !important;
+    margin-top: 0;
+    width: 200px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 

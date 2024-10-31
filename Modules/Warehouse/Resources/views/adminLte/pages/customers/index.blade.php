@@ -102,7 +102,7 @@
 
 
     <div class="modal fade" id="modal-overlay">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div id="preloader" class="overlay" style="display: none;">
                     <i class="fas fa-2x fa-sync fa-spin"></i>
@@ -117,7 +117,7 @@
                 <form id="form_body" action="{{ fr_route('customers.store') }}" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <!--begin::Card body-->
-                        <div class="card-body border-top p-9">
+                        <div class="card-body border-top p-5">
                             @include('warehouse::adminLte.pages.customers.form', ['typeForm' => 'create'])
                         </div>
                         <!--end::Card body-->
@@ -141,7 +141,7 @@
 
     <!-- /.modal -->
     <div class="modal fade" id="modal-overlay-edit">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div id="preloader-edit" class="overlay" style="display: none;">
                     <i class="fas fa-2x fa-sync fa-spin"></i>
