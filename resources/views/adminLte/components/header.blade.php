@@ -11,7 +11,7 @@
 
 
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light" style="height: 65px">
 
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -35,9 +35,9 @@
     </ul>
 
 
-    <div class="form-inline ml-0 ml-md-3 d-none d-md-block">
+    <div class="form-inline ml-0 ml-md-2 d-none d-md-block">
         <div class="input-group input-group-append">
-            <input type="search" id="carSearch" aria-label="Search" class="form-control form-control-navbar"
+            <input type="search" id="carSearch" aria-label="Search" class="form-control" style="height: 30px"
                 placeholder="Search for Vehicle..." autocomplete="off">
             <ul id="searchResults"></ul>
 

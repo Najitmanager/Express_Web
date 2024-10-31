@@ -1,4 +1,6 @@
-start table styles */ body {
+/*start table styles */
+
+body {
     background-color: #ececec;
 }
 
@@ -11,10 +13,10 @@ start table styles */ body {
 }
 
 .table-card-wrapper {
-    margin-top: 16px;
+    margin-top: 20px;
     border: 1px solid #35baf6;
     border-radius: 0;
-    min-height: calc(100vh - 90px);
+    min-height: calc(100vh - 110px);
 }
 
 .vehicle-detail-card {
@@ -592,10 +594,15 @@ a[data-toggle="modal"] {
     border-left: 5px solid #35baf6;
 }
 
+.nav-sidebar .nav-item>.nav-link {
+    border-left: 5px solid transparent;
+}
+
 .nav-sidebar .nav-item>.nav-link i {
     width: 55px;
     text-align: center;
-    font-size: large;
+    color: #adb3b8;
+    font-size: 18px;
 }
 
 .nav-pills .nav-link {
@@ -604,6 +611,11 @@ a[data-toggle="modal"] {
 
 [class*="sidebar-dark"] .brand-link {
     border-bottom: 0;
+    height: 65px;
+    width: 220px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 aside.main-sidebar.sidebar-dark-primary.elevation-4 {
@@ -641,6 +653,13 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4 {
     }
     html[lang='ar'] span.svg-icon.svg-icon-1.position-absolute.ms-6 {
         left: 0 !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .sidebar-mini.sidebar-collapse .main-sidebar:hover,
+    .sidebar-mini.sidebar-collapse .main-sidebar.sidebar-focused {
+        width: 220px;
     }
 }
 
@@ -705,6 +724,32 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4 {
     background-color: #028b76 !important;
 }
 
+body.sidebar-mini.layout-fixed.sidebar-collapse .brand-link div {
+    width: 46px !important
+}
+
+body.sidebar-mini.layout-fixed.sidebar-collapse .brand-link span {
+    display: none
+}
+
+body.sidebar-mini.layout-fixed.sidebar-collapse .main-sidebar {
+    width: 65px;
+}
+
+.aside-logo:hover {
+    pointer-events: none;
+    cursor: default;
+}
+
+.aside-logo:hover p {
+    display: none !important
+}
+
+.btn.btn-primary {
+    background-color: #35baf6 !important;
+    border-radius: 0 !important;
+}
+
 
 /* End Side Menu
 
@@ -719,6 +764,22 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4 {
     gap: 10px;
     width: 100%;
     height: 30px;
+}
+
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
+.sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+    color: #adb3b8 !important;
+}
+
+#carSearch {
+    height: 30px;
+    background: white;
+    width: 284px;
+    color: black;
+}
+
+.fw-bold {
+    font-weight: bold !important;
 }
 
 
@@ -751,6 +812,10 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4 {
     .table-header.nav {
         display: none;
     }
+}
+
+.elevation-4 {
+    box-shadow: none !important;
 }
 
 

@@ -423,7 +423,7 @@
 
 
 
-<div class="col-md-4 mb-2">
+<div class="col-md-4 mb-1">
     <!-- small box -->
     <div class="custom-dashboard-widget custom-bg-danger">
         <img src="https://express.nejoum.net/resources/workflow-icons/icons8-new-80.png" alt="">
@@ -434,7 +434,7 @@
     </div>
 </div>
 
-<div class="col-md-4 mb-2">
+<div class="col-md-4 mb-1">
     <div class="custom-dashboard-widget custom-bg-warning">
         <img src="https://express.nejoum.net/resources/workflow-icons/icons8-warehouse-100.png" alt="">
         <div class="widget-text text-center" style="margin-inline-end: 24%;">
@@ -445,7 +445,7 @@
 
 </div>
 
-<div class="col-md-4 mb-2">
+<div class="col-md-4 mb-1">
     <div class="custom-dashboard-widget custom-bg-blue">
         <img src="https://express.nejoum.net/resources/workflow-icons/icons8-sent-200.png" alt="">
         <div class="widget-text text-center" style="margin-inline-end: 24%;">
