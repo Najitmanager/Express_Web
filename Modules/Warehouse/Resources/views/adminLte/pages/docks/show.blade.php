@@ -7,7 +7,7 @@
         <div class="table-header card-header">
 
             <div class="custom-title">
-                New Dock Reciept
+                {{ __('warehouse::view.New Dock Receipt') }}
             </div>
 
         </div>
@@ -15,18 +15,18 @@
 
             <div class="d-flex gap-2 ">
                 <button class="btn btn-sm btn-light px-2 d-flex align-items-center">
-                    <i class="fa-solid fa-floppy-disk text-success me-2"></i> Save
+                    <i class="fa-solid fa-floppy-disk text-success me-2"></i> {{ __('view.save') }}
                 </button>
                 <button class="btn btn-sm btn-light px-2 d-flex align-items-center">
-                    <i class="fa-solid fa-floppy-disk text-success me-2"></i> Save & Close
+                    <i class="fa-solid fa-floppy-disk text-success me-2"></i> {{ __('warehouse::view.Save & Close') }}
                 </button>
                 <button class="btn btn-sm btn-light px-2 d-flex align-items-center">
-                    <i class="fa-solid fa-print text-success me-2"></i> Print
+                    <i class="fa-solid fa-print text-success me-2"></i> {{ __('warehouse::view.print') }}
                 </button>
             </div>
 
             <button class="btn btn-sm btn-light px-2 d-flex align-items-center">
-                <i class="fa-regular fa-circle-xmark text-danger me-2"></i> Print
+                <i class="fa-regular fa-circle-xmark text-danger me-2"></i> {{ __('warehouse::view.Close') }}
             </button>
         </div>
 
@@ -37,59 +37,63 @@
                 <div class="col-lg-6">
                     <div class="row justify-content-center align-items-center">
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">Document No.</label>
-                            <input type="text" class="form-control" placeholder="auto">
+                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.document_no') }}.</label>
+                            <input type="text" name="document_no" class="form-control" placeholder="auto">
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">Booking No.</label>
-                            <input type="text" class="form-control">
+                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.booking_no') }}.</label>
+                            <select name="booking_id" class="form-select form-select-sm" aria-label="Small select example">
+                               @foreach(get_bookings() as $booking)
+                                    <option value="{{ $booking->id }}">{!! $booking->name_icon !!} </option>
+                               @endforeach
+                            </select>
                         </div>
                         <div class="col-lg-4 d-flex justify-content-start align-items-center gap-2">
-                            <input type="checkbox">
-                            <label for="name" class="form-label mb-1">Load Plan Received</label>
+                            <input name="load_plan_received" type="checkbox">
+                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.Load Plan Received') }}</label>
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">Container No.</label>
-                            <input type="text" class="form-control">
+                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.container_no') }}.</label>
+                            <input type="text" name="container_no" class="form-control">
 
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">Seal No.</label>
-                            <input type="text" class="form-control">
+                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.Seal No') }}.</label>
+                            <input type="text" name="seal_no" class="form-control">
 
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">AES No.</label>
-                            <input type="text" class="form-control">
+                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.AES No') }}.</label>
+                            <input type="text" name="aes_no" class="form-control">
 
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">Type Of Move.</label>
-                            <input type="text" class="form-control">
+                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.Type Of Move') }}.</label>
+                            <input type="text"  name="type_of_moves" class="form-control">
 
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">Loading/Pier Terminal.</label>
-                            <input type="text" class="form-control">
+                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.Loading/Pier Terminal') }}.</label>
+                            <input type="text" name="terminal" class="form-control">
 
                         </div>
                         <div class="col-lg-4 d-flex justify-content-start align-items-center gap-2">
-                            <input type="checkbox">
-                            <label for="name" class="form-label mb-1">Booking Reciept.</label>
+                            <input name="booking_received" type="checkbox">
+                            <label for="name"  class="form-label mb-1">{{ __('warehouse::view.Booking Received') }}.</label>
 
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">Container Loading Date.</label>
-                            <input type="date" class="form-control">
+                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.Container Loading Date') }}.</label>
+                            <input type="date" name="loading_date" class="form-control">
 
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">Container in Gate Date.</label>
-                            <input type="date" class="form-control">
+                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.Container in Gate Date') }}.</label>
+                            <input type="date" name="in_gate_date" class="form-control">
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">Departure Date.</label>
-                            <input type="date" class="form-control">
+                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.Departure Date') }}.</label>
+                            <input type="date" name="departure_date" class="form-control">
 
                         </div>
                     </div>
@@ -100,88 +104,87 @@
                         <div class="col-lg-12">
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> Customer: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.customer') }}: </label>
                                 </div>
                                 <div class="col-md-9">
-                                    <select class="form-select form-select-sm" aria-label="Small select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                    <select name="client_id" class="form-select form-select-sm" aria-label="Small select example">
+                                        @foreach(get_customers() as $client)
+                                            <option value="{{ $client->id }}">{{ $client->user->name }}</option>
+                                        @endforeach
+
                                     </select>
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> Consignee: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.table.consignee') }}: </label>
                                 </div>
                                 <div class="col-md-9">
-                                    <select class="form-select form-select-sm" aria-label="Small select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                    <select name="consignee_id" class="form-select form-select-sm" aria-label="Small select example">
+                                        @foreach(get_consignees() as $consignee)
+                                            <option value="{{ $consignee->id }}">{{ $consignee->name }}</option>
+                                        @endforeach
+
                                     </select>
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> Botify Party: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.Notify Party') }}: </label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="notify_party" class="form-control">
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> Trucking Co: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.Trucking Company') }}: </label>
                                 </div>
                                 <div class="col-md-9">
-                                    <select class="form-select form-select-sm" aria-label="Small select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                    <select name="truck_company_id" class="form-select form-select-sm" aria-label="Small select example">
+                                        @foreach(get_trucking_companies() as $company)
+                                            <option value="{{ $company->id }}">{{ $company->company_name }}</option>
+                                        @endforeach
+
                                     </select>
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> Exporting Carrier: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.Exporting Carrier') }} : </label>
                                 </div>
                                 <div class="col-md-9">
-                                    <select class="form-select form-select-sm" aria-label="Small select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                    <select name="carrier_id" class="form-select form-select-sm" aria-label="Small select example">
+                                        @foreach(get_carriers() as $carrier)
+                                            <option value="{{ $carrier->id }}">{{ $carrier->name }}</option>
+                                        @endforeach
+
                                     </select>
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> Vassel Name: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.Vessel Name') }}: </label>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="vessel_name" class="form-control">
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="name" class="form-label"> Voyage: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.Voyage') }}: </label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="voyage" class="form-control">
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> Port: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.table.port') }}: </label>
                                 </div>
                                 <div class="col-md-9">
                                     <select class="form-select form-select-sm" aria-label="Small select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        @foreach(get_ports() as $port)
+                                            <option value="{{ $port->id }}">{{ $port->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -199,12 +202,12 @@
                 <li class="nav-item custom-title tabs-only p-0 index-btn" role="presentation" data-href="tab1">
                     <a class="nav-link border-0 active " id="tab1-tab" data-bs-toggle="tab" href="#tab1"
                         role="tab">
-                        Vehicle List (15)
+                        {{ __('warehouse::view.Vehicle List') }} (0)
                     </a>
                 </li>
                 <li class="nav-item custom-title tabs-only p-0 ms-2 index-btn" role="presentation" data-href="tab2">
                     <a class="nav-link border-0" id="tab2-tab" data-bs-toggle="tab" href="#tab2" role="tab">
-                        Loading Photos (15)
+                        {{ __('warehouse::view.Loading Photos') }} (0)
                     </a>
                 </li>
                 <li class="nav-item custom-title tabs-only p-0 ms-2 index-btn" role="presentation" data-href="tab3">

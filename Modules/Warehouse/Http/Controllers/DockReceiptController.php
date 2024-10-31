@@ -66,7 +66,7 @@ class DockReceiptController extends Controller
         $data_with = [];
         $share_data = array_merge(get_class_vars(LoadPlanDataTable::class), $data_with);
         $adminTheme = env('ADMIN_THEME', 'adminLte');
-        return $dataTable->render('warehouse::'.$adminTheme.'.pages.docks.ajax.index_ajax', $share_data);
+        return $dataTable->render('warehouse::'.$adminTheme.'.pages.docks.ajax.load_plan_ajax', $share_data);
 
     }
 
@@ -76,7 +76,9 @@ class DockReceiptController extends Controller
      */
     public function create()
     {
-        return view('warehouse::create');
+        //        $model = Dock::findOrFail($id);
+        $adminTheme = env('ADMIN_THEME', 'adminLte');
+        return view('warehouse::'.$adminTheme.'.pages.docks.show'/*, compact('model')*/);
     }
 
     /**

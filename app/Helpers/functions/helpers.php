@@ -1246,3 +1246,47 @@ if (!function_exists('get_vehicles')) {
         return $vehicles;
     }
 }
+if (!function_exists('get_bookings')) {
+    /**
+     * get all admins (role = 1) as array [id => name]
+     * @return array
+     */
+    function get_bookings()
+    {
+        $bookings = \Modules\Warehouse\Entities\Booking::where('branch_id',app('hook')->get('warehouse')->id)->get();
+        return $bookings;
+    }
+}
+if (!function_exists('get_consignees')) {
+    /**
+     * get all admins (role = 1) as array [id => name]
+     * @return array
+     */
+    function get_consignees()
+    {
+        $consignees = \Modules\Warehouse\Entities\Consignee::all();
+        return $consignees;
+    }
+}
+if (!function_exists('get_trucking_companies')) {
+    /**
+     * get all admins (role = 1) as array [id => name]
+     * @return array
+     */
+    function get_trucking_companies()
+    {
+        $truckCompanies = \Modules\Warehouse\Entities\TruckCompany::all();
+        return $truckCompanies;
+    }
+}
+if (!function_exists('get_carriers')) {
+    /**
+     * get all admins (role = 1) as array [id => name]
+     * @return array
+     */
+    function get_carriers()
+    {
+        $carriers = \Modules\Warehouse\Entities\Carrier::all();
+        return $carriers;
+    }
+}

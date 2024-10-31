@@ -48,8 +48,7 @@
             <!--end::Filter-->
 
 
-            <a href="#" class="btn btn-primary m-1" data-toggle="modal"
-               data-target="#modal-overlay">{{ __('warehouse::view.add_dock') }}</a>
+            <a href="{{ fr_route('docks.create') }}" class="btn btn-primary m-1" >{{ __('warehouse::view.add_dock') }}</a>
 
             <!--end::Add user-->
         </div>
@@ -80,49 +79,30 @@
 
 
 </div>
-<!--end::Card body-->
-{{-- Start Create Modal --}}
-<div class="modal fade" id="modal-overlay">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div id="preloader" class="overlay" style="display: none;">
-                <i class="fas fa-2x fa-sync fa-spin"></i>
-            </div>
-            <div class="modal-header">
-                <h4 class="modal-title" id="modal-overlay-title">{{ __('warehouse::view.create_new_Dock') }}</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <!--begin::Form-->
-            <div class="custom-modal-body">
-                <form id="form_body" action="{{ fr_route('Docks.store') }}" method="post"
-                      enctype="multipart/form-data">
-                    <div class="modal-body">
-                        <!--begin::Card body-->
-                        <div class="card-body border-top p-9">
-                            @include('warehouse::adminLte.pages.Docks.form', [
-                                'typeForm' => 'create',
-                            ])
-                        </div>
-                        <!--end::Card body-->
 
-                    </div>
-                    <div class="modal-footer justify-content-navbar">
-                        <button type="button" class="btn btn-custom-discard"
-                                data-dismiss="modal">@lang('view.discard')</button>
-                        <button type="button" class="btn btn-custom-save"
-                                id="form_submit">@lang('view.create')</button>
-                    </div>
-                </form>
-            </div>
-            <!--end::Form-->
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-{{-- End Create Modal --}}
 <link rel="stylesheet" href="{{ asset('assets/lte/plugins/custom/datatables/datatables.bundle.css') }}">
 <script src="{{ asset('assets/lte/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 {{ $dataTable->scripts() }}
+<script>
+    $('#{{ $table_id }} tbody').on('click', 'tr', function() {
+        // Remove color from all rows
+        $('#{{ $table_id }} tbody tr').css('background-color', '').css('color', '');
+
+        // Apply color only to the clicked row
+        var item = $(this);
+        item.css('background-color', '#ffefbb').css('color', '#000000');
+
+        // Get the href attribute
+        var href = item.find('a').attr('href');
+        if (href) {
+            url = href;
+        }
+    });
+
+    $('#{{ $table_id }} tbody').on('dblclick', 'tr', function() {
+        if (url) {
+
+            window.location = url;
+        }
+    });
+</script>

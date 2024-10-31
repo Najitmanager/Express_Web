@@ -49,7 +49,7 @@
 
 
             <a href="#" class="btn btn-primary m-1" data-toggle="modal"
-               data-target="#modal-overlay">{{ __('warehouse::view.add_dock') }}</a>
+               data-target="#modal-overlay">{{ __('warehouse::view.add_load_plan') }}</a>
 
             <!--end::Add user-->
         </div>
