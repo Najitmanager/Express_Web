@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\Acl\Repositories\AclRepository;
 use Modules\Warehouse\Entities\Dock;
 use Modules\Warehouse\Http\DataTables\DockDataTable;
+use Modules\Warehouse\Http\DataTables\LoadPlanDataTable;
 
 class DockReceiptController extends Controller
 {
@@ -51,6 +52,19 @@ class DockReceiptController extends Controller
         ]);
         $data_with = [];
         $share_data = array_merge(get_class_vars(DockDataTable::class), $data_with);
+        $adminTheme = env('ADMIN_THEME', 'adminLte');
+        return $dataTable->render('warehouse::'.$adminTheme.'.pages.docks.ajax.index_ajax', $share_data);
+
+    }
+    public function getloadplans(LoadPlanDataTable $dataTable)
+    {
+        breadcrumb([
+            [
+                'name' => __('warehouse::view.docks'),
+            ],
+        ]);
+        $data_with = [];
+        $share_data = array_merge(get_class_vars(LoadPlanDataTable::class), $data_with);
         $adminTheme = env('ADMIN_THEME', 'adminLte');
         return $dataTable->render('warehouse::'.$adminTheme.'.pages.docks.ajax.index_ajax', $share_data);
 

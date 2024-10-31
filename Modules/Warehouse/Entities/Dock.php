@@ -2,6 +2,7 @@
 
 namespace Modules\Warehouse\Entities;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Cargo\Entities\Branch;
@@ -82,5 +83,9 @@ class Dock extends Model implements HasMedia
     public function vehicles()
     {
         return $this->hasMany(Vehicle::class,'dock_id');
+    }
+    public function creator()
+    {
+        return $this->belongsTo(User::class,'created_by');
     }
 }

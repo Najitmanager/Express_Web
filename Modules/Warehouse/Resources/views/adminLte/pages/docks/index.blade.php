@@ -6,7 +6,7 @@
     <div class="card table-card-wrapper">
 
         <ul class="nav nav-tabs table-header card-header justify-content-start" id="mainTab" role="tablist">
-            <li class="nav-item custom-title index-btn" role="presentation" data-href="tab1">
+            <li class="nav-item custom-title  index-btn" role="presentation" data-href="tab1">
                 <a class="nav-link text-dark border-0 active " id="tab1-tab" data-bs-toggle="tab" href="#tab1" role="tab">
                     <i class="fa-solid fa-file-alt me-2"></i>{{ __('warehouse::view.docks') }}
                 </a>
@@ -30,7 +30,7 @@
         <div class="tab-content" id="tabContent">
 
             <!-- Tab 1 Content -->
-            <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+            <div class="tab-pane fade show t active" id="tab1" role="tabpanel">
 
                 <!--begin::Card header-->
                 <div class="card-header border-0 pt-6">
@@ -118,13 +118,13 @@
 
             </div>
 
-            <div  class="tab-pane fade" id="tab2" role="tabpane2">
+            <div  class="tab-pane  fade" id="tab2" role="tabpane2">
 
 
 
             </div>
 
-            <div class="tab-pane fade" id="tab3" role="tabpane3">
+            <div class="tab-pane  fade" id="tab3" role="tabpane3">
 
 
 

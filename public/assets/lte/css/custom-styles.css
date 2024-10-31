@@ -479,6 +479,9 @@ td.bg-success-400 {
 .photo-section-wrapper img {
     border-radius: 7px;
     max-width: 100px;
+    max-height: 80px;
+    object-fit: contain;
+    width: 100px;
 }
 
 .border-red {
