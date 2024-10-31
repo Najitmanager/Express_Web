@@ -218,6 +218,16 @@
                     },
                     success: function (data) {
                             $('#'+tab).html(data)
+                            if (tab==='tab1'){
+                                $('#tab2').html('');
+                                $('#tab3').html('');
+                            }else if(tab==='tab2') {
+                                $('#tab1').html('');
+                                $('#tab3').html('');
+                            }else {
+                                $('#tab1').html('');
+                                $('#tab2').html('');
+                            }
                     },
                     error: function () {
                         console.error("Failed to fetch models.");

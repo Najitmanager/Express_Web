@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Acl\Repositories\AclRepository;
+use Modules\Warehouse\Entities\Dock;
 use Modules\Warehouse\Http\DataTables\DockDataTable;
 
 class DockReceiptController extends Controller
@@ -81,7 +82,10 @@ class DockReceiptController extends Controller
      */
     public function show($id)
     {
-        return view('warehouse::show');
+//        $model = Dock::findOrFail($id);
+        $adminTheme = env('ADMIN_THEME', 'adminLte');
+        return view('warehouse::'.$adminTheme.'.pages.docks.show'/*, compact('model')*/);
+
     }
 
     /**
