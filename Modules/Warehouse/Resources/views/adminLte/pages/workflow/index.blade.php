@@ -75,7 +75,7 @@
                     </div>
 
                 </div>
-                <div id="custom-tab1">
+                <d   iv id="custom-tab1">
                     <!--begin::Card header-->
                     {{-- <div class="card-header border-0 pt-6"> --}}
                         <!--begin::Card title-->
@@ -205,7 +205,7 @@
 
                         <div class="">
                             <span class="mx-2 text-light">|</span>
-                            <button type="search" class="btn btn-light btn-sm px-4 rounded-0">
+                            <button type="search" class="btn btn-light btn-sm px-4 rounded-0 d-flex flex-row justify-content-center gap-2">
                                 <i class="fa-solid fa-arrows-rotate text-success"></i>
                                 Reload
                             </button>
