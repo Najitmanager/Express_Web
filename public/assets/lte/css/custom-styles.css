@@ -626,6 +626,12 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4 {
     }
 }
 
+@media(max-width: 992px) {
+    .none-992 {
+        display: none !important;
+    }
+}
+
 .btn i {
     padding-right: 0;
     margin-inline-end: 0.35rem;
@@ -681,3 +687,9 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4 {
 
 
 /* End Navbar */
+
+
+/* Start Login Page */
+
+
+/* End Login Page */
