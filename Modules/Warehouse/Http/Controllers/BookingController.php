@@ -118,7 +118,7 @@ class BookingController extends Controller
 
     public function bookingClose($id)
     {
-        $booking = Booking::findOrFai($id);
+        $booking = Booking::findOrFail($id);
         $booking->update(['closed_on' => now()->format('Y-m-d')]);
         return response()->json(['success'=>true]);
     }

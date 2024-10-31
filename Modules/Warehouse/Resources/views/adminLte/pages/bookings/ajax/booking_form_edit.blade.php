@@ -65,4 +65,39 @@
         e.preventDefault(); // Prevent default form submission
         $('#modal-overlay-edit').modal('hide');
     });
+
+    $('#closed-the-booking').on('click', function(e) {
+    e.preventDefault(); // Prevent default form submission
+
+    var url = $(this).data('href'); // Get the URL from the data-href attribute
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        success: function(response) {
+            // Handle success response
+            if (response.success) {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Booking closed successfully!'
+                })
+                // Close the edit modal
+                setTimeout(function() {
+                    $('#modal-overlay-edit').modal('hide');
+                }, 1000);
+                // Reload the table
+                var tableId = '{{ $table_id }}';
+                var table = $('#' + tableId);
+                table.DataTable().ajax.reload()
+            } else {
+                alert('Failed to update Booking. Please try again.');
+            }
+        },
+        error: function(xhr) {
+            // Handle error response
+            alert('An error occurred. Please try again.');
+            console.error(xhr.responseText); // Log error for debugging
+        }
+    });
+});
 </script>
