@@ -158,7 +158,7 @@ return [
     'Container Loading Date'=>'Container Loading Date',
     'Container Departure Date'=>'Container Departure Date',
     'Loading Pictures'=>'Loading Pictures',
-
+    'created_by'=>'Created By',
 
     'table' => [
         'port' => 'Port',
