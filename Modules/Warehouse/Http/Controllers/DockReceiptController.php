@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Acl\Repositories\AclRepository;
 use Modules\Warehouse\Entities\Dock;
+use Modules\Warehouse\Entities\Vehicle;
 use Modules\Warehouse\Http\DataTables\DockDataTable;
 use Modules\Warehouse\Http\DataTables\LoadPlanDataTable;
+use Modules\Warehouse\Http\Requests\Dock\StoreRequest;
 
 class DockReceiptController extends Controller
 {
@@ -86,9 +88,19 @@ class DockReceiptController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $data = \Arr::except($request->validated(), ['vehicles']);
+        $dock = Dock::create($data);
+        if($request->vehicles){
+            foreach ($request->vehicles as $key){
+                $vehicle = Vehicle::find($key);
+                $vehicle->dock_id = $dock->id;
+                $vehicle->save();
+            }
+        }
+        return redirect()->route('docks.index')->with(['message_alert' => __('pages::messages.pages.created')]);
+
     }
 
     /**

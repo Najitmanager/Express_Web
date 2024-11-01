@@ -75,7 +75,8 @@
                     </div>
 
                 </div>
-                <d   iv id="custom-tab1">
+
+                <div id="custom-tab1">
                     <!--begin::Card header-->
                     {{-- <div class="card-header border-0 pt-6"> --}}
                         <!--begin::Card title-->
@@ -145,9 +146,9 @@
                             ])
                             <!--end::Group actions-->
 
-                        </div>
+
                         <!--end::Card toolbar-->
-                    </div>
+
                     <!--end::Card header-->
 
 
@@ -162,7 +163,6 @@
                     </div>
                     <!--end::Card body-->
                 </div>
-
             </div>
 
             <div class="tab-pane fade" id="tab2" role="tabpane2">
@@ -203,13 +203,13 @@
                             </button>
                         </div>
 
-                        <div class="">
-                            <span class="mx-2 text-light">|</span>
-                            <button type="search" class="btn btn-light btn-sm px-4 rounded-0 d-flex flex-row justify-content-center gap-2">
-                                <i class="fa-solid fa-arrows-rotate text-success"></i>
-                                Reload
-                            </button>
-                        </div>
+{{--                        <div class="">--}}
+{{--                            <span class="mx-2 text-light">|</span>--}}
+{{--                            <button type="search" class="btn btn-light btn-sm px-4 rounded-0 d-flex flex-row justify-content-center gap-2">--}}
+{{--                                <i class="fa-solid fa-arrows-rotate text-success"></i>--}}
+{{--                                Reload--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
 
                     </div>
 

@@ -136,7 +136,7 @@ class PageController extends Controller
 
         $page = Page::findOrFail($id);
         $data = $request->only(['title', 'slug', 'content', 'visibility', 'published', 'publish_on', 'seo_title', 'seo_description']);
-        
+
         $data['published'] = $request->publish ? true : ($request->published ? true : false);
         $data['active'] = $request->active ? true : false;
         $data['image'] = uploader()->path(Page::DIRECTORY_IMAGE)->model($page)->singleUpload();
@@ -156,7 +156,7 @@ class PageController extends Controller
         if (env('DEMO_MODE') == 'On') {
             return redirect()->back()->with(['error_message_alert' => __('view.demo_mode')]);
         }
-        
+
         Page::destroy($id);
         return response()->json(['message' => __('pages::messages.pages.deleted')]);
     }
@@ -174,7 +174,7 @@ class PageController extends Controller
         if (env('DEMO_MODE') == 'On') {
             return redirect()->back()->with(['error_message_alert' => __('view.demo_mode')]);
         }
-        
+
         $ids = $request->ids;
         Page::destroy($ids);
         return response()->json(['message' => __('pages::messages.pages.multi_deleted')]);
@@ -203,5 +203,5 @@ class PageController extends Controller
         $pages = new Page;
         return response()->json(['pages' => $pages->staticPages()]);
     }
-    
+
 }

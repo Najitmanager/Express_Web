@@ -20,6 +20,7 @@ Route::get('test', function () {
     // ================> Ajax Routes <======================
     Route::get('/get-models/{id}', 'VehicleController@getModels')->name('vehicles.models');
     Route::get('/pull-vehicle-info/{vin}', 'VehicleController@pullInfo')->name('vehicles.pullInfo');
+    Route::post('/upload-photos/{id}', 'VehicleController@updatePhotos')->name('vehicles.updatePhotos');
 
     Route::group(
         [

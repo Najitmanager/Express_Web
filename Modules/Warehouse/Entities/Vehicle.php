@@ -73,4 +73,8 @@ class Vehicle extends Model implements HasMedia
     {
         return $this->hasOne(Workflow::class,'vehicle_id');
     }
+    public function dock()
+    {
+        return $this->belongsTo(Dock::class,'dock_id');
+    }
 }

@@ -51,6 +51,12 @@ class Dock extends Model implements HasMedia
         return '<i class="fa-solid fa-rectangle-xmark text-red"></i>';
     }
 
+    public function getContainerUrlAttribute()
+    {
+        $url= $this->carrier?$this->carrier->tracking_url.'/'.$this->container_no:'#';
+        return '<a href="'.$url.'">'.$this->container_no.'</a>';
+    }
+
     /* ===========================> Relations <========================= */
     public function branch(){
         return $this->belongsTo(Branch::class,'branch_id');

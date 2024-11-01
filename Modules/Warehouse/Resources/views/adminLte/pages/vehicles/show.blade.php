@@ -1,5 +1,6 @@
 @extends('warehouse::adminLte.layouts.master')
 
+
 @section('content')
     <!--begin::Card-->
     <div class="card  table-card-wrapper">
@@ -92,68 +93,85 @@
                                                 tabindex="-1" data-tabindex-value="-1" data-tabindex-counter="1"
                                                 data-componentid="dataview-2419">
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__1 step_line_done__false"
+                                                    class="step step_point_done__1  @if($model->status) step_line_done__true @else step_line_done__false @endif"
                                                     data-recordindex="0" data-recordid="4876"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">{{ __('warehouse::view.New Vehicle') }}</span></div>
+                                                        class="step_name">New Vehicle</span></div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__0 step_line_done__false"
+                                                    class="step @if($model->status) step_point_done__1 @else step_point_done__0 @endif @if(count($model->getMedia('photos'))) step_line_done__true @else step_line_done__false @endif"
                                                     data-recordindex="1" data-recordid="4877"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">{{ __('warehouse::view.Arrived') }}</span></div>
-                                                <div style="width: 11%;"
-                                                    class="step step_point_done__0 step_line_done__false"
+                                                        class="step_name">Arrived</span></div>
+                                            <div style="width: 11%;"
+                                                 class="step @if(!count($model->getMedia('photos'))) step_point_done__0 @else step_point_done__1 @endif @if(count($model->getMedia('keys'))) step_line_done__true @else step_line_done__false @endif"
                                                     data-recordindex="2" data-recordid="4878"
-                                                    data-boundview="dataview-2419"><span
-                                                        style="line-height: 16px !important; font-size: 18px;"
-                                                        class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">{{ __('warehouse::view.Pictures Added') }}</span></div>
+                                                    data-boundview="dataview-2419"><span style="line-height: 16px !important; font-size: 18px;" class="step_index fas fa-car-side"></span>
+                                                <span class="step_name">
+                                                    @if(count($model->getMedia('photos')))
+                                                    Pictures Added
+                                                    @else
+                                                        Pictures
+                                                    @endif
+                                                </span>
+                                            </div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__0 step_line_done__false"
+                                                    class="step @if(!count($model->getMedia('keys'))) step_point_done__0 @else step_point_done__1 @endif @if($model->workflow && $model->workflow->title_number) step_line_done__true @else step_line_done__false @endif "
                                                     data-recordindex="3" data-recordid="4879"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">{{ __('warehouse::view.Key Received') }}</span></div>
+                                                        class="step_name">
+                                                        @if(count($model->getMedia('keys')))
+                                                            Key Received
+                                                        @else
+                                                            Without Key
+                                                        @endif
+                                                    </span></div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__0 step_line_done__false"
+                                                    class="step @if($model->workflow && $model->workflow->title_number) step_point_done__1 @else step_point_done__0 @endif @if($model->dock && $model->dock->booking_received) step_line_done__true @else step_line_done__false @endif "
                                                     data-recordindex="4" data-recordid="4880"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">{{ __('warehouse::view.Have Title') }}</span></div>
+                                                        class="step_name">
+                                                        @if($model->workflow && $model->workflow->title_number)
+                                                            {{ $model->title_status_name }}
+                                                        @else
+                                                            No Title
+                                                        @endif
+                                                    </span></div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__0 step_line_done__false"
+                                                    class="step @if($model->dock && $model->dock->booking_received) step_point_done__1 @else step_point_done__0 @endif @if($model->dock && $model->dock->getMedia('loading_photos')) step_line_done__true @else step_line_done__false @endif"
                                                     data-recordindex="5" data-recordid="4881"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">{{ __('warehouse::view.Booking') }}</span></div>
+                                                        class="step_name">Booking</span></div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__0 step_line_done__false"
+                                                    class="step @if($model->dock && $model->dock->load_plan_received) step_point_done__1 @else step_point_done__0 @endif @if($model->dock && $model->dock->getMedia('loading_photos')) step_line_done__true @else step_line_done__false @endif"
                                                     data-recordindex="6" data-recordid="4882"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
                                                         class="step_name">{{ __('warehouse::view.Loading Plan') }}</span></div>
                                                 <div style="width: 11%;"
-                                                    class="step step_point_done__0 step_line_done__false"
+                                                    class="step @if($model->dock && $model->dock->getMedia('loading_photos')) step_point_done__1 @else step_point_done__0 @endif @if($model->status===2) step_line_done__true @else step_line_done__false @endif"
                                                     data-recordindex="7" data-recordid="4883"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">{{ __('warehouse::view.Loading Pictures') }}</span></div>
+                                                        class="step_name">Loading Pictures</span></div>
                                                 <div style="width: 11%;"
                                                     class="step step_point_done__0 step_line_done__false"
                                                     data-recordindex="8" data-recordid="4884"
                                                     data-boundview="dataview-2419"><span
                                                         style="line-height: 16px !important; font-size: 18px;"
                                                         class="step_index fas fa-car-side"></span><span
-                                                        class="step_name">{{ __('warehouse::view.Shipped') }}</span></div>
+                                                        class="step_name">Shipped</span></div>
                                                 <div class="x-tab-guard x-tab-guard-after" tabindex="0"></div>
                                             </div>
                                         </div>
@@ -222,13 +240,13 @@
 
                                         <div class="card-body p-0 pb-0 pt-0 border-1 max-height-132">
                                             @if($model->public_notes)
-                                                <span>  {{ __('warehouse::view.public_notes') }} </span>
+                                                <span>  {{ __('warehouse::view.public_notes') }} :</span>
                                                 <p>
                                                     {{ $model->public_notes }}
                                                 </p>
                                             @endif
                                                 @if($model->private_notes)
-                                                <span>  {{ __('warehouse::view.private_notes') }} </span>
+                                                <span>  {{ __('warehouse::view.private_notes') }} :</span>
                                                 <p>
                                                     {{ $model->private_notes }}
                                                 </p>
@@ -274,13 +292,13 @@
                                 <div class="vehicle-page-dropdown">
                                     <a href="#" class="btn btn-sm btn-action-table px-3" data-toggle="tooltip"
                                         title="{{ __('view.edit') }}">
-                                        <i class="fa-solid fa-key text-success"></i> Confirm Key Received
+                                        <i class="fa-solid fa-key text-success"></i> {{ __('warehouse::view.Confirm Key Received') }}
                                     </a>
                                 </div>
                                 <div class="vehicle-page-dropdown">
                                     <a href="#" class="btn btn-sm btn-action-table px-3" data-toggle="tooltip"
                                         title="{{ __('view.edit') }}">
-                                        <i class="fa-solid fa-file text-success"></i> Confirm Title Received
+                                        <i class="fa-solid fa-file text-success"></i> {{ __('warehouse::view.Confirm Title Received') }}
                                     </a>
                                 </div>
                             </div>
@@ -293,21 +311,22 @@
                             <tbody>
                                 <tr>
                                     <td class="p-1 px-4">{{ __('warehouse::view.Arrival Date') }}</td>
-                                    <td class="p-1 px-4 bg-danger-400"> <i
-                                            class="fa-solid fa-circle-xmark @if(!$model->workflow || $model->workflow->arrival_date) text-danger @endif mr-1"></i>
+                                    <td class="p-1 px-4 @if(!$model->workflow && !$model->workflow->arrival_date) bg-danger-400 @endif">
+                                        @if(!$model->workflow && !$model->workflow->arrival_date)
+                                        <i class="fa-solid fa-circle-xmark text-danger mr-1"></i>
+                                        @endif
                                         {{ optional($model->workflow)->arrival_date }}</td>
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">{{ __('warehouse::view.Hat')  }}</td>
-                                    <td class="p-1 px-4"> <i
-                                            class="fa-solid fa-triangle-exclamation  mr-1"></i> {{ optional($model->workflow)->hat }}  </td>
+                                    <td class="p-1 px-4">  {{ optional($model->workflow)->hat }}  </td>
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">{{ __('warehouse::view.Key') }}</td>
                                     <td class="p-1 px-4 @if(!count($model->getMedia('keys'))) bg-warning-400 @else bg-green-400 @endif ">
 
                                         @if(!count($model->getMedia('keys')))
-                                            <i class="fa-solid fa-circle-xmark  text-warning mr-1"></i>
+                                            <i class="fa-solid fa-circle-xmark text-warning mr-1"></i>
                                             {{ __('warehouse::view.Without Key') }}
                                             @else
                                             <i class="fa-solid fa-square-check text-green mr-1"></i>
@@ -368,44 +387,55 @@
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">{{ __('warehouse::view.Title State') }}</td>
-                                    <td class="p-1 px-4 bg-danger-400-400">
-
+                                    <td class="p-1 px-4 @if(!$model->workflow || $model->workflow->title_status != 2) bg-danger-400 @endif ">
+                                        @if($model->workflow && $model->workflow->title_status == 0)
+                                            <i class="fa-solid fa-triangle-exclamation  mr-1"></i>
+                                        @elseif($model->workflow && $model->workflow->title_status == 1)
+                                            <i class="fa-solid fa-square-xmark text-danger mr-1"></i>
+                                        @else
+                                            <i class="fa-solid fa-square-xmark text-success mr-1"></i>
+                                        @endif
+                                        {{ optional($model->workflow)->title_status_name }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">{{ __('warehouse::view.booking_no') }}</td>
-                                    <td class="p-1 px-4 bg-danger-400-400">
-
+                                    <td class="p-1 px-4 @if(!$model->dock && !$model->dock->booking) bg-danger-400 @endif">
+                                        {{ optional($model->dock)->booking->booking_no }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">{{ __('warehouse::view.container_no') }}</td>
-                                    <td class="p-1 px-4 bg-danger-400-400">
-
+                                    <td class="p-1 px-4 @if(!$model->dock && !$model->dock->container_no) bg-danger-400 @endif">
+                                        {!! optional($model->dock)->container_url !!}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">{{ __('warehouse::view.Loading Plan') }}</td>
-                                    <td class="p-1 px-4 bg-danger-400-400">
-
+                                    <td class="p-1 px-4 @if(!$model->dock && !$model->dock->load_plan_received) bg-danger-400 @else bg-success-400 @endif">
+                                        @if($model->dock && $model->dock->load_plan_received)
+                                            <i class="fa-solid fa-circle-check text-green mr-1"></i>
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">{{ __('warehouse::view.Booking') }}</td>
-                                    <td class="p-1 px-4 bg-danger-400-400">
-
+                                    <td class="p-1 px-4 @if(!$model->dock && !$model->dock->booking_received) bg-danger-400 @else bg-success-400 @endif">
+                                        @if($model->dock && $model->dock->booking_received)
+                                            <i class="fa-solid fa-circle-check text-green mr-1"></i>
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">{{ __('warehouse::view.Container Loading Date') }}</td>
-                                    <td class="p-1 px-4 bg-danger-400-400">
-
+                                    <td class="p-1 px-4 @if(!$model->dock && !$model->dock->loading_date) bg-danger-400 @endif">
+                                        {{ optional($model->dock)->loading_date }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="p-1 px-4">{{ __('warehouse::view.Container Departure Date') }}</td>
-                                    <td class="p-1 px-4 bg-danger-400-400">
-
+                                    <td class="p-1 px-4 @if(!$model->dock && !$model->dock->departure_date) bg-danger-400 @endif">
+                                        {{ optional($model->dock)->departure_date }}
                                     </td>
                                 </tr>
 
@@ -424,14 +454,15 @@
 
                     <div class="vehicle-card-header">
                         <span class="custom-title text-light">
-                           {{ __('warehouse::view.Vehicle Photos') }} ({{ $model->total_photos_no }})
+                           {{ __('warehouse::view.Vehicle Photos') }} (<span id="photos_no"> {{ $model->total_photos_no }} </span>)
                         </span>
 
                         <div class="d-inline-flex ml-auto gap-2">
                             <div class="">
-                                <button type="button" class="btn btn-light btn-sm px-4 rounded-0">
+
+                                <input type="file" id="imageUpload" name="images[]" multiple accept="image/*" class="btn btn-light btn-sm px-4 rounded-0">
                                     <i class="fa-solid fa-plus text-success"></i> <span class="d-none d-md-block">Add Photo</span>
-                                </button>
+
                             </div>
 
                             <div class="">
@@ -497,7 +528,11 @@
                     </div>
 
                     <div class="card-body p-0 pb-0 pt-0">
-                        <div class="d-flex justify-content-start flex-wrap gap-3 p-3 px-5 photo-section-wrapper">
+                        <div id="overlay-loader" class="overlay dark" style="display: none;">
+                            <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+                            <div class="text-bold pt-2">Loading...</div>
+                        </div>
+                        <div class="d-flex justify-content-start flex-wrap gap-3 p-3 px-5 photo-section-wrapper" id="photos-section">
                             @if($model->getFirstMediaUrl('main'))
                                 <img src="{{ $model->getFirstMediaUrl('main') }}"
                                      class="rounded-5 border-red" alt="">
@@ -519,4 +554,54 @@
 
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function (){
+            let csrfToken = '{{ csrf_token() }}';
+            $('#imageUpload').on('change', function(event) {
+                let formData = new FormData();
+                let files = event.target.files;
+
+                // Append each selected file to formData
+                for (let i = 0; i < files.length; i++) {
+                    formData.append('images[]', files[i]);
+                }
+                formData.append('_token', csrfToken);
+
+
+                // Send AJAX request
+                $.ajax({
+                    url: '/upload-photos/'+ {{ $model->id }}, // Replace with your server-side upload URL
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function() {
+                        // Show preloader before the request starts
+                        $('#overlay-loader').show();
+                        $('#photo-section').html('')
+                    },
+                    success: function(response) {
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Photo added successfully!'
+                        })
+                        $('#photo-section').html(response['view'])
+                        $('#photos_no').html(response['number'])
+
+                    },
+                    error: function(xhr, status, error) {
+                        Toast.fire({
+                            icon: 'error',
+                            title: error
+                        })
+                    },
+                    complete: function() {
+                    $('#overlay-loader').hide();
+                }
+                });
+            });
+        });
+    </script>
 @endsection

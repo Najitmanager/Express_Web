@@ -141,13 +141,30 @@
         <p>{{ __('warehouse::view.workflow') }}</p>
     </a>
 </li>
+{{--@can('view-pages')--}}
+<li class="nav-item   {{ areActiveRoutes(['vehicles.index', 'vehicles.create','vehicles.edit'], 'menu-is-opening menu-open active') }}">
+    <a href="{{ fr_route('vehicles.index') }}"
+       class="nav-link {{ areActiveRoutes(['vehicles.index', 'vehicles.create','vehicles.edit']) }}">
+        <i class="fa-solid fa-car fa-fw"></i>
+        <p>{{ __('warehouse::view.vehicles') }}</p>
+    </a>
+</li>
+
+{{--@endcan--}}
+<li class="nav-item   {{ areActiveRoutes(['customers.index', 'customers.create','customers.edit'], 'menu-is-opening menu-open active') }}">
+    <a href="{{ fr_route('customers.index') }}"
+       class="nav-link {{ areActiveRoutes(['customers.index', 'customers.create','customers.edit']) }}">
+        <i class="fas fa-users fa-fw"></i>
+        <p>{{ __('warehouse::view.customers') }}</p>
+    </a>
+</li>
 
 {{--@can('view-pages')--}}
 <li class="nav-item   {{ areActiveRoutes(['truck_companies.index', 'truck_companies.create','truck_companies.edit'], 'menu-is-opening menu-open active') }}">
     <a href="{{ fr_route('truck_companies.index') }}"
        class="nav-link {{ areActiveRoutes(['truck_companies.index', 'truck_companies.create','truck_companies.edit']) }}">
         <i class="fas fa-truck fa-fw"></i>
-        <p>{{ __('warehouse::view.truck_companies') }}</p>
+        <p>{{ __('warehouse::view.suppliers') }}</p>
     </a>
 </li>
 
@@ -190,13 +207,7 @@
 
 {{--@can('view-pages')--}}
 
-<li class="nav-item   {{ areActiveRoutes(['customers.index', 'customers.create','customers.edit'], 'menu-is-opening menu-open active') }}">
-    <a href="{{ fr_route('customers.index') }}"
-       class="nav-link {{ areActiveRoutes(['customers.index', 'customers.create','customers.edit']) }}">
-        <i class="fas fa-users fa-fw"></i>
-        <p>{{ __('warehouse::view.customers') }}</p>
-    </a>
-</li>
+
 
 {{--<li class="nav-item {{ areActiveRoutes(['customers.index', 'customers.create','customers.edit'], 'menu-is-opening menu-open active') }}">--}}
 {{--    <a href="#"--}}
@@ -234,16 +245,7 @@
 {{--</li>--}}
 {{--@endcan--}}
 
-{{--@can('view-pages')--}}
-<li class="nav-item   {{ areActiveRoutes(['vehicles.index', 'vehicles.create','vehicles.edit'], 'menu-is-opening menu-open active') }}">
-    <a href="{{ fr_route('vehicles.index') }}"
-       class="nav-link {{ areActiveRoutes(['vehicles.index', 'vehicles.create','vehicles.edit']) }}">
-        <i class="fa-solid fa-car fa-fw"></i>
-        <p>{{ __('warehouse::view.vehicles') }}</p>
-    </a>
-</li>
 
-{{--@endcan--}}
 {{--@can('view-pages')--}}
 <li class="nav-item   {{ areActiveRoutes(['docks.index', 'docks.create','docks.edit'], 'menu-is-opening menu-open active') }}">
     <a href="{{ fr_route('docks.index') }}"

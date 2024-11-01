@@ -103,6 +103,20 @@ class VehicleController extends Controller
         return response()->json(['success'=>true]);
     }
 
+    public function updatePhotos($id, Request $request)
+    {
+        $request->validate([
+            'images' => 'required|array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+        $model = Vehicle::findOrFail($id);
+        foreach ($request->images as $photo) {
+            $model->addMedia($photo)->toMediaCollection('photos');
+        }
+        $adminTheme = env('ADMIN_THEME', 'adminLte');
+        $view = view('warehouse::'.$adminTheme.'.pages.vehicles.ajax.photos_section', compact('model'))->render();
+        return response()->json(['value' => 1, 'view' => $view ,'number'=>$model->total_photos_no]);
+    }
     /**
      * Show the specified resource.
      * @param int $id

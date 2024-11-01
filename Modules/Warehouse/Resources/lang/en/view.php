@@ -179,6 +179,11 @@ return [
     'Vehicle List'=>'Vehicle List',
     'Loading Photos'=>'Loading Photos',
     'add_load_plan'=>'Add Load Plan',
+    'suppliers'=>'Suppliers',
+    'Pictures'=>'Pictures',
+    'Confirm Key Received'=>'Confirm Key Received',
+    'Confirm Title Received'=>'Confirm Title Received',
+
 
     'table' => [
         'port' => 'Port',
