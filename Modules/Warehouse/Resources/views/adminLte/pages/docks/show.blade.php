@@ -43,14 +43,15 @@
                         <div class="col-lg-4 mb-2">
                             <label for="name" class="form-label mb-1">{{ __('warehouse::view.booking_no') }}.</label>
                             <select name="booking_id" class="form-select form-select-sm" aria-label="Small select example">
-                               @foreach(get_bookings() as $booking)
+                                @foreach (get_bookings() as $booking)
                                     <option value="{{ $booking->id }}">{!! $booking->name_icon !!} </option>
-                               @endforeach
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-lg-4 d-flex justify-content-start align-items-center gap-2">
                             <input name="load_plan_received" type="checkbox">
-                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.Load Plan Received') }}</label>
+                            <label for="name"
+                                class="form-label mb-1">{{ __('warehouse::view.Load Plan Received') }}</label>
                         </div>
                         <div class="col-lg-4 mb-2">
                             <label for="name" class="form-label mb-1">{{ __('warehouse::view.container_no') }}.</label>
@@ -69,30 +70,35 @@
                         </div>
                         <div class="col-lg-4 mb-2">
                             <label for="name" class="form-label mb-1">{{ __('warehouse::view.Type Of Move') }}.</label>
-                            <input type="text"  name="type_of_moves" class="form-control">
+                            <input type="text" name="type_of_moves" class="form-control">
 
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.Loading/Pier Terminal') }}.</label>
+                            <label for="name"
+                                class="form-label mb-1">{{ __('warehouse::view.Loading/Pier Terminal') }}.</label>
                             <input type="text" name="terminal" class="form-control">
 
                         </div>
                         <div class="col-lg-4 d-flex justify-content-start align-items-center gap-2">
                             <input name="booking_received" type="checkbox">
-                            <label for="name"  class="form-label mb-1">{{ __('warehouse::view.Booking Received') }}.</label>
+                            <label for="name"
+                                class="form-label mb-1">{{ __('warehouse::view.Booking Received') }}.</label>
 
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.Container Loading Date') }}.</label>
+                            <label for="name"
+                                class="form-label mb-1">{{ __('warehouse::view.Container Loading Date') }}.</label>
                             <input type="date" name="loading_date" class="form-control">
 
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.Container in Gate Date') }}.</label>
+                            <label for="name"
+                                class="form-label mb-1">{{ __('warehouse::view.Container in Gate Date') }}.</label>
                             <input type="date" name="in_gate_date" class="form-control">
                         </div>
                         <div class="col-lg-4 mb-2">
-                            <label for="name" class="form-label mb-1">{{ __('warehouse::view.Departure Date') }}.</label>
+                            <label for="name"
+                                class="form-label mb-1">{{ __('warehouse::view.Departure Date') }}.</label>
                             <input type="date" name="departure_date" class="form-control">
 
                         </div>
@@ -104,11 +110,13 @@
                         <div class="col-lg-12">
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> {{ __('warehouse::view.customer') }}: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.customer') }}:
+                                    </label>
                                 </div>
                                 <div class="col-md-9">
-                                    <select name="client_id" class="form-select form-select-sm" aria-label="Small select example">
-                                        @foreach(get_customers() as $client)
+                                    <select name="client_id" class="form-select form-select-sm"
+                                        aria-label="Small select example">
+                                        @foreach (get_customers() as $client)
                                             <option value="{{ $client->id }}">{{ $client->user->name }}</option>
                                         @endforeach
 
@@ -117,11 +125,13 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> {{ __('warehouse::view.table.consignee') }}: </label>
+                                    <label for="name" class="form-label">
+                                        {{ __('warehouse::view.table.consignee') }}: </label>
                                 </div>
                                 <div class="col-md-9">
-                                    <select name="consignee_id" class="form-select form-select-sm" aria-label="Small select example">
-                                        @foreach(get_consignees() as $consignee)
+                                    <select name="consignee_id" class="form-select form-select-sm"
+                                        aria-label="Small select example">
+                                        @foreach (get_consignees() as $consignee)
                                             <option value="{{ $consignee->id }}">{{ $consignee->name }}</option>
                                         @endforeach
 
@@ -130,7 +140,8 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> {{ __('warehouse::view.Notify Party') }}: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.Notify Party') }}:
+                                    </label>
                                 </div>
                                 <div class="col-md-9">
                                     <input type="text" name="notify_party" class="form-control">
@@ -138,11 +149,13 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> {{ __('warehouse::view.Trucking Company') }}: </label>
+                                    <label for="name" class="form-label">
+                                        {{ __('warehouse::view.Trucking Company') }}: </label>
                                 </div>
                                 <div class="col-md-9">
-                                    <select name="truck_company_id" class="form-select form-select-sm" aria-label="Small select example">
-                                        @foreach(get_trucking_companies() as $company)
+                                    <select name="truck_company_id" class="form-select form-select-sm"
+                                        aria-label="Small select example">
+                                        @foreach (get_trucking_companies() as $company)
                                             <option value="{{ $company->id }}">{{ $company->company_name }}</option>
                                         @endforeach
 
@@ -151,11 +164,13 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> {{ __('warehouse::view.Exporting Carrier') }} : </label>
+                                    <label for="name" class="form-label">
+                                        {{ __('warehouse::view.Exporting Carrier') }} : </label>
                                 </div>
                                 <div class="col-md-9">
-                                    <select name="carrier_id" class="form-select form-select-sm" aria-label="Small select example">
-                                        @foreach(get_carriers() as $carrier)
+                                    <select name="carrier_id" class="form-select form-select-sm"
+                                        aria-label="Small select example">
+                                        @foreach (get_carriers() as $carrier)
                                             <option value="{{ $carrier->id }}">{{ $carrier->name }}</option>
                                         @endforeach
 
@@ -164,13 +179,15 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> {{ __('warehouse::view.Vessel Name') }}: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.Vessel Name') }}:
+                                    </label>
                                 </div>
                                 <div class="col-md-4">
                                     <input type="text" name="vessel_name" class="form-control">
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="name" class="form-label"> {{ __('warehouse::view.Voyage') }}: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.Voyage') }}:
+                                    </label>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="text" name="voyage" class="form-control">
@@ -178,11 +195,12 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-3">
-                                    <label for="name" class="form-label"> {{ __('warehouse::view.table.port') }}: </label>
+                                    <label for="name" class="form-label"> {{ __('warehouse::view.table.port') }}:
+                                    </label>
                                 </div>
                                 <div class="col-md-9">
                                     <select class="form-select form-select-sm" aria-label="Small select example">
-                                        @foreach(get_ports() as $port)
+                                        @foreach (get_ports() as $port)
                                             <option value="{{ $port->id }}">{{ $port->name }}</option>
                                         @endforeach
                                     </select>
@@ -240,7 +258,8 @@
                 <!-- Tab 1 Content  -- Vehicle List -->
                 <div class="tab-pane fade show active" id="tab1" role="tabpanel">
                     <div class="d-flex justify-content-between p-2 flex-wrap gap-2">
-                        <button class="btn btn-sm btn-light px-2 d-flex align-items-center">
+                        <button class="btn btn-sm btn-light px-2 d-flex align-items-center" data-toggle="modal"
+                            data-target="#modal-overlay">
                             <i class="fa-solid fa-plus text-success me-2"></i> Add vehicle
                         </button>
 
@@ -485,6 +504,104 @@
 
         {{-- End Lowe Card --}}
 
+
+        {{-- Add Vehicle Modale --}}
+
+
+
+        <div class="modal fade" id="modal-overlay">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div id="preloader" class="overlay" style="display: none;">
+                        <i class="fas fa-2x fa-sync fa-spin"></i>
+                    </div>
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-overlay-title"></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="p-2 rounded-0">
+
+                        <div class="d-flex justify-content-between flex-wrap gap-2">
+                            <div>
+                                <div class="btn-group" role="group" aria-label="Actions">
+                                    <select class="btn btn-light btn-sm px-4 rounded-0" name="company"
+                                        data-control="select2" data-placeholder="Company" data-allow-clear="true"
+                                        data-select2-id="1" tabindex="-1" aria-hidden="true"
+                                        style="height: 32px; display: flex; align-items: center;">
+                                    </select>
+                                </div>
+
+                                <input type="search" class="btn btn-white btn-sm px-4 reounded-0 text-start ms-1"
+                                    placeholder="Search" style="width: 200px; border: 1px solid #d3d3d3bd" />
+                            </div>
+
+                            <p class="fw-bold">
+                                Total: <span class="text-warning">100</span> Vehicle
+                            </p>
+                        </div>
+
+                    </div>
+                    <!--begin::Form-->
+                    <form id="form_body" action="{{ fr_route('consignees.store') }}" method="post"
+                        enctype="multipart/form-data">
+                        <div class="modal-body">
+
+                            <table class="table table-hover vehicle-page-tables table-striped-columns mt-0">
+                                <thead>
+                                    <tr class="bg-light">
+                                        <th scope="col"
+                                            style="border: 1px solid #8080805e; padding: 5px 15px !important; verticle-align: middle">
+                                            Vehicle Name</th>
+                                        <th scope="col"
+                                            style="border: 1px solid #8080805e; padding: 5px 15px !important; verticle-align: middle">
+                                            Color</th>
+                                        <th scope="col"
+                                            style="border: 1px solid #8080805e; padding: 5px 15px !important; verticle-align: middle">
+                                            Port</th>
+                                            <th scope="col"
+                                            style="border: 1px solid #8080805e; padding: 5px 15px !important; verticle-align: middle">
+                                            Title</th>
+                                            <th scope="col"
+                                            style="border: 1px solid #8080805e; padding: 5px 15px !important; verticle-align: middle">
+                                            Key</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-1 px-4">Vehicles with Title</td>
+                                        <td class="p-1 px-4">Vehicles with Title</td>
+                                        <td class="p-1 px-4">Vehicles with Title</td>
+                                        <td class="p-1 px-4"><i class="fa-solid fa-square-check text-success"></i></td>
+                                        <td class="p-1 px-4"><i class="fa-solid fa-square-xmark text-danger"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-1 px-4">Vehicles with Title</td>
+                                        <td class="p-1 px-4">Vehicles with Title</td>
+                                        <td class="p-1 px-4">Vehicles with Title</td>
+                                        <td class="p-1 px-4"><i class="fa-solid fa-square-check text-success"></i></td>
+                                        <td class="p-1 px-4"><i class="fa-solid fa-square-xmark text-danger"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="modal-footer justify-content-navbar">
+                            <button type="button" class="btn btn-custom-discard" data-dismiss="modal"><i
+                                    class="fa-solid fa-ban"></i> @lang('view.discard')</button>
+                            <button type="button" class="btn btn-custom-save" data-dismiss="modal" id="form_submit"><i
+                                    class="fa-regular fa-floppy-disk"></i> @lang('view.create')</button>
+                        </div>
+                    </form>
+
+                    <!--end::Form-->
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
 
     </div>
 @endsection
