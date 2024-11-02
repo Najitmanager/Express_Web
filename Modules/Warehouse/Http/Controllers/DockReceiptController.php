@@ -80,7 +80,7 @@ class DockReceiptController extends Controller
     {
         //        $model = Dock::findOrFail($id);
         $adminTheme = env('ADMIN_THEME', 'adminLte');
-        return view('warehouse::'.$adminTheme.'.pages.docks.show'/*, compact('model')*/);
+        return view('warehouse::'.$adminTheme.'.pages.docks.create'/*, compact('model')*/);
     }
 
     /**
@@ -90,8 +90,8 @@ class DockReceiptController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $data = \Arr::except($request->validated(), ['vehicles']);
-        $dock = Dock::create($data);
+        $data = \Arr::except($request->validated(), ['vehicles','save']);
+        $dock = Dock::create($data+['branch_id'=>app('hook')->get('warehouse')->id,'created_by'=>auth()->id()]);
         if($request->vehicles){
             foreach ($request->vehicles as $key){
                 $vehicle = Vehicle::find($key);
@@ -99,7 +99,10 @@ class DockReceiptController extends Controller
                 $vehicle->save();
             }
         }
-        return redirect()->route('docks.index')->with(['message_alert' => __('pages::messages.pages.created')]);
+        if ($request->save=='save'){
+            return redirect()->back()->with(['message_alert' => __('cargo::messages.created')]);
+        }
+        return redirect()->route('docks.index')->with(['message_alert' => __('cargo::messages.created')]);
 
     }
 
@@ -146,4 +149,21 @@ class DockReceiptController extends Controller
     {
         //
     }
+
+    public function getVehicles($client_id,$port_id)
+    {
+        $vehicles = Vehicle::where(['client_id'=>$client_id,'port_id'=>$port_id])->get();
+        $adminTheme = env('ADMIN_THEME', 'adminLte');
+        $view = view('warehouse::'.$adminTheme.'.pages.docks.ajax.add-vehicle-index', compact('vehicles'))->render();
+        return response()->json(['value' => 1, 'view' => $view ,'number'=>count($vehicles)]);
+    }
+    public function insertVehicles(Request $request)
+    {
+        $vehicles = Vehicle::whereIn('id',$request->vehicles)->get();
+        $ids=$request->vehicles;
+        $adminTheme = env('ADMIN_THEME', 'adminLte');
+        $view = view('warehouse::'.$adminTheme.'.pages.docks.ajax.get-vehicles-index', compact('vehicles','ids'))->render();
+        return response()->json(['value' => 1, 'view' => $view ,'number'=>count($vehicles)]);
+    }
+
 }

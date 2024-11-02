@@ -21,6 +21,8 @@ Route::get('test', function () {
     Route::get('/get-models/{id}', 'VehicleController@getModels')->name('vehicles.models');
     Route::get('/pull-vehicle-info/{vin}', 'VehicleController@pullInfo')->name('vehicles.pullInfo');
     Route::post('/upload-photos/{id}', 'VehicleController@updatePhotos')->name('vehicles.updatePhotos');
+    Route::get('/get-vehicles/{client_id}/{port_id}','DockReceiptController@getVehicles')->name('dockReceipt.getVehicles');
+    Route::post('/insert-vehicles/','DockReceiptController@insertVehicles')->name('dockReceipt.insertVehicles');
 
     Route::group(
         [

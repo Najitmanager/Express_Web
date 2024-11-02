@@ -2,7 +2,6 @@
 
 @section('content')
     <!--begin::Card-->
-
     <div class="card table-card-wrapper">
         <div class="table-header card-header">
             <div class="custom-title">
@@ -10,25 +9,25 @@
             </div>
         </div>
         <form id="kt_account_profile_details_form" class="form" action="{{ fr_route('docks.store') }}" method="post" enctype="multipart/form-data">
-            <div class="d-flex justify-content-between p-2 flex-wrap gap-2 border-bottom border-secodary">
 
-            <div class="d-flex gap-2 ">
-                <button type="button" class="btn btn-sm btn-light px-2 d-flex align-items-center">
+            @csrf
+
+            <div class="d-flex justify-content-between p-2 flex-wrap gap-2 border-bottom border-secodary">
+                <div class="d-flex gap-2 ">
+                <button type="submit" name="save" value="save" class="btn btn-sm btn-light px-2 d-flex align-items-center">
                     <i class="fa-solid fa-floppy-disk text-success me-2"></i> {{ __('view.save') }}
                 </button>
-                <button type="button" type="button" class="btn btn-sm btn-light px-2 d-flex align-items-center">
+                <button type="submit" name="save" value="close" type="button" class="btn btn-sm btn-light px-2 d-flex align-items-center">
                     <i class="fa-solid fa-floppy-disk text-success me-2"></i> {{ __('warehouse::view.Save & Close') }}
                 </button>
                 <button type="button" class="btn btn-sm btn-light px-2 d-flex align-items-center">
                     <i class="fa-solid fa-print text-success me-2"></i> {{ __('warehouse::view.print') }}
                 </button>
             </div>
-
-            <button type="button" class="btn btn-sm btn-light px-2 d-flex align-items-center">
+                <button type="button" class="btn btn-sm btn-light px-2 d-flex align-items-center">
                 <i class="fa-regular fa-circle-xmark text-danger me-2"></i> {{ __('warehouse::view.Close') }}
             </button>
-        </div>
-
+            </div>
             {{-- Start Topper Form --}}
             <div class="card table-card-wrapper dock-page m-3 p-3" style="min-height: auto">
                 <div class="row justify-content-between">
@@ -192,10 +191,9 @@
                 </div>
             </div>
         </div>
-        {{-- End Topper Form --}}
-
-        {{-- Start Lower Card --}}
-        <div class="card table-card-wrapper dock-page m-3 p-3" style="min-height: auto">
+            {{-- End Topper Form --}}
+            {{-- Start Lower Card --}}
+            <div class="card table-card-wrapper dock-page m-3 p-3" style="min-height: auto">
             <ul class="nav nav-tabs table-header card-header justify-content-start flex-wrap gap-2" id="mainTab"
                 role="tablist">
                 <li class="nav-item custom-title tabs-only p-0 index-btn" role="presentation" data-href="tab1">
@@ -474,7 +472,6 @@
         </form>
         {{-- End Lowe Card --}}
     </div>
-
     <div class="modal fade" id="modal-overlay">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
@@ -538,7 +535,7 @@
                                         <td class="p-1 px-4">Vehicles with Title</td>
                                         <td class="p-1 px-4">Vehicles with Title</td>
                                         <td class="p-1 px-4">Vehicles with Title</td>
-                                        <td class="p-1 px-4"><i class="fa-solid fa-square-check text-success"></i></td>
+                                        <td class="p-1 px-4"></td>
                                         <td class="p-1 px-4"><i class="fa-solid fa-square-xmark text-danger"></i></td>
                                     </tr>
                                     <tr>
@@ -564,7 +561,4 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
-
-
-
 @endsection
